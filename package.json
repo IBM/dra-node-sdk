@@ -1,10 +1,10 @@
 {
-  "name": "mysdk",
+  "name": "",
   "version": "0.0.1",
-  "description": "IBM Cloud Node SDK",
+  "description": "IBM Cloud DrAutomation Node SDK",
   "repository": {
     "type": "git",
-    "url": "git+https://github.ibm.com/CloudEngineering/node-sdk-template.git"
+    "url": "git+https://github.ibm.com/DRAutomation/dra-node-sdk.git"
   },
   "keywords": [
     "ibm"
