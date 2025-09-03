@@ -19,26 +19,26 @@
 
 /* eslint-disable no-console */
 
-const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
+const ServicebrokerV1 = require('../dist/servicebroker/v1');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values
 // const { readExternalSources } = require('ibm-cloud-sdk-core');
 
 //
-// This file provides an example of how to use the DrAutomation Service service.
+// This file provides an example of how to use the Servicebroker service.
 //
 // The following configuration properties are assumed to be defined:
-// DR_AUTOMATION_SERVICE_URL=<service base url>
-// DR_AUTOMATION_SERVICE_AUTH_TYPE=iam
-// DR_AUTOMATION_SERVICE_APIKEY=<IAM apikey>
-// DR_AUTOMATION_SERVICE_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
+// SERVICEBROKER_URL=<service base url>
+// SERVICEBROKER_AUTH_TYPE=iam
+// SERVICEBROKER_APIKEY=<IAM apikey>
+// SERVICEBROKER_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
 //
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
 //
-const configFile = 'dr_automation_service_v1.env';
+const configFile = 'servicebroker_v1.env';
 
 const describe = authHelper.prepareTests(configFile);
 
@@ -50,17 +50,17 @@ const originalWarn = console.warn;
 const consoleLogMock = jest.spyOn(console, 'log');
 const consoleWarnMock = jest.spyOn(console, 'warn');
 
-describe('DrAutomationServiceV1', () => {
+describe('ServicebrokerV1', () => {
   // Service instance
-  let drAutomationServiceService;
+  let servicebrokerService;
 
   // To access additional configuration values, uncomment this line and extract the values from config
-  // const config = readExternalSources(DrAutomationServiceV1.DEFAULT_SERVICE_NAME);
+  // const config = readExternalSources(ServicebrokerV1.DEFAULT_SERVICE_NAME);
 
   test('Initialize service', async () => {
     // begin-common
 
-    drAutomationServiceService = DrAutomationServiceV1.newInstance();
+    servicebrokerService = ServicebrokerV1.newInstance();
 
     // end-common
   });
@@ -76,7 +76,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceGetKeyV1() result:');
-    // begin-service_instance.get_key_v1
+    // begin-serviceInstance.getKeyV1
 
     const params = {
       instanceId:
@@ -85,13 +85,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceGetKeyV1(params);
+      res = await servicebrokerService.serviceInstanceGetKeyV1(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.get_key_v1
+    // end-serviceInstance.getKeyV1
   });
 
   test('serviceInstanceValidateKey request example', async () => {
@@ -105,7 +105,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceValidateKey() result:');
-    // begin-service_instance.validate_key
+    // begin-serviceInstance.validateKey
 
     const params = {
       instanceId:
@@ -115,13 +115,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceValidateKey(params);
+      res = await servicebrokerService.serviceInstanceValidateKey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.validate_key
+    // end-serviceInstance.validateKey
   });
 
   test('serviceInstanceUpdateApiKey request example', async () => {
@@ -135,7 +135,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceUpdateApiKey() result:');
-    // begin-service_instance.update_api_key
+    // begin-serviceInstance_update_api_key
 
     const params = {
       instanceId:
@@ -145,13 +145,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceUpdateApiKey(params);
+      res = await servicebrokerService.serviceInstanceUpdateApiKey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.update_api_key
+    // end-serviceInstance_update_api_key
   });
 
   test('drGrsLocationPairsDetails request example', async () => {
@@ -165,7 +165,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('drGrsLocationPairsDetails() result:');
-    // begin-dr_grs_location_pairs.details
+    // begin-dr-grs-location-pairs.details
 
     const params = {
       instanceId:
@@ -174,13 +174,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drGrsLocationPairsDetails(params);
+      res = await servicebrokerService.drGrsLocationPairsDetails(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_grs_location_pairs.details
+    // end-dr-grs-location-pairs.details
   });
 
   test('serviceInstanceGetdrlocations request example', async () => {
@@ -194,7 +194,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceGetdrlocations() result:');
-    // begin-service_instance.getdrlocations
+    // begin-serviceInstance.getdrlocations
 
     const params = {
       instanceId:
@@ -203,13 +203,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceGetdrlocations(params);
+      res = await servicebrokerService.serviceInstanceGetdrlocations(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.getdrlocations
+    // end-serviceInstance.getdrlocations
   });
 
   test('drManagedVmsDetails request example', async () => {
@@ -223,7 +223,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('drManagedVmsDetails() result:');
-    // begin-dr_managed_vms.details
+    // begin-dr-managed-vms.details
 
     const params = {
       instanceId:
@@ -232,13 +232,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drManagedVmsDetails(params);
+      res = await servicebrokerService.drManagedVmsDetails(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_managed_vms.details
+    // end-dr-managed-vms.details
   });
 
   test('drSummaryDetails request example', async () => {
@@ -252,7 +252,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('drSummaryDetails() result:');
-    // begin-dr_summary.details
+    // begin-dr-summary.details
 
     const params = {
       instanceId:
@@ -261,14 +261,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drSummaryDetails(params);
+      res = await servicebrokerService.drSummaryDetails(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_summary.details
-  },20000);
+    // end-dr-summary.details
+  });
 
   test('validateClusterType request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -281,7 +281,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('validateClusterType() result:');
-    // begin-validate.cluster_type
+    // begin-validate.ClusterType
 
     const params = {
       instanceId:
@@ -291,13 +291,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validateClusterType(params);
+      res = await servicebrokerService.validateClusterType(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-validate.cluster_type
+    // end-validate.ClusterType
   });
 
   test('machinetypesDetails request example', async () => {
@@ -322,7 +322,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.machinetypesDetails(params);
+      res = await servicebrokerService.machinetypesDetails(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
@@ -342,7 +342,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('schematicWorkspaceGetoperation() result:');
-    // begin-schematic_workspace.getoperation
+    // begin-schematic-workspace.getoperation
 
     const params = {
       instanceId:
@@ -351,13 +351,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.schematicWorkspaceGetoperation(params);
+      res = await servicebrokerService.schematicWorkspaceGetoperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-schematic_workspace.getoperation
+    // end-schematic-workspace.getoperation
   });
 
   test('validatePowerVsWorkspace request example', async () => {
@@ -371,7 +371,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('validatePowerVsWorkspace() result:');
-    // begin-validate.power_vs_workspace
+    // begin-validate.powerVsWorkspace
 
     const params = {
       instanceId:
@@ -383,13 +383,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validatePowerVsWorkspace(params);
+      res = await servicebrokerService.validatePowerVsWorkspace(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-validate.power_vs_workspace
+    // end-validate.powerVsWorkspace
   });
 
   test('validateProxyip request example', async () => {
@@ -415,7 +415,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validateProxyip(params);
+      res = await servicebrokerService.validateProxyip(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
@@ -447,14 +447,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.workspaceVpcgetoperation(params);
+      res = await servicebrokerService.workspaceVpcgetoperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
     // end-workspace.vpcgetoperation
-  },20000);
+  });
 
   test('workspaceGetoperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -478,14 +478,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.workspaceGetoperation(params);
+      res = await servicebrokerService.workspaceGetoperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
     // end-workspace.getoperation
-  },20000);
+  });
 
   test('serviceInstanceFetchManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -498,7 +498,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceFetchManageDr() result:');
-    // begin-service_instance.fetch_manage_dr
+    // begin-serviceInstance.fetch-manage-dr
 
     const params = {
       instanceId:
@@ -507,14 +507,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceFetchManageDr(params);
+      res = await servicebrokerService.serviceInstanceFetchManageDr(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.fetch_manage_dr
-  },20000);
+    // end-serviceInstance.fetch-manage-dr
+  });
 
   test('serviceInstanceManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -527,7 +527,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceManageDr() result:');
-    // begin-service_instance.manage_dr
+    // begin-serviceInstance.manage-dr
 
     // Request models needed by this operation.
 
@@ -558,14 +558,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await servicebrokerService.serviceInstanceManageDr(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.manage_dr
-  },20000);
+    // end-serviceInstance.manage-dr
+  });
 
   test('serviceInstanceDrdeployment request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -578,7 +578,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceDrdeployment() result:');
-    // begin-service_instance.drdeployment
+    // begin-serviceInstance.drdeployment
 
     const params = {
       instanceId:
@@ -587,14 +587,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceDrdeployment(params);
+      res = await servicebrokerService.serviceInstanceDrdeployment(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.drdeployment
-  },20000);
+    // end-serviceInstance.drdeployment
+  });
 
   test('serviceInstanceLastoperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -607,7 +607,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceLastoperation() result:');
-    // begin-service_instance.lastoperation
+    // begin-serviceInstance.lastoperation
 
     const params = {
       instanceId:
@@ -616,14 +616,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceLastoperation(params);
+      res = await servicebrokerService.serviceInstanceLastoperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.lastoperation
-  },20000);
+    // end-serviceInstance.lastoperation
+  });
 
   test('serviceInstanceEventsGetquery request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -636,7 +636,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceEventsGetquery() result:');
-    // begin-service_instance.events.getquery
+    // begin-serviceInstance.events.getquery
 
     const params = {
       provisionId:
@@ -648,14 +648,14 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceEventsGetquery(params);
+      res = await servicebrokerService.serviceInstanceEventsGetquery(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.events.getquery
-  },20000);
+    // end-serviceInstance.events.getquery
+  });
 
   test('serviceInstanceEventsGet request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -668,7 +668,7 @@ describe('DrAutomationServiceV1', () => {
     });
 
     originalLog('serviceInstanceEventsGet() result:');
-    // begin-service_instance.events.get
+    // begin-serviceInstance.events.get
 
     const params = {
       provisionId:
@@ -678,12 +678,12 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceEventsGet(params);
+      res = await servicebrokerService.serviceInstanceEventsGet(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.events.get
+    // end-serviceInstance.events.get
   });
 });

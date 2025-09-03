@@ -17,32 +17,32 @@
 /* eslint-disable no-console */
 
 const { readExternalSources } = require('ibm-cloud-sdk-core');
-const DrAutomationServiceV1 = require('../../dist/dr-automation-service/v1');
+const ServicebrokerV1 = require('../../dist/servicebroker/v1');
 const authHelper = require('../resources/auth-helper.js');
 
 // testcase timeout value (200s).
 const timeout = 200000;
 
 // Location of our config file.
-const configFile = 'dr_automation_service_v1.env';
+const configFile = 'servicebroker_v1.env';
 
 const describe = authHelper.prepareTests(configFile);
 
-describe('DrAutomationServiceV1_integration', () => {
+describe('ServicebrokerV1_integration', () => {
   jest.setTimeout(timeout);
 
   // Service instance
-  let drAutomationServiceService;
+  let servicebrokerService;
 
   test('Initialize service', async () => {
-    drAutomationServiceService = DrAutomationServiceV1.newInstance();
+    servicebrokerService = ServicebrokerV1.newInstance();
 
-    expect(drAutomationServiceService).not.toBeNull();
+    expect(servicebrokerService).not.toBeNull();
 
-    const config = readExternalSources(DrAutomationServiceV1.DEFAULT_SERVICE_NAME);
+    const config = readExternalSources(ServicebrokerV1.DEFAULT_SERVICE_NAME);
     expect(config).not.toBeNull();
 
-    drAutomationServiceService.enableRetries();
+    servicebrokerService.enableRetries();
   });
 
   test('serviceInstanceGetKeyV1()', async () => {
@@ -53,7 +53,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceGetKeyV1(params);
+    const res = await servicebrokerService.serviceInstanceGetKeyV1(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -68,7 +68,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceValidateKey(params);
+    const res = await servicebrokerService.serviceInstanceValidateKey(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -83,7 +83,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceUpdateApiKey(params);
+    const res = await servicebrokerService.serviceInstanceUpdateApiKey(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -97,7 +97,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drGrsLocationPairsDetails(params);
+    const res = await servicebrokerService.drGrsLocationPairsDetails(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -111,7 +111,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceGetdrlocations(params);
+    const res = await servicebrokerService.serviceInstanceGetdrlocations(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -125,7 +125,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drManagedVmsDetails(params);
+    const res = await servicebrokerService.drManagedVmsDetails(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -139,7 +139,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drSummaryDetails(params);
+    const res = await servicebrokerService.drSummaryDetails(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -154,7 +154,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validateClusterType(params);
+    const res = await servicebrokerService.validateClusterType(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -170,7 +170,7 @@ describe('DrAutomationServiceV1_integration', () => {
       standbyWorkspaceName: 'Test-workspace-wdc07',
     };
 
-    const res = await drAutomationServiceService.machinetypesDetails(params);
+    const res = await servicebrokerService.machinetypesDetails(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -183,7 +183,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.schematicWorkspaceGetoperation(params);
+    const res = await servicebrokerService.schematicWorkspaceGetoperation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -199,7 +199,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validatePowerVsWorkspace(params);
+    const res = await servicebrokerService.validatePowerVsWorkspace(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -215,7 +215,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validateProxyip(params);
+    const res = await servicebrokerService.validateProxyip(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -231,7 +231,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.workspaceVpcgetoperation(params);
+    const res = await servicebrokerService.workspaceVpcgetoperation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -246,7 +246,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.workspaceGetoperation(params);
+    const res = await servicebrokerService.workspaceGetoperation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -260,7 +260,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceFetchManageDr(params);
+    const res = await servicebrokerService.serviceInstanceFetchManageDr(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -305,7 +305,7 @@ describe('DrAutomationServiceV1_integration', () => {
       acceptsIncomplete: true,
     };
 
-    const res = await drAutomationServiceService.serviceInstanceManageDr(params);
+    const res = await servicebrokerService.serviceInstanceManageDr(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -318,7 +318,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceDrdeployment(params);
+    const res = await servicebrokerService.serviceInstanceDrdeployment(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -332,7 +332,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceLastoperation(params);
+    const res = await servicebrokerService.serviceInstanceLastoperation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -349,7 +349,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceEventsGetquery(params);
+    const res = await servicebrokerService.serviceInstanceEventsGetquery(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -364,7 +364,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceEventsGet(params);
+    const res = await servicebrokerService.serviceInstanceEventsGet(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();

@@ -43,7 +43,7 @@ IBM Cloud services:
 
 Service Name | Import Path
 --- | ---
-<!-- [Example Service](https://cloud.ibm.com/apidocs/example-service) | /example-service/v1 -->
+DrAutomation Service (https://cloud.ibm.com/docs/dr-automation-powervs) | drautomationservicev1
 
 ## Prerequisites
 * You need an [IBM Cloud][ibm-cloud-onboarding] account.
