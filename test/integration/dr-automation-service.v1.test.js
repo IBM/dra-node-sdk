@@ -45,7 +45,7 @@ describe('DrAutomationServiceV1_integration', () => {
     drAutomationServiceService.enableRetries();
   });
 
-  test('serviceInstanceGetKeyV1()', async () => {
+  test('getServiceInstanceKeyV1()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -53,13 +53,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceGetKeyV1(params);
+    const res = await drAutomationServiceService.getServiceInstanceKeyV1(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceValidateKey()', async () => {
+  test('createServiceInstanceKeyValidation()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -68,13 +68,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceValidateKey(params);
+    const res = await drAutomationServiceService.createServiceInstanceKeyValidation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceUpdateApiKey()', async () => {
+  test('replaceServiceInstanceApiKey()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -83,13 +83,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceUpdateApiKey(params);
+    const res = await drAutomationServiceService.replaceServiceInstanceApiKey(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('drGrsLocationPairsDetails()', async () => {
+  test('getDrGrsLocationPair()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -97,13 +97,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drGrsLocationPairsDetails(params);
+    const res = await drAutomationServiceService.getDrGrsLocationPair(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceGetdrlocations()', async () => {
+  test('getDrLocation()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -111,13 +111,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceGetdrlocations(params);
+    const res = await drAutomationServiceService.getDrLocation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('drManagedVmsDetails()', async () => {
+  test('getDrManagedVm()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -125,13 +125,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drManagedVmsDetails(params);
+    const res = await drAutomationServiceService.getDrManagedVm(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('drSummaryDetails()', async () => {
+  test('getDrSummary()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -139,13 +139,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.drSummaryDetails(params);
+    const res = await drAutomationServiceService.getDrSummary(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('validateClusterType()', async () => {
+  test('getValidateClusterType()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -154,13 +154,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validateClusterType(params);
+    const res = await drAutomationServiceService.getValidateClusterType(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('machinetypesDetails()', async () => {
+  test('getMachineType()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -170,26 +170,26 @@ describe('DrAutomationServiceV1_integration', () => {
       standbyWorkspaceName: 'Test-workspace-wdc07',
     };
 
-    const res = await drAutomationServiceService.machinetypesDetails(params);
+    const res = await drAutomationServiceService.getMachineType(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('schematicWorkspaceGetoperation()', async () => {
+  test('getSchematicWorkspace()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.schematicWorkspaceGetoperation(params);
+    const res = await drAutomationServiceService.getSchematicWorkspace(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('validatePowerVsWorkspace()', async () => {
+  test('getValidatePowerVsWorkspace()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -199,13 +199,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validatePowerVsWorkspace(params);
+    const res = await drAutomationServiceService.getValidatePowerVsWorkspace(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('validateProxyip()', async () => {
+  test('getValidateProxyip()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -215,13 +215,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.validateProxyip(params);
+    const res = await drAutomationServiceService.getValidateProxyip(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('workspaceVpcgetoperation()', async () => {
+  test('getPvsworkspacesCustomVpc()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -231,13 +231,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.workspaceVpcgetoperation(params);
+    const res = await drAutomationServiceService.getPvsworkspacesCustomVpc(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('workspaceGetoperation()', async () => {
+  test('getPvsworkspaceSchematic()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -246,13 +246,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.workspaceGetoperation(params);
+    const res = await drAutomationServiceService.getPvsworkspaceSchematic(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceFetchManageDr()', async () => {
+  test('getManageDr()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -260,13 +260,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceFetchManageDr(params);
+    const res = await drAutomationServiceService.getManageDr(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceManageDr()', async () => {
+  test('createManageDr()', async () => {
     // Request models needed by this operation.
 
     // Context
@@ -294,7 +294,7 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      standByRedeploy: 'false',
+      standByRedeploy: 'true',
       context: contextModel,
       planId: 'plan1234',
       serviceId: 'service1234',
@@ -305,26 +305,26 @@ describe('DrAutomationServiceV1_integration', () => {
       acceptsIncomplete: true,
     };
 
-    const res = await drAutomationServiceService.serviceInstanceManageDr(params);
+    const res = await drAutomationServiceService.createManageDr(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceDrdeployment()', async () => {
+  test('getServiceInstanceDrDeployment()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceDrdeployment(params);
+    const res = await drAutomationServiceService.getServiceInstanceDrDeployment(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceLastoperation()', async () => {
+  test('getLastOperation()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -332,13 +332,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceLastoperation(params);
+    const res = await drAutomationServiceService.getLastOperation(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceEventsGetquery()', async () => {
+  test('listEvents()', async () => {
     const params = {
       provisionId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -349,13 +349,13 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceEventsGetquery(params);
+    const res = await drAutomationServiceService.listEvents(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
-  test('serviceInstanceEventsGet()', async () => {
+  test('getEvent()', async () => {
     const params = {
       provisionId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -364,7 +364,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.serviceInstanceEventsGet(params);
+    const res = await drAutomationServiceService.getEvent(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();

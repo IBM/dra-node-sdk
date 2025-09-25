@@ -19,7 +19,7 @@
 
 /* eslint-disable no-console */
 
-const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
+const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1.js');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values
@@ -65,7 +65,7 @@ describe('DrAutomationServiceV1', () => {
     // end-common
   });
 
-  test('serviceInstanceGetKeyV1 request example', async () => {
+  test('getServiceInstanceKeyV1 request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -75,8 +75,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceGetKeyV1() result:');
-    // begin-service_instance.get_key_v1
+    originalLog('getServiceInstanceKeyV1() result:');
+    // begin-get_service_instance_key_v1
 
     const params = {
       instanceId:
@@ -85,16 +85,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceGetKeyV1(params);
+      res = await drAutomationServiceService.getServiceInstanceKeyV1(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.get_key_v1
+    // end-get_service_instance_key_v1
   });
 
-  test('serviceInstanceValidateKey request example', async () => {
+  test('createServiceInstanceKeyValidation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -104,8 +104,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceValidateKey() result:');
-    // begin-service_instance.validate_key
+    originalLog('createServiceInstanceKeyValidation() result:');
+    // begin-create_service_instance_key_validation
 
     const params = {
       instanceId:
@@ -115,16 +115,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceValidateKey(params);
+      res = await drAutomationServiceService.createServiceInstanceKeyValidation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.validate_key
+    // end-create_service_instance_key_validation
   });
 
-  test('serviceInstanceUpdateApiKey request example', async () => {
+  test('replaceServiceInstanceApiKey request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -134,8 +134,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceUpdateApiKey() result:');
-    // begin-service_instance.update_api_key
+    originalLog('replaceServiceInstanceApiKey() result:');
+    // begin-replace_service_instance_api_key
 
     const params = {
       instanceId:
@@ -145,16 +145,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceUpdateApiKey(params);
+      res = await drAutomationServiceService.replaceServiceInstanceApiKey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.update_api_key
+    // end-replace_service_instance_api_key
   });
 
-  test('drGrsLocationPairsDetails request example', async () => {
+  test('getDrGrsLocationPair request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -164,8 +164,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('drGrsLocationPairsDetails() result:');
-    // begin-dr_grs_location_pairs.details
+    originalLog('getDrGrsLocationPair() result:');
+    // begin-get_dr_grs_location_pair
 
     const params = {
       instanceId:
@@ -174,16 +174,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drGrsLocationPairsDetails(params);
+      res = await drAutomationServiceService.getDrGrsLocationPair(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_grs_location_pairs.details
+    // end-get_dr_grs_location_pair
   });
 
-  test('serviceInstanceGetdrlocations request example', async () => {
+  test('getDrLocation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -193,8 +193,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceGetdrlocations() result:');
-    // begin-service_instance.getdrlocations
+    originalLog('getDrLocation() result:');
+    // begin-get_dr_location
 
     const params = {
       instanceId:
@@ -203,16 +203,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceGetdrlocations(params);
+      res = await drAutomationServiceService.getDrLocation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.getdrlocations
+    // end-get_dr_location
   });
 
-  test('drManagedVmsDetails request example', async () => {
+  test('getDrManagedVm request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -222,8 +222,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('drManagedVmsDetails() result:');
-    // begin-dr_managed_vms.details
+    originalLog('getDrManagedVm() result:');
+    // begin-get_dr_managed_vm
 
     const params = {
       instanceId:
@@ -232,16 +232,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drManagedVmsDetails(params);
+      res = await drAutomationServiceService.getDrManagedVm(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_managed_vms.details
+    // end-get_dr_managed_vm
   });
 
-  test('drSummaryDetails request example', async () => {
+  test('getDrSummary request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -251,8 +251,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('drSummaryDetails() result:');
-    // begin-dr_summary.details
+    originalLog('getDrSummary() result:');
+    // begin-get_dr_summary
 
     const params = {
       instanceId:
@@ -261,16 +261,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.drSummaryDetails(params);
+      res = await drAutomationServiceService.getDrSummary(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-dr_summary.details
-  },20000);
+    // end-get_dr_summary
+  });
 
-  test('validateClusterType request example', async () => {
+  test('getValidateClusterType request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -280,8 +280,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('validateClusterType() result:');
-    // begin-validate.cluster_type
+    originalLog('getValidateClusterType() result:');
+    // begin-get_validate_cluster_type
 
     const params = {
       instanceId:
@@ -291,16 +291,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validateClusterType(params);
+      res = await drAutomationServiceService.getValidateClusterType(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-validate.cluster_type
+    // end-get_validate_cluster_type
   });
 
-  test('machinetypesDetails request example', async () => {
+  test('getMachineType request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -310,8 +310,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('machinetypesDetails() result:');
-    // begin-machinetypes.details
+    originalLog('getMachineType() result:');
+    // begin-get_machine_type
 
     const params = {
       instanceId:
@@ -322,16 +322,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.machinetypesDetails(params);
+      res = await drAutomationServiceService.getMachineType(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-machinetypes.details
+    // end-get_machine_type
   });
 
-  test('schematicWorkspaceGetoperation request example', async () => {
+  test('getSchematicWorkspace request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -341,8 +341,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('schematicWorkspaceGetoperation() result:');
-    // begin-schematic_workspace.getoperation
+    originalLog('getSchematicWorkspace() result:');
+    // begin-get_schematic_workspace
 
     const params = {
       instanceId:
@@ -351,16 +351,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.schematicWorkspaceGetoperation(params);
+      res = await drAutomationServiceService.getSchematicWorkspace(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-schematic_workspace.getoperation
+    // end-get_schematic_workspace
   });
 
-  test('validatePowerVsWorkspace request example', async () => {
+  test('getValidatePowerVsWorkspace request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -370,8 +370,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('validatePowerVsWorkspace() result:');
-    // begin-validate.power_vs_workspace
+    originalLog('getValidatePowerVsWorkspace() result:');
+    // begin-get_validate_power_vs_workspace
 
     const params = {
       instanceId:
@@ -383,16 +383,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validatePowerVsWorkspace(params);
+      res = await drAutomationServiceService.getValidatePowerVsWorkspace(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-validate.power_vs_workspace
+    // end-get_validate_power_vs_workspace
   });
 
-  test('validateProxyip request example', async () => {
+  test('getValidateProxyip request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -402,8 +402,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('validateProxyip() result:');
-    // begin-validate.proxyip
+    originalLog('getValidateProxyip() result:');
+    // begin-get_validate_proxyip
 
     const params = {
       instanceId:
@@ -415,16 +415,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.validateProxyip(params);
+      res = await drAutomationServiceService.getValidateProxyip(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-validate.proxyip
+    // end-get_validate_proxyip
   });
 
-  test('workspaceVpcgetoperation request example', async () => {
+  test('getPvsworkspacesCustomVpc request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -434,8 +434,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('workspaceVpcgetoperation() result:');
-    // begin-workspace.vpcgetoperation
+    originalLog('getPvsworkspacesCustomVpc() result:');
+    // begin-get_pvsworkspaces_custom_vpc
 
     const params = {
       instanceId:
@@ -447,16 +447,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.workspaceVpcgetoperation(params);
+      res = await drAutomationServiceService.getPvsworkspacesCustomVpc(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-workspace.vpcgetoperation
-  },20000);
+    // end-get_pvsworkspaces_custom_vpc
+  });
 
-  test('workspaceGetoperation request example', async () => {
+  test('getPvsworkspaceSchematic request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -466,8 +466,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('workspaceGetoperation() result:');
-    // begin-workspace.getoperation
+    originalLog('getPvsworkspaceSchematic() result:');
+    // begin-get_pvsworkspace_schematic
 
     const params = {
       instanceId:
@@ -478,16 +478,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.workspaceGetoperation(params);
+      res = await drAutomationServiceService.getPvsworkspaceSchematic(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-workspace.getoperation
-  },20000);
+    // end-get_pvsworkspace_schematic
+  });
 
-  test('serviceInstanceFetchManageDr request example', async () => {
+  test('getManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -497,8 +497,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceFetchManageDr() result:');
-    // begin-service_instance.fetch_manage_dr
+    originalLog('getManageDr() result:');
+    // begin-get_manage_dr
 
     const params = {
       instanceId:
@@ -507,16 +507,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceFetchManageDr(params);
+      res = await drAutomationServiceService.getManageDr(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.fetch_manage_dr
-  },20000);
+    // end-get_manage_dr
+  });
 
-  test('serviceInstanceManageDr request example', async () => {
+  test('createManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -526,8 +526,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceManageDr() result:');
-    // begin-service_instance.manage_dr
+    originalLog('createManageDr() result:');
+    // begin-create_manage_dr
 
     // Request models needed by this operation.
 
@@ -550,7 +550,7 @@ describe('DrAutomationServiceV1', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      standByRedeploy: 'false',
+      standByRedeploy: 'true',
       context: contextModel,
       planId: 'plan1234',
       serviceId: 'service1234',
@@ -558,16 +558,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await drAutomationServiceService.createManageDr(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.manage_dr
-  },20000);
+    // end-create_manage_dr
+  });
 
-  test('serviceInstanceDrdeployment request example', async () => {
+  test('getServiceInstanceDrDeployment request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -577,8 +577,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceDrdeployment() result:');
-    // begin-service_instance.drdeployment
+    originalLog('getServiceInstanceDrDeployment() result:');
+    // begin-get_service_instance_dr_deployment
 
     const params = {
       instanceId:
@@ -587,16 +587,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceDrdeployment(params);
+      res = await drAutomationServiceService.getServiceInstanceDrDeployment(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.drdeployment
-  },20000);
+    // end-get_service_instance_dr_deployment
+  });
 
-  test('serviceInstanceLastoperation request example', async () => {
+  test('getLastOperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -606,8 +606,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceLastoperation() result:');
-    // begin-service_instance.lastoperation
+    originalLog('getLastOperation() result:');
+    // begin-get_last_operation
 
     const params = {
       instanceId:
@@ -616,16 +616,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceLastoperation(params);
+      res = await drAutomationServiceService.getLastOperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.lastoperation
-  },20000);
+    // end-get_last_operation
+  });
 
-  test('serviceInstanceEventsGetquery request example', async () => {
+  test('listEvents request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -635,8 +635,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceEventsGetquery() result:');
-    // begin-service_instance.events.getquery
+    originalLog('listEvents() result:');
+    // begin-list_events
 
     const params = {
       provisionId:
@@ -648,16 +648,16 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceEventsGetquery(params);
+      res = await drAutomationServiceService.listEvents(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.events.getquery
-  },20000);
+    // end-list_events
+  });
 
-  test('serviceInstanceEventsGet request example', async () => {
+  test('getEvent request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -667,8 +667,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('serviceInstanceEventsGet() result:');
-    // begin-service_instance.events.get
+    originalLog('getEvent() result:');
+    // begin-get_event
 
     const params = {
       provisionId:
@@ -678,12 +678,12 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceEventsGet(params);
+      res = await drAutomationServiceService.getEvent(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-service_instance.events.get
+    // end-get_event
   });
 });

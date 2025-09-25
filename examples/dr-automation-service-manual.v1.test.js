@@ -65,7 +65,6 @@ describe('DrAutomationServiceV1', () => {
     // end-common
   });
 
-
   // 1. ManageDR with HA + schematic id + sshkey
   test('ServiceInstanceManageDr with HA + schematic id + sshkey', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -82,7 +81,7 @@ describe('DrAutomationServiceV1', () => {
     // Request models needed by this operation.
     const contextModel = {
       dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7add',
+      dr_orchestrator_name: 'drautomationprimary7adde',
       dr_orchestrator_password: 'Password1234567',
       dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
       machine_type: 's922',
@@ -90,7 +89,7 @@ describe('DrAutomationServiceV1', () => {
       schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
       ssh_key_name: 'vijaykey',
       standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7add',
+      standby_orchestrator_name: 'drautomationstandby7adde',
       standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
       tier: 'tier1',
     };
@@ -106,7 +105,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await drAutomationServiceService.createManageDr(params);
       expect(res).toBeDefined();
       expect(res.result).not.toBeNull();
       originalLog(JSON.stringify(res.result, null, 2));
@@ -131,7 +130,7 @@ describe('DrAutomationServiceV1', () => {
     // Request models needed by this operation.
     const contextModel = {
       dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7ad',
+      dr_orchestrator_name: 'drautomationprimary7ade',
       dr_orchestrator_password: 'Password1234567',
       dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
       machine_type: 's922',
@@ -141,7 +140,7 @@ describe('DrAutomationServiceV1', () => {
       proxy_ip: '10.30.40.4:3128',
       ssh_key_name: 'vijaykey',
       standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7ad',
+      standby_orchestrator_name: 'drautomationstandby7ade',
       standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
       tier: 'tier1',
     };
@@ -157,7 +156,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await drAutomationServiceService.createManageDr(params);
       expect(res).toBeDefined();
       expect(res.result).not.toBeNull();
       originalLog(JSON.stringify(res.result, null, 2));
@@ -182,7 +181,7 @@ describe('DrAutomationServiceV1', () => {
     // Request models needed by this operation.
     const contextModel = {
       dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7abcd',
+      dr_orchestrator_name: 'drautomationprimary7abcde',
       dr_orchestrator_password: 'Password1234567',
       dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
       machine_type: 's922',
@@ -193,7 +192,7 @@ describe('DrAutomationServiceV1', () => {
       region_id: 'us-south',
       guid: '397dc20d-9f66-46dc-a750-d15392872023',
       standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7abcd',
+      standby_orchestrator_name: 'drautomationstandby7abcde',
       standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
       tier: 'tier1',
     };
@@ -209,7 +208,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await drAutomationServiceService.createManageDr(params);
       expect(res).toBeDefined();
       expect(res.result).not.toBeNull();
       originalLog(JSON.stringify(res.result, null, 2));
@@ -263,7 +262,7 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.serviceInstanceManageDr(params);
+      res = await drAutomationServiceService.createManageDr(params);
       expect(res).toBeDefined();
       expect(res.result).not.toBeNull();
       originalLog(JSON.stringify(res.result, null, 2));
@@ -280,7 +279,7 @@ describe('DrAutomationServiceV1', () => {
 
     const contextModel = {
       dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7adffj',
+      dr_orchestrator_name: 'drautomationprimary7adffje',
       dr_orchestrator_password: 'Password1234567',
       dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
       machine_type: 's922',
@@ -289,45 +288,6 @@ describe('DrAutomationServiceV1', () => {
       ssh_key_name: 'vijaykey',
       tier: 'tier1',
       enableHA: 'false',
-    };
-
-    const serviceInstanceManageDrParams = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
-      standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
-    };
-
-    const response = await drAutomationServiceService.serviceInstanceManageDr(
-      serviceInstanceManageDrParams
-    );
-
-    expect(response).toBeDefined();
-    expect(response.result).toBeDefined();
-    expect(response.status).toBe(200);
-
-    console.log(JSON.stringify(response.result, null, 2));
-  });
-
-  // 2. ManageDR without HA + custom VPC + sshkey
-
-  it('ServiceInstanceManageDr without HA + custom VPC + sshkey', async () => {
-    console.log('\nServiceInstanceManageDr() - without HA custom VPC + sshkey:');
-
-    const contextModel = {
-      dr_location_id: "dal10",
-      dr_orchestrator_name: "drautomationprimarynh12",
-      dr_orchestrator_password: "Password1234567",
-      dr_orchestrator_workspace_id: "75cbf05b-78f6-406e-afe7-a904f646d798",
-      machine_type: "s922",
-      orchestrator_cluster_type: "off-premises",
-      vpc_id: "r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2",
-      transit_gateway_id: "024fcff9-c676-46e4-ad42-3b2d349c9f8f",
-      proxy_ip: "10.30.40.4:3128",
-      ssh_key_name: "vijaykey",
-      tier: "tier1",
     };
 
     const params = {
@@ -339,7 +299,44 @@ describe('DrAutomationServiceV1', () => {
       serviceId: 'service1234',
     };
 
-    const response = await drAutomationServiceService.serviceInstanceManageDr(params);
+    const response = await drAutomationServiceService.createManageDr(params);
+
+    expect(response).toBeDefined();
+    expect(response.result).toBeDefined();
+    expect(response.status).toBe(200);
+
+    console.log(JSON.stringify(response.result, null, 2));
+  }, 20000);
+
+  // 2. ManageDR without HA + custom VPC + sshkey
+
+  test('ServiceInstanceManageDr without HA + custom VPC + sshkey', async () => {
+    console.log('\nServiceInstanceManageDr() - without HA custom VPC + sshkey:');
+
+    const contextModel = {
+      dr_location_id: 'dal10',
+      dr_orchestrator_name: 'drautomationprimarynh12e',
+      dr_orchestrator_password: 'Password1234567',
+      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      machine_type: 's922',
+      orchestrator_cluster_type: 'off-premises',
+      vpc_id: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      transit_gateway_id: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
+      proxy_ip: '10.30.40.4:3128',
+      ssh_key_name: 'vijaykey',
+      tier: 'tier1',
+    };
+
+    const params = {
+      instanceId:
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
+      standByRedeploy: 'true',
+      context: contextModel,
+      planId: 'plan-ha1',
+      serviceId: 'service1234',
+    };
+
+    const response = await drAutomationServiceService.createManageDr(params);
 
     // ✅ Wrap in expect so Jest knows this is part of the test
     await expect(Promise.resolve(response.status)).resolves.toBe(200);
@@ -349,10 +346,8 @@ describe('DrAutomationServiceV1', () => {
     expect(response.result).not.toBeNull();
   }, 20000);
 
-
-
   // 3. ManageDR without HA + schematic id + secrets
-  it('ServiceInstanceManageDr without HA + schematic id + secrets', async () => {
+  test('ServiceInstanceManageDr without HA + schematic id + secrets', async () => {
     console.log('\nServiceInstanceManageDr() - HA without schematic id + secrets:');
 
     const contextModel = {
@@ -379,7 +374,7 @@ describe('DrAutomationServiceV1', () => {
       serviceId: 'service1234',
     };
 
-    const response = await drAutomationServiceService.serviceInstanceManageDr(params);
+    const response = await drAutomationServiceService.createManageDr(params);
 
     console.log(JSON.stringify(response.result, null, 2));
 
@@ -388,7 +383,7 @@ describe('DrAutomationServiceV1', () => {
   }, 20000);
 
   // 4. ManageDR without HA + custom VPC + secrets
-  it('ServiceInstanceManageDr without HA + custom VPC + secrets', async () => {
+  test('ServiceInstanceManageDr without HA + custom VPC + secrets', async () => {
     console.log('\nServiceInstanceManageDr() - HA without custom VPC + secrets:');
 
     const contextModel = {
@@ -417,12 +412,11 @@ describe('DrAutomationServiceV1', () => {
       serviceId: 'service1234',
     };
 
-    const response = await drAutomationServiceService.serviceInstanceManageDr(params);
+    const response = await drAutomationServiceService.createManageDr(params);
 
     console.log(JSON.stringify(response.result, null, 2));
 
     expect(response.status).toBe(200);
     expect(response.result).not.toBeNull();
   }, 20000);
-
 });
