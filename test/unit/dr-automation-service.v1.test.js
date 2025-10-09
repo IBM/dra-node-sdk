@@ -109,225 +109,26 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getServiceInstanceKeyV1', () => {
+  describe('updateApikey', () => {
     describe('positive tests', () => {
-      function __getServiceInstanceKeyV1Test() {
-        // Construct the params object for operation getServiceInstanceKeyV1
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
-        const getServiceInstanceKeyV1Params = {
-          instanceId,
-          acceptLanguage,
-          ifNoneMatch,
-        };
-
-        const getServiceInstanceKeyV1Result = drAutomationServiceService.getServiceInstanceKeyV1(
-          getServiceInstanceKeyV1Params
-        );
-
-        // all methods should return a Promise
-        expectToBePromise(getServiceInstanceKeyV1Result);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/apikey/{instance_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getServiceInstanceKeyV1Test();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getServiceInstanceKeyV1Test();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getServiceInstanceKeyV1Test();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getServiceInstanceKeyV1Params = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getServiceInstanceKeyV1(getServiceInstanceKeyV1Params);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getServiceInstanceKeyV1({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getServiceInstanceKeyV1();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('createServiceInstanceKeyValidation', () => {
-    describe('positive tests', () => {
-      function __createServiceInstanceKeyValidationTest() {
-        // Construct the params object for operation createServiceInstanceKeyValidation
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const apiKey = 'abcdefrg_izklmnop_fxbEED';
-        const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
-        const createServiceInstanceKeyValidationParams = {
-          instanceId,
-          apiKey,
-          acceptLanguage,
-          ifNoneMatch,
-        };
-
-        const createServiceInstanceKeyValidationResult =
-          drAutomationServiceService.createServiceInstanceKeyValidation(
-            createServiceInstanceKeyValidationParams
-          );
-
-        // all methods should return a Promise
-        expectToBePromise(createServiceInstanceKeyValidationResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/apikey/{instance_id}', 'POST');
-        const expectedAccept = 'application/json';
-        const expectedContentType = 'application/json';
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __createServiceInstanceKeyValidationTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __createServiceInstanceKeyValidationTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __createServiceInstanceKeyValidationTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const apiKey = 'abcdefrg_izklmnop_fxbEED';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const createServiceInstanceKeyValidationParams = {
-          instanceId,
-          apiKey,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.createServiceInstanceKeyValidation(
-          createServiceInstanceKeyValidationParams
-        );
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.createServiceInstanceKeyValidation({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.createServiceInstanceKeyValidation();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('replaceServiceInstanceApiKey', () => {
-    describe('positive tests', () => {
-      function __replaceServiceInstanceApiKeyTest() {
-        // Construct the params object for operation replaceServiceInstanceApiKey
+      function __updateApikeyTest() {
+        // Construct the params object for operation updateApikey
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const apiKey = 'adfadfdsafsdfdsf';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
-        const replaceServiceInstanceApiKeyParams = {
+        const updateApikeyParams = {
           instanceId,
           apiKey,
           acceptLanguage,
           ifNoneMatch,
         };
 
-        const replaceServiceInstanceApiKeyResult =
-          drAutomationServiceService.replaceServiceInstanceApiKey(
-            replaceServiceInstanceApiKeyParams
-          );
+        const updateApikeyResult = drAutomationServiceService.updateApikey(updateApikeyParams);
 
         // all methods should return a Promise
-        expectToBePromise(replaceServiceInstanceApiKeyResult);
+        expectToBePromise(updateApikeyResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -346,17 +147,17 @@ describe('DrAutomationServiceV1', () => {
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __replaceServiceInstanceApiKeyTest();
+        __updateApikeyTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.enableRetries();
-        __replaceServiceInstanceApiKeyTest();
+        __updateApikeyTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.disableRetries();
-        __replaceServiceInstanceApiKeyTest();
+        __updateApikeyTest();
       });
 
       test('should prioritize user-given headers', () => {
@@ -366,7 +167,7 @@ describe('DrAutomationServiceV1', () => {
         const apiKey = 'adfadfdsafsdfdsf';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const replaceServiceInstanceApiKeyParams = {
+        const updateApikeyParams = {
           instanceId,
           apiKey,
           headers: {
@@ -375,7 +176,7 @@ describe('DrAutomationServiceV1', () => {
           },
         };
 
-        drAutomationServiceService.replaceServiceInstanceApiKey(replaceServiceInstanceApiKeyParams);
+        drAutomationServiceService.updateApikey(updateApikeyParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -384,7 +185,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.replaceServiceInstanceApiKey({});
+          await drAutomationServiceService.updateApikey({});
         } catch (e) {
           err = e;
         }
@@ -395,7 +196,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.replaceServiceInstanceApiKey();
+          await drAutomationServiceService.updateApikey();
         } catch (e) {
           err = e;
         }
@@ -503,24 +304,25 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getDrLocation', () => {
+  describe('getDrLocations', () => {
     describe('positive tests', () => {
-      function __getDrLocationTest() {
-        // Construct the params object for operation getDrLocation
+      function __getDrLocationsTest() {
+        // Construct the params object for operation getDrLocations
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
-        const getDrLocationParams = {
+        const getDrLocationsParams = {
           instanceId,
           acceptLanguage,
           ifNoneMatch,
         };
 
-        const getDrLocationResult = drAutomationServiceService.getDrLocation(getDrLocationParams);
+        const getDrLocationsResult =
+          drAutomationServiceService.getDrLocations(getDrLocationsParams);
 
         // all methods should return a Promise
-        expectToBePromise(getDrLocationResult);
+        expectToBePromise(getDrLocationsResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -538,17 +340,17 @@ describe('DrAutomationServiceV1', () => {
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getDrLocationTest();
+        __getDrLocationsTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.enableRetries();
-        __getDrLocationTest();
+        __getDrLocationsTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.disableRetries();
-        __getDrLocationTest();
+        __getDrLocationsTest();
       });
 
       test('should prioritize user-given headers', () => {
@@ -557,7 +359,7 @@ describe('DrAutomationServiceV1', () => {
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getDrLocationParams = {
+        const getDrLocationsParams = {
           instanceId,
           headers: {
             Accept: userAccept,
@@ -565,7 +367,7 @@ describe('DrAutomationServiceV1', () => {
           },
         };
 
-        drAutomationServiceService.getDrLocation(getDrLocationParams);
+        drAutomationServiceService.getDrLocations(getDrLocationsParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -574,7 +376,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrLocation({});
+          await drAutomationServiceService.getDrLocations({});
         } catch (e) {
           err = e;
         }
@@ -585,7 +387,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrLocation();
+          await drAutomationServiceService.getDrLocations();
         } catch (e) {
           err = e;
         }
@@ -775,109 +577,6 @@ describe('DrAutomationServiceV1', () => {
         let err;
         try {
           await drAutomationServiceService.getDrSummary();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getValidateClusterType', () => {
-    describe('positive tests', () => {
-      function __getValidateClusterTypeTest() {
-        // Construct the params object for operation getValidateClusterType
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const orchestratorClusterType = 'on-premises';
-        const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
-        const getValidateClusterTypeParams = {
-          instanceId,
-          orchestratorClusterType,
-          acceptLanguage,
-          ifNoneMatch,
-        };
-
-        const getValidateClusterTypeResult = drAutomationServiceService.getValidateClusterType(
-          getValidateClusterTypeParams
-        );
-
-        // all methods should return a Promise
-        expectToBePromise(getValidateClusterTypeResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/validate_cluster_type/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.qs.orchestrator_cluster_type).toEqual(orchestratorClusterType);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getValidateClusterTypeTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getValidateClusterTypeTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getValidateClusterTypeTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const orchestratorClusterType = 'on-premises';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getValidateClusterTypeParams = {
-          instanceId,
-          orchestratorClusterType,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getValidateClusterType(getValidateClusterTypeParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidateClusterType({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidateClusterType();
         } catch (e) {
           err = e;
         }
@@ -1083,237 +782,17 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getValidatePowerVsWorkspace', () => {
+  describe('getPowervsWorkspacesForCustomVpc', () => {
     describe('positive tests', () => {
-      function __getValidatePowerVsWorkspaceTest() {
-        // Construct the params object for operation getValidatePowerVsWorkspace
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const workspaceId = '75cbf05b-78f6-406e-afe7-a904f646d798';
-        const crn =
-          'crn:v1:bluemix:public:power-iaas:dal10:a/094f4214c75941f991da601b001df1fe:75cbf05b-78f6-406e-afe7-a904f646d798::';
-        const locationUrl = 'https://us-south.power-iaas.cloud.ibm.com';
-        const ifNoneMatch = 'testString';
-        const getValidatePowerVsWorkspaceParams = {
-          instanceId,
-          workspaceId,
-          crn,
-          locationUrl,
-          ifNoneMatch,
-        };
-
-        const getValidatePowerVsWorkspaceResult =
-          drAutomationServiceService.getValidatePowerVsWorkspace(getValidatePowerVsWorkspaceParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getValidatePowerVsWorkspaceResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/validate_power_vs_workspace/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.qs.workspace_id).toEqual(workspaceId);
-        expect(mockRequestOptions.qs.crn).toEqual(crn);
-        expect(mockRequestOptions.qs.location_url).toEqual(locationUrl);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getValidatePowerVsWorkspaceTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getValidatePowerVsWorkspaceTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getValidatePowerVsWorkspaceTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const workspaceId = '75cbf05b-78f6-406e-afe7-a904f646d798';
-        const crn =
-          'crn:v1:bluemix:public:power-iaas:dal10:a/094f4214c75941f991da601b001df1fe:75cbf05b-78f6-406e-afe7-a904f646d798::';
-        const locationUrl = 'https://us-south.power-iaas.cloud.ibm.com';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getValidatePowerVsWorkspaceParams = {
-          instanceId,
-          workspaceId,
-          crn,
-          locationUrl,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getValidatePowerVsWorkspace(getValidatePowerVsWorkspaceParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidatePowerVsWorkspace({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidatePowerVsWorkspace();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getValidateProxyip', () => {
-    describe('positive tests', () => {
-      function __getValidateProxyipTest() {
-        // Construct the params object for operation getValidateProxyip
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const proxyip = '10.30.40.5:3128';
-        const vpcLocation = 'us-south';
-        const vpcId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
-        const ifNoneMatch = 'testString';
-        const getValidateProxyipParams = {
-          instanceId,
-          proxyip,
-          vpcLocation,
-          vpcId,
-          ifNoneMatch,
-        };
-
-        const getValidateProxyipResult =
-          drAutomationServiceService.getValidateProxyip(getValidateProxyipParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getValidateProxyipResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/validate_proxyip/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.qs.proxyip).toEqual(proxyip);
-        expect(mockRequestOptions.qs.vpc_location).toEqual(vpcLocation);
-        expect(mockRequestOptions.qs.vpc_id).toEqual(vpcId);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getValidateProxyipTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getValidateProxyipTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getValidateProxyipTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const proxyip = '10.30.40.5:3128';
-        const vpcLocation = 'us-south';
-        const vpcId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getValidateProxyipParams = {
-          instanceId,
-          proxyip,
-          vpcLocation,
-          vpcId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getValidateProxyip(getValidateProxyipParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidateProxyip({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getValidateProxyip();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getPvsworkspacesCustomVpc', () => {
-    describe('positive tests', () => {
-      function __getPvsworkspacesCustomVpcTest() {
-        // Construct the params object for operation getPvsworkspacesCustomVpc
+      function __getPowervsWorkspacesForCustomVpcTest() {
+        // Construct the params object for operation getPowervsWorkspacesForCustomVpc
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const locationId = 'testString';
         const vpcId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
         const tgId = '925a7b81-a826-4d0a-8ef9-7496e9dc58bc';
         const ifNoneMatch = 'testString';
-        const getPvsworkspacesCustomVpcParams = {
+        const getPowervsWorkspacesForCustomVpcParams = {
           instanceId,
           locationId,
           vpcId,
@@ -1321,11 +800,13 @@ describe('DrAutomationServiceV1', () => {
           ifNoneMatch,
         };
 
-        const getPvsworkspacesCustomVpcResult =
-          drAutomationServiceService.getPvsworkspacesCustomVpc(getPvsworkspacesCustomVpcParams);
+        const getPowervsWorkspacesForCustomVpcResult =
+          drAutomationServiceService.getPowervsWorkspacesForCustomVpc(
+            getPowervsWorkspacesForCustomVpcParams
+          );
 
         // all methods should return a Promise
-        expectToBePromise(getPvsworkspacesCustomVpcResult);
+        expectToBePromise(getPowervsWorkspacesForCustomVpcResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -1349,17 +830,17 @@ describe('DrAutomationServiceV1', () => {
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getPvsworkspacesCustomVpcTest();
+        __getPowervsWorkspacesForCustomVpcTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.enableRetries();
-        __getPvsworkspacesCustomVpcTest();
+        __getPowervsWorkspacesForCustomVpcTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.disableRetries();
-        __getPvsworkspacesCustomVpcTest();
+        __getPowervsWorkspacesForCustomVpcTest();
       });
 
       test('should prioritize user-given headers', () => {
@@ -1371,7 +852,7 @@ describe('DrAutomationServiceV1', () => {
         const tgId = '925a7b81-a826-4d0a-8ef9-7496e9dc58bc';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getPvsworkspacesCustomVpcParams = {
+        const getPowervsWorkspacesForCustomVpcParams = {
           instanceId,
           locationId,
           vpcId,
@@ -1382,7 +863,9 @@ describe('DrAutomationServiceV1', () => {
           },
         };
 
-        drAutomationServiceService.getPvsworkspacesCustomVpc(getPvsworkspacesCustomVpcParams);
+        drAutomationServiceService.getPowervsWorkspacesForCustomVpc(
+          getPowervsWorkspacesForCustomVpcParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -1391,7 +874,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPvsworkspacesCustomVpc({});
+          await drAutomationServiceService.getPowervsWorkspacesForCustomVpc({});
         } catch (e) {
           err = e;
         }
@@ -1402,7 +885,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPvsworkspacesCustomVpc();
+          await drAutomationServiceService.getPowervsWorkspacesForCustomVpc();
         } catch (e) {
           err = e;
         }
@@ -1611,51 +1094,75 @@ describe('DrAutomationServiceV1', () => {
 
   describe('createManageDr', () => {
     describe('positive tests', () => {
-      // Request models needed by this operation.
-
-      // Context
-      const contextModel = {
-        dr_location_id: 'dal10',
-        dr_orchestrator_name: 'drautomationprimary',
-        dr_orchestrator_password: 'Password1234567',
-        dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-        machine_type: 's922',
-        orchestrator_cluster_type: 'off-premises',
-        schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-        ssh_key_name: 'vijaykey',
-        standby_machine_type: 's922',
-        standby_orchestrator_name: 'drautomationstandby',
-        standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-        tier: 'tier1',
-      };
-
-      // ManageDrParameters
-      const manageDrParametersModel = {
-        location: 'us-south',
-        optional_param: 'parameter required by your service',
-      };
-
       function __createManageDrTest() {
         // Construct the params object for operation createManageDr
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const standByRedeploy = 'true';
-        const context = contextModel;
-        const planId = 'plan1234';
-        const serviceId = 'service1234';
         const action = 'done';
-        const parameters = manageDrParametersModel;
+        const apiKey = 'testString';
+        const guid = '123e4567-e89b-12d3-a456-426614174000';
+        const locationId = 'dal10';
+        const machineType = 'bx2-4x16';
+        const orchestratorHa = true;
+        const orchestratorLocationType = 'off-premises';
+        const orchestratorName = 'adminUser';
+        const orchestratorPassword = 'testString';
+        const orchestratorWorkspaceId = 'orch-workspace-01';
+        const orchestratorWorkspaceLocation = 'us-south';
+        const proxyIp = '192.168.1.10';
+        const regionId = 'us-south';
+        const resourceInstance = 'crn:v1:bluemix:public:resource-controller::res123';
+        const schematicWorkspaceId = 'workspace123';
+        const secondaryWorkspaceId = 'secondary-workspace789';
+        const secret = 'testString';
+        const secretGroup = 'default-secret-group';
+        const sshKeyName = 'my-ssh-key';
+        const sshPublicKey = 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAr...';
+        const standbyMachineType = 'bx2-8x32';
+        const standbyOrchestratorName = 'standbyAdmin';
+        const standbyOrchestratorWorkspaceId = 'orch-standby-02';
+        const standbyOrchestratorWorkspaceLocation = 'us-east';
+        const standbySchematicWorkspaceId = 'standby-workspace456';
+        const standbyTier = 'Premium';
+        const tier = 'Standard';
+        const transitGatewayId = 'tgw-67890';
+        const vpcId = 'vpc-12345';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
         const acceptsIncomplete = true;
         const createManageDrParams = {
           instanceId,
           standByRedeploy,
-          context,
-          planId,
-          serviceId,
           action,
-          parameters,
+          apiKey,
+          guid,
+          locationId,
+          machineType,
+          orchestratorHa,
+          orchestratorLocationType,
+          orchestratorName,
+          orchestratorPassword,
+          orchestratorWorkspaceId,
+          orchestratorWorkspaceLocation,
+          proxyIp,
+          regionId,
+          resourceInstance,
+          schematicWorkspaceId,
+          secondaryWorkspaceId,
+          secret,
+          secretGroup,
+          sshKeyName,
+          sshPublicKey,
+          standbyMachineType,
+          standbyOrchestratorName,
+          standbyOrchestratorWorkspaceId,
+          standbyOrchestratorWorkspaceLocation,
+          standbySchematicWorkspaceId,
+          standbyTier,
+          tier,
+          transitGatewayId,
+          vpcId,
           acceptLanguage,
           ifNoneMatch,
           acceptsIncomplete,
@@ -1678,11 +1185,45 @@ describe('DrAutomationServiceV1', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.body.context).toEqual(context);
-        expect(mockRequestOptions.body.plan_id).toEqual(planId);
-        expect(mockRequestOptions.body.service_id).toEqual(serviceId);
         expect(mockRequestOptions.body.action).toEqual(action);
-        expect(mockRequestOptions.body.parameters).toEqual(parameters);
+        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.guid).toEqual(guid);
+        expect(mockRequestOptions.body.location_id).toEqual(locationId);
+        expect(mockRequestOptions.body.machine_type).toEqual(machineType);
+        expect(mockRequestOptions.body.orchestrator_ha).toEqual(orchestratorHa);
+        expect(mockRequestOptions.body.orchestrator_location_type).toEqual(
+          orchestratorLocationType
+        );
+        expect(mockRequestOptions.body.orchestrator_name).toEqual(orchestratorName);
+        expect(mockRequestOptions.body.orchestrator_password).toEqual(orchestratorPassword);
+        expect(mockRequestOptions.body.orchestrator_workspace_id).toEqual(orchestratorWorkspaceId);
+        expect(mockRequestOptions.body.orchestrator_workspace_location).toEqual(
+          orchestratorWorkspaceLocation
+        );
+        expect(mockRequestOptions.body.proxy_ip).toEqual(proxyIp);
+        expect(mockRequestOptions.body.region_id).toEqual(regionId);
+        expect(mockRequestOptions.body.resource_instance).toEqual(resourceInstance);
+        expect(mockRequestOptions.body.schematic_workspace_id).toEqual(schematicWorkspaceId);
+        expect(mockRequestOptions.body.secondary_workspace_id).toEqual(secondaryWorkspaceId);
+        expect(mockRequestOptions.body.secret).toEqual(secret);
+        expect(mockRequestOptions.body.secret_group).toEqual(secretGroup);
+        expect(mockRequestOptions.body.ssh_key_name).toEqual(sshKeyName);
+        expect(mockRequestOptions.body.ssh_public_key).toEqual(sshPublicKey);
+        expect(mockRequestOptions.body.standby_machine_type).toEqual(standbyMachineType);
+        expect(mockRequestOptions.body.standby_orchestrator_name).toEqual(standbyOrchestratorName);
+        expect(mockRequestOptions.body.standby_orchestrator_workspace_id).toEqual(
+          standbyOrchestratorWorkspaceId
+        );
+        expect(mockRequestOptions.body.standby_orchestrator_workspace_location).toEqual(
+          standbyOrchestratorWorkspaceLocation
+        );
+        expect(mockRequestOptions.body.standby_schematic_workspace_id).toEqual(
+          standbySchematicWorkspaceId
+        );
+        expect(mockRequestOptions.body.standby_tier).toEqual(standbyTier);
+        expect(mockRequestOptions.body.tier).toEqual(tier);
+        expect(mockRequestOptions.body.transit_gateway_id).toEqual(transitGatewayId);
+        expect(mockRequestOptions.body.vpc_id).toEqual(vpcId);
         expect(mockRequestOptions.qs.stand_by_redeploy).toEqual(standByRedeploy);
         expect(mockRequestOptions.qs.accepts_incomplete).toEqual(acceptsIncomplete);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
@@ -1708,17 +1249,11 @@ describe('DrAutomationServiceV1', () => {
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const standByRedeploy = 'true';
-        const context = contextModel;
-        const planId = 'plan1234';
-        const serviceId = 'service1234';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const createManageDrParams = {
           instanceId,
           standByRedeploy,
-          context,
-          planId,
-          serviceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -1746,104 +1281,6 @@ describe('DrAutomationServiceV1', () => {
         let err;
         try {
           await drAutomationServiceService.createManageDr();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getServiceInstanceDrDeployment', () => {
-    describe('positive tests', () => {
-      function __getServiceInstanceDrDeploymentTest() {
-        // Construct the params object for operation getServiceInstanceDrDeployment
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const ifNoneMatch = 'testString';
-        const getServiceInstanceDrDeploymentParams = {
-          instanceId,
-          ifNoneMatch,
-        };
-
-        const getServiceInstanceDrDeploymentResult =
-          drAutomationServiceService.getServiceInstanceDrDeployment(
-            getServiceInstanceDrDeploymentParams
-          );
-
-        // all methods should return a Promise
-        expectToBePromise(getServiceInstanceDrDeploymentResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/dr_deployment/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getServiceInstanceDrDeploymentTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getServiceInstanceDrDeploymentTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getServiceInstanceDrDeploymentTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getServiceInstanceDrDeploymentParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getServiceInstanceDrDeployment(
-          getServiceInstanceDrDeploymentParams
-        );
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getServiceInstanceDrDeployment({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getServiceInstanceDrDeployment();
         } catch (e) {
           err = e;
         }

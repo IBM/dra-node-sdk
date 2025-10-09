@@ -19,7 +19,7 @@
 
 /* eslint-disable no-console */
 
-const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1.js');
+const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values
@@ -65,7 +65,7 @@ describe('DrAutomationServiceV1', () => {
     // end-common
   });
 
-  test('getServiceInstanceKeyV1 request example', async () => {
+  test('updateApikey request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -75,83 +75,24 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getServiceInstanceKeyV1() result:');
-    // begin-get_service_instance_key_v1
+    originalLog('updateApikey() result:');
+    // begin-update_apikey
 
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      apiKey: 'api-key-here',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getServiceInstanceKeyV1(params);
+      res = await drAutomationServiceService.updateApikey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_service_instance_key_v1
-  });
-
-  test('createServiceInstanceKeyValidation request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('createServiceInstanceKeyValidation() result:');
-    // begin-create_service_instance_key_validation
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'abcdefrg_izklmnop_fxbEED',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.createServiceInstanceKeyValidation(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-create_service_instance_key_validation
-  });
-
-  test('replaceServiceInstanceApiKey request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('replaceServiceInstanceApiKey() result:');
-    // begin-replace_service_instance_api_key
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'adfadfdsafsdfdsf',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.replaceServiceInstanceApiKey(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-replace_service_instance_api_key
+    // end-update_apikey
   });
 
   test('getDrGrsLocationPair request example', async () => {
@@ -183,7 +124,7 @@ describe('DrAutomationServiceV1', () => {
     // end-get_dr_grs_location_pair
   });
 
-  test('getDrLocation request example', async () => {
+  test('getDrLocations request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -193,8 +134,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getDrLocation() result:');
-    // begin-get_dr_location
+    originalLog('getDrLocations() result:');
+    // begin-get_dr_locations
 
     const params = {
       instanceId:
@@ -203,13 +144,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.getDrLocation(params);
+      res = await drAutomationServiceService.getDrLocations(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_dr_location
+    // end-get_dr_locations
   });
 
   test('getDrManagedVm request example', async () => {
@@ -268,37 +209,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_dr_summary
-  });
-
-  test('getValidateClusterType request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getValidateClusterType() result:');
-    // begin-get_validate_cluster_type
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      orchestratorClusterType: 'on-premises',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getValidateClusterType(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_validate_cluster_type
-  });
+  }, 20000);
 
   test('getMachineType request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -329,7 +240,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_machine_type
-  });
+  }, 20000);
 
   test('getSchematicWorkspace request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -360,7 +271,7 @@ describe('DrAutomationServiceV1', () => {
     // end-get_schematic_workspace
   });
 
-  test('getValidatePowerVsWorkspace request example', async () => {
+  test('getPowervsWorkspacesForCustomVpc request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -370,72 +281,8 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getValidatePowerVsWorkspace() result:');
-    // begin-get_validate_power_vs_workspace
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      workspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      crn: 'crn:v1:bluemix:public:power-iaas:dal10:a/094f4214c75941f991da601b001df1fe:75cbf05b-78f6-406e-afe7-a904f646d798::',
-      locationUrl: 'https://us-south.power-iaas.cloud.ibm.com',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getValidatePowerVsWorkspace(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_validate_power_vs_workspace
-  });
-
-  test('getValidateProxyip request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getValidateProxyip() result:');
-    // begin-get_validate_proxyip
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      proxyip: '10.30.40.5:3128',
-      vpcLocation: 'us-south',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getValidateProxyip(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_validate_proxyip
-  });
-
-  test('getPvsworkspacesCustomVpc request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getPvsworkspacesCustomVpc() result:');
-    // begin-get_pvsworkspaces_custom_vpc
+    originalLog('getPowervsWorkspacesForCustomVpc() result:');
+    // begin-get_powervs_workspaces_for_custom_vpc
 
     const params = {
       instanceId:
@@ -447,13 +294,13 @@ describe('DrAutomationServiceV1', () => {
 
     let res;
     try {
-      res = await drAutomationServiceService.getPvsworkspacesCustomVpc(params);
+      res = await drAutomationServiceService.getPowervsWorkspacesForCustomVpc(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_pvsworkspaces_custom_vpc
+    // end-get_powervs_workspaces_for_custom_vpc
   });
 
   test('getPvsworkspaceSchematic request example', async () => {
@@ -485,7 +332,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_pvsworkspace_schematic
-  });
+  }, 20000);
 
   test('getManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -529,31 +376,25 @@ describe('DrAutomationServiceV1', () => {
     originalLog('createManageDr() result:');
     // begin-create_manage_dr
 
-    // Request models needed by this operation.
-
-    // Context
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      ssh_key_name: 'vijaykey',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan1234',
-      serviceId: 'service1234',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh1dsdkks',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      sshKeyName: 'vijaykey',
+      action: 'done',
+      apiKey: 'api-key-here',
+      standbyOrchestratorName: 'drautomationstandbymh1dd',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
     };
 
     let res;
@@ -565,36 +406,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-create_manage_dr
-  });
-
-  test('getServiceInstanceDrDeployment request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getServiceInstanceDrDeployment() result:');
-    // begin-get_service_instance_dr_deployment
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getServiceInstanceDrDeployment(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_service_instance_dr_deployment
-  });
+  }, 20000);
 
   test('getLastOperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -623,7 +435,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_last_operation
-  });
+  }, 20000);
 
   test('listEvents request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -655,7 +467,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-list_events
-  });
+  }, 20000);
 
   test('getEvent request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -685,5 +497,5 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_event
-  });
+  }, 20000);
 });

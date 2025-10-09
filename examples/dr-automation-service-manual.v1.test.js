@@ -78,29 +78,25 @@ describe('DrAutomationServiceV1', () => {
 
     originalLog('\nServiceInstanceManageDr() - HA with schematic id + sshkey:');
 
-    // Request models needed by this operation.
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7adde',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      ssh_key_name: 'vijaykey',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7adde',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf7::',
-      standByRedeploy: 'false',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
+      standByRedeploy: 'true',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh1dsdkks',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      sshKeyName: 'vijaykey',
+      action: 'done',
+      apiKey: 'api-key-here',
+      standbyOrchestratorName: 'drautomationstandbymh1dd',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
     };
 
     let res;
@@ -127,31 +123,27 @@ describe('DrAutomationServiceV1', () => {
 
     originalLog('\nServiceInstanceManageDr() - HA with custom VPC + sshkey:');
 
-    // Request models needed by this operation.
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7ade',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      vpc_id: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transit_gateway_id: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxy_ip: '10.30.40.4:3128',
-      ssh_key_name: 'vijaykey',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7ade',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf7::',
-      standByRedeploy: 'false',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
+      standByRedeploy: 'true',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
+      proxyIp: '10.30.40.4:3128',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh2testkffff',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      sshKeyName: 'vijaykey',
+      action: 'done',
+      apiKey: 'api-key-here',
+      standbyOrchestratorName: 'drautomationstandbymh2testjd',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
     };
 
     let res;
@@ -178,32 +170,28 @@ describe('DrAutomationServiceV1', () => {
 
     originalLog('\nServiceInstanceManageDr() - HA with schematic id + secrets:');
 
-    // Request models needed by this operation.
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7abcde',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      secret_group: '123-123',
-      secret: '123-123',
-      region_id: 'us-south',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7abcde',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf7::',
-      standByRedeploy: 'false',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
+      standByRedeploy: 'true',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh3testfd',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      guid: '397dc20d-9f66-46dc-a750-d15392872023',
+      secretGroup: 'secret-group-here',
+      secret: 'secret-here',
+      regionId: 'us-south',
+      action: 'done',
+      apiKey: 'api-key-here',
+      standbyOrchestratorName: 'drautomationstandbymh2testjdd',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
     };
 
     let res;
@@ -230,34 +218,28 @@ describe('DrAutomationServiceV1', () => {
 
     originalLog('\nServiceInstanceManageDr() - HA with custom VPC + secrets:');
 
-    // Request models needed by this operation.
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7aks',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      vpc_id: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transit_gateway_id: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxy_ip: '10.30.40.4:3128',
-      secret_group: '123-123',
-      secret: '123-123',
-      region_id: 'us-south',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby7ajs',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf7::',
-      standByRedeploy: 'false',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
+      proxyIp: '10.30.40.4:3128',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymnhdnn',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      guid: '397dc20d-9f66-46dc-a750-d15392872023',
+      secretGroup: 'secret-group-here',
+      secret: 'secret-here',
+      action: 'done',
+      apiKey: 'api-key-here',
+      standbyOrchestratorName: 'drautomationstandbymh2tesddadd',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
     };
 
     let res;
@@ -277,26 +259,26 @@ describe('DrAutomationServiceV1', () => {
   test('ServiceInstanceManageDr without HA + schematic id + sshkey', async () => {
     console.log('\nServiceInstanceManageDr() - HA without schematic id + sshkey:');
 
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7adffje',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      ssh_key_name: 'vijaykey',
-      tier: 'tier1',
-      enableHA: 'false',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+      // instanceId: "crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh1::",
+      orchestratorHa: false,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh1dsds',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      sshKeyName: 'vijaykey',
+      action: 'done',
+      apiKey: 'api-key-here',
+      // standbyOrchestratorName: "drautomationstandbymh1",
+      // standbyOrchestratorWorkspaceId: "71027b79-0e31-44f6-a499-63eca1a66feb",
+      // standbyMachineType: "s922"
     };
 
     const response = await drAutomationServiceService.createManageDr(params);
@@ -313,27 +295,27 @@ describe('DrAutomationServiceV1', () => {
   test('ServiceInstanceManageDr without HA + custom VPC + sshkey', async () => {
     console.log('\nServiceInstanceManageDr() - without HA custom VPC + sshkey:');
 
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimarynh12e',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      vpc_id: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transit_gateway_id: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxy_ip: '10.30.40.4:3128',
-      ssh_key_name: 'vijaykey',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+      orchestratorHa: false,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
+      proxyIp: '10.30.40.4:3128',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh2testk',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      sshKeyName: 'vijaykey',
+      action: 'done',
+      apiKey: 'api-key-here',
+      // standbyOrchestratorName: "drautomationstandbymh2testj",
+      // standbyOrchestratorWorkspaceId: "71027b79-0e31-44f6-a499-63eca1a66feb",
+      // standbyMachineType: "s922",
     };
 
     const response = await drAutomationServiceService.createManageDr(params);
@@ -350,28 +332,25 @@ describe('DrAutomationServiceV1', () => {
   test('ServiceInstanceManageDr without HA + schematic id + secrets', async () => {
     console.log('\nServiceInstanceManageDr() - HA without schematic id + secrets:');
 
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7a',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      secret_group: '123-123',
-      secret: '123-123',
-      region_id: 'us-south',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+      orchestratorHa: false,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymh3testf',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      guid: '397dc20d-9f66-46dc-a750-d15392872023',
+      secretGroup: '12345-714f-86a6-6a50-2f128a4e7ac2',
+      secret: '12345-997c-1d0d-5503-27ca856f2b5a',
+      regionId: 'us-south',
+      action: 'done',
+      apiKey: 'api-key-here',
     };
 
     const response = await drAutomationServiceService.createManageDr(params);
@@ -386,30 +365,26 @@ describe('DrAutomationServiceV1', () => {
   test('ServiceInstanceManageDr without HA + custom VPC + secrets', async () => {
     console.log('\nServiceInstanceManageDr() - HA without custom VPC + secrets:');
 
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary7a',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      vpc_id: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transit_gateway_id: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxy_ip: '10.30.40.4:3128',
-      secret_group: '123-123',
-      secret: '123-123',
-      region_id: 'us-south',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      tier: 'tier1',
-    };
-
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:fbfe0f93-0788-42ce-a2ff-a5f30d569702::',
+        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan-ha1',
-      serviceId: 'service1234',
+      orchestratorHa: false,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
+      proxyIp: '10.30.40.4:3128',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymnh8dddnn',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+      guid: '397dc20d-9f66-46dc-a750-d15392872023',
+      secretGroup: 'secret-group-here',
+      secret: 'secret-here',
+      action: 'done',
+      apiKey: 'api-key-here',
     };
 
     const response = await drAutomationServiceService.createManageDr(params);

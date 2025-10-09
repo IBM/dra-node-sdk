@@ -45,36 +45,7 @@ describe('DrAutomationServiceV1_integration', () => {
     drAutomationServiceService.enableRetries();
   });
 
-  test('getServiceInstanceKeyV1()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getServiceInstanceKeyV1(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('createServiceInstanceKeyValidation()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'abcdefrg_izklmnop_fxbEED',
-      acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.createServiceInstanceKeyValidation(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('replaceServiceInstanceApiKey()', async () => {
+  test('updateApikey()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -83,7 +54,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.replaceServiceInstanceApiKey(params);
+    const res = await drAutomationServiceService.updateApikey(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -103,7 +74,7 @@ describe('DrAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('getDrLocation()', async () => {
+  test('getDrLocations()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
@@ -111,7 +82,7 @@ describe('DrAutomationServiceV1_integration', () => {
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.getDrLocation(params);
+    const res = await drAutomationServiceService.getDrLocations(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -140,21 +111,6 @@ describe('DrAutomationServiceV1_integration', () => {
     };
 
     const res = await drAutomationServiceService.getDrSummary(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getValidateClusterType()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      orchestratorClusterType: 'on-premises',
-      acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getValidateClusterType(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -189,49 +145,17 @@ describe('DrAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('getValidatePowerVsWorkspace()', async () => {
+  test('getPowervsWorkspacesForCustomVpc()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      workspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      crn: 'crn:v1:bluemix:public:power-iaas:dal10:a/094f4214c75941f991da601b001df1fe:75cbf05b-78f6-406e-afe7-a904f646d798::',
-      locationUrl: 'https://us-south.power-iaas.cloud.ibm.com',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getValidatePowerVsWorkspace(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getValidateProxyip()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      proxyip: '10.30.40.5:3128',
-      vpcLocation: 'us-south',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getValidateProxyip(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getPvsworkspacesCustomVpc()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      locationId: 'testString',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      locationId: 'lon06',
+      vpcId: 'r018-846943b1-2a88-4203-80fe-3454157d5c49',
       tgId: '925a7b81-a826-4d0a-8ef9-7496e9dc58bc',
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.getPvsworkspacesCustomVpc(params);
+    const res = await drAutomationServiceService.getPowervsWorkspacesForCustomVpc(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -242,7 +166,7 @@ describe('DrAutomationServiceV1_integration', () => {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       schematicId: 'us-south.workspace.projects-service.3ae96a02',
-      locationId: 'testString',
+      locationId: 'lon06',
       ifNoneMatch: 'testString',
     };
 
@@ -267,58 +191,45 @@ describe('DrAutomationServiceV1_integration', () => {
   });
 
   test('createManageDr()', async () => {
-    // Request models needed by this operation.
-
-    // Context
-    const contextModel = {
-      dr_location_id: 'dal10',
-      dr_orchestrator_name: 'drautomationprimary',
-      dr_orchestrator_password: 'Password1234567',
-      dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      machine_type: 's922',
-      orchestrator_cluster_type: 'off-premises',
-      schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-      ssh_key_name: 'vijaykey',
-      standby_machine_type: 's922',
-      standby_orchestrator_name: 'drautomationstandby',
-      standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      tier: 'tier1',
-    };
-
-    // ManageDrParameters
-    const manageDrParametersModel = {
-      location: 'us-south',
-      optional_param: 'parameter required by your service',
-    };
-
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       standByRedeploy: 'true',
-      context: contextModel,
-      planId: 'plan1234',
-      serviceId: 'service1234',
       action: 'done',
-      parameters: manageDrParametersModel,
+      apiKey: 'testString',
+      guid: '123e4567-e89b-12d3-a456-426614174000',
+      locationId: 'dal10',
+      machineType: 'bx2-4x16',
+      orchestratorHa: true,
+      orchestratorLocationType: 'off-premises',
+      orchestratorName: 'adminUser',
+      orchestratorPassword: 'testString',
+      orchestratorWorkspaceId: 'orch-workspace-01',
+      orchestratorWorkspaceLocation: 'us-south',
+      proxyIp: '192.168.1.10',
+      regionId: 'us-south',
+      resourceInstance: 'crn:v1:bluemix:public:resource-controller::res123',
+      schematicWorkspaceId: 'workspace123',
+      secondaryWorkspaceId: 'secondary-workspace789',
+      secret: 'testString',
+      secretGroup: 'default-secret-group',
+      sshKeyName: 'my-ssh-key',
+      sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAr...',
+      standbyMachineType: 'bx2-8x32',
+      standbyOrchestratorName: 'standbyAdmin',
+      standbyOrchestratorWorkspaceId: 'orch-standby-02',
+      standbyOrchestratorWorkspaceLocation: 'us-east',
+      standbySchematicWorkspaceId: 'standby-workspace456',
+      standbyTier: 'Premium',
+      tier: 'Standard',
+      transitGatewayId: 'tgw-67890',
+      vpcId: 'vpc-12345',
       acceptLanguage: 'testString',
       ifNoneMatch: 'testString',
       acceptsIncomplete: true,
     };
 
     const res = await drAutomationServiceService.createManageDr(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getServiceInstanceDrDeployment()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getServiceInstanceDrDeployment(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();

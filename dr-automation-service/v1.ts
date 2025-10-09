@@ -98,141 +98,7 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Get current API key.
-   *
-   * Retrieves the current API key details for the specified service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>>}
-   */
-  public getServiceInstanceKeyV1(
-    params: DrAutomationServiceV1.GetServiceInstanceKeyV1Params
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getServiceInstanceKeyV1'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/apikey/{instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * validate key api.
-   *
-   * Creating the API key details for the specified service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.apiKey - The API key to validate.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>>}
-   */
-  public createServiceInstanceKeyValidation(
-    params: DrAutomationServiceV1.CreateServiceInstanceKeyValidationParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId', 'apiKey'];
-    const _validParams = [
-      'instanceId',
-      'apiKey',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const body = {
-      'api_key': _params.apiKey,
-    };
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'createServiceInstanceKeyValidation'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/apikey/{instance_id}',
-        method: 'POST',
-        body,
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * update api key.
+   * Updates the API key for the specified service instance.
    *
    * Updating the current API key details for the specified service instance.
    *
@@ -244,8 +110,8 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>>}
    */
-  public replaceServiceInstanceApiKey(
-    params: DrAutomationServiceV1.ReplaceServiceInstanceApiKeyParams
+  public updateApikey(
+    params: DrAutomationServiceV1.UpdateApikeyParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'apiKey'];
@@ -273,7 +139,7 @@ class DrAutomationServiceV1 extends BaseService {
     const sdkHeaders = getSdkHeaders(
       DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
       'v1',
-      'replaceServiceInstanceApiKey'
+      'updateApikey'
     );
 
     const parameters = {
@@ -366,7 +232,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Get current API key.
+   * Get Disaster recovery locations.
    *
    * Retrieves the list of disaster recovery (DR) locations available for the specified service instance.
    *
@@ -377,8 +243,8 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetDrLocationsResponse>>}
    */
-  public getDrLocation(
-    params: DrAutomationServiceV1.GetDrLocationParams
+  public getDrLocations(
+    params: DrAutomationServiceV1.GetDrLocationsParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetDrLocationsResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
@@ -395,7 +261,7 @@ class DrAutomationServiceV1 extends BaseService {
     const sdkHeaders = getSdkHeaders(
       DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
       'v1',
-      'getDrLocation'
+      'getDrLocations'
     );
 
     const parameters = {
@@ -435,11 +301,11 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmListResponse>>}
+   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmMapResponse>>}
    */
   public getDrManagedVm(
     params: DrAutomationServiceV1.GetDrManagedVmParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmListResponse>> {
+  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmMapResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
     const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
@@ -486,7 +352,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * DR summary details by instanceID.
+   * Disaster Recovery deployment details.
    *
    * Retrieves the disaster recovery (DR) summary details for the specified service instance, including key
    * configuration and status information.
@@ -523,79 +389,6 @@ class DrAutomationServiceV1 extends BaseService {
       options: {
         url: '/drautomation/v1/dr_summary/{instance_id}',
         method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * Validate  ClusterType API.
-   *
-   * Validates the cluster type for the specified disaster recovery service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.orchestratorClusterType - orchestrator cluster type value.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateClusterTypeResponse>>}
-   */
-  public getValidateClusterType(
-    params: DrAutomationServiceV1.GetValidateClusterTypeParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateClusterTypeResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId', 'orchestratorClusterType'];
-    const _validParams = [
-      'instanceId',
-      'orchestratorClusterType',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const query = {
-      'orchestrator_cluster_type': _params.orchestratorClusterType,
-    };
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getValidateClusterType'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/validate_cluster_type/{instance_id}',
-        method: 'GET',
-        qs: query,
         path,
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
@@ -700,7 +493,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * schematics workspace API.
+   * List of schematic workspaces.
    *
    * Retrieves the list of schematics workspaces associated with the specified disaster recovery service instance.
    *
@@ -758,159 +551,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Validate powervs workspace API.
-   *
-   * Validates the specified Power VS workspace for the disaster recovery service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.workspaceId - standBy workspaceID value.
-   * @param {string} params.crn - crn value.
-   * @param {string} params.locationUrl - schematic_workspace_id value.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateWorkspaceResponse>>}
-   */
-  public getValidatePowerVsWorkspace(
-    params: DrAutomationServiceV1.GetValidatePowerVsWorkspaceParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateWorkspaceResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId', 'workspaceId', 'crn', 'locationUrl'];
-    const _validParams = [
-      'instanceId',
-      'workspaceId',
-      'crn',
-      'locationUrl',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const query = {
-      'workspace_id': _params.workspaceId,
-      'crn': _params.crn,
-      'location_url': _params.locationUrl,
-    };
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getValidatePowerVsWorkspace'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/validate_power_vs_workspace/{instance_id}',
-        method: 'GET',
-        qs: query,
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * Validate proxyip.
-   *
-   * Validates the specified proxy IP for the disaster recovery service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.proxyip - proxyip value.
-   * @param {string} params.vpcLocation - vpc location value.
-   * @param {string} params.vpcId - vpc id value.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateProxyipResponse>>}
-   */
-  public getValidateProxyip(
-    params: DrAutomationServiceV1.GetValidateProxyipParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidateProxyipResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId', 'proxyip', 'vpcLocation', 'vpcId'];
-    const _validParams = [
-      'instanceId',
-      'proxyip',
-      'vpcLocation',
-      'vpcId',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const query = {
-      'proxyip': _params.proxyip,
-      'vpc_location': _params.vpcLocation,
-      'vpc_id': _params.vpcId,
-    };
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getValidateProxyip'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/validate_proxyip/{instance_id}',
-        method: 'GET',
-        qs: query,
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * workspace API.
+   * List of primary and standby powervs workspaces for custom vpc.
    *
    * Retrieves the details of the specified custom VPC workspace for a disaster recovery service instance.
    *
@@ -921,11 +562,11 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.tgId - transit gateway id value.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DRData>>}
+   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrDataCustomVPC>>}
    */
-  public getPvsworkspacesCustomVpc(
-    params: DrAutomationServiceV1.GetPvsworkspacesCustomVpcParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DRData>> {
+  public getPowervsWorkspacesForCustomVpc(
+    params: DrAutomationServiceV1.GetPowervsWorkspacesForCustomVpcParams
+  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrDataCustomVPC>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'locationId', 'vpcId', 'tgId'];
     const _validParams = [
@@ -955,7 +596,7 @@ class DrAutomationServiceV1 extends BaseService {
     const sdkHeaders = getSdkHeaders(
       DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
       'v1',
-      'getPvsworkspacesCustomVpc'
+      'getPowervsWorkspacesForCustomVpc'
     );
 
     const parameters = {
@@ -986,7 +627,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * workspace API.
+   * List of primary and standby powervs workspaces for schematic workspace.
    *
    * Retrieves the details of the specified workspace schematic for a disaster recovery service instance.
    *
@@ -996,11 +637,11 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.locationId - Location ID value.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DRData>>}
+   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>>}
    */
   public getPvsworkspaceSchematic(
     params: DrAutomationServiceV1.GetPvsworkspaceSchematicParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DRData>> {
+  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'schematicId', 'locationId'];
     const _validParams = [
@@ -1062,7 +703,7 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * DR summary details by instanceID.
+   * View configured DR automation details.
    *
    * Retrieves the (DR) management configuration and status for the specified service instance.
    *
@@ -1122,7 +763,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * create manageDR a service instance.
+   * Configure DR automation.
    *
    * Initiates or updates the disaster recovery (DR) management workflow for the specified service instance. Use this
    * API to configure DR automation.
@@ -1131,13 +772,39 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.standByRedeploy - Flag to indicate if standby should be redeployed (must be "true" or
    * "false").
-   * @param {Context} params.context - Contextual information about the DR configuration including workspace details,
-   * orchestrator information, and infrastructure specifications.
-   * @param {string} params.planId - The identifier of the plan associated with the service instance.
-   * @param {string} params.serviceId - The identifier of the service being managed.
-   * @param {string} [params.action] - The action to be performed on the service instance.
-   * @param {ManageDrParameters} [params.parameters] - Additional service-specific parameters required for DR
-   * configuration. These may vary depending on the service being managed.
+   * @param {string} [params.action] - to proceed with async operation if all the config details are updated to DB.
+   * @param {string} [params.apiKey] - api Key of the service instance.
+   * @param {string} [params.guid] - Global unique identifier of the service instance.
+   * @param {string} [params.locationId] - Location or data center identifier where the service instance is deployed.
+   * @param {string} [params.machineType] - Machine type or flavor used for virtual machines in the service instance.
+   * @param {boolean} [params.orchestratorHa] - Flag to enable or disable High Availability (HA) for the service
+   * instance.
+   * @param {string} [params.orchestratorLocationType] - Type of orchestrator cluster used in the service instance.
+   * @param {string} [params.orchestratorName] - Username for the orchestrator management interface.
+   * @param {string} [params.orchestratorPassword] - Password for the orchestrator management interface.
+   * @param {string} [params.orchestratorWorkspaceId] - ID of the orchestrator workspace.
+   * @param {string} [params.orchestratorWorkspaceLocation] - Location of the orchestrator workspace.
+   * @param {string} [params.proxyIp] - Proxy IP address used by the service instance for communication.
+   * @param {string} [params.regionId] - Cloud region where the service instance is deployed.
+   * @param {string} [params.resourceInstance] - ID of the associated IBM Cloud resource instance.
+   * @param {string} [params.schematicWorkspaceId] - ID of the IBM Cloud Schematics workspace linked to the service
+   * instance.
+   * @param {string} [params.secondaryWorkspaceId] - ID of the secondary workspace used for redundancy or disaster
+   * recovery.
+   * @param {string} [params.secret] - Secret name or identifier used for retrieving credentials from Secrets Manager.
+   * @param {string} [params.secretGroup] - Secret group name in IBM Cloud Secrets Manager containing sensitive data for
+   * the service instance.
+   * @param {string} [params.sshKeyName] - Name of the SSH key stored in the cloud provider.
+   * @param {string} [params.sshPublicKey] - SSH public key for accessing virtual machines in the service instance.
+   * @param {string} [params.standbyMachineType] - Machine type or flavor used for standby virtual machines.
+   * @param {string} [params.standbyOrchestratorName] - Username for the standby orchestrator management interface.
+   * @param {string} [params.standbyOrchestratorWorkspaceId] - ID of the standby orchestrator workspace.
+   * @param {string} [params.standbyOrchestratorWorkspaceLocation] - Location of the standby orchestrator workspace.
+   * @param {string} [params.standbySchematicWorkspaceId] - ID of the standby IBM Cloud Schematics workspace.
+   * @param {string} [params.standbyTier] - Tier of the standby service instance.
+   * @param {string} [params.tier] - Tier of the service instance (e.g., Standard, Premium).
+   * @param {string} [params.transitGatewayId] - ID of the transit gateway used for interconnecting networks.
+   * @param {string} [params.vpcId] - ID of the Virtual Private Cloud (VPC) associated with the service instance.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {boolean} [params.acceptsIncomplete] - A value of true indicates that both the IBM Cloud platform and the
@@ -1149,15 +816,39 @@ class DrAutomationServiceV1 extends BaseService {
     params: DrAutomationServiceV1.CreateManageDrParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceManageDR>> {
     const _params = { ...params };
-    const _requiredParams = ['instanceId', 'standByRedeploy', 'context', 'planId', 'serviceId'];
+    const _requiredParams = ['instanceId', 'standByRedeploy'];
     const _validParams = [
       'instanceId',
       'standByRedeploy',
-      'context',
-      'planId',
-      'serviceId',
       'action',
-      'parameters',
+      'apiKey',
+      'guid',
+      'locationId',
+      'machineType',
+      'orchestratorHa',
+      'orchestratorLocationType',
+      'orchestratorName',
+      'orchestratorPassword',
+      'orchestratorWorkspaceId',
+      'orchestratorWorkspaceLocation',
+      'proxyIp',
+      'regionId',
+      'resourceInstance',
+      'schematicWorkspaceId',
+      'secondaryWorkspaceId',
+      'secret',
+      'secretGroup',
+      'sshKeyName',
+      'sshPublicKey',
+      'standbyMachineType',
+      'standbyOrchestratorName',
+      'standbyOrchestratorWorkspaceId',
+      'standbyOrchestratorWorkspaceLocation',
+      'standbySchematicWorkspaceId',
+      'standbyTier',
+      'tier',
+      'transitGatewayId',
+      'vpcId',
       'acceptLanguage',
       'ifNoneMatch',
       'acceptsIncomplete',
@@ -1170,11 +861,35 @@ class DrAutomationServiceV1 extends BaseService {
     }
 
     const body = {
-      'context': _params.context,
-      'plan_id': _params.planId,
-      'service_id': _params.serviceId,
       'action': _params.action,
-      'parameters': _params.parameters,
+      'api_key': _params.apiKey,
+      'guid': _params.guid,
+      'location_id': _params.locationId,
+      'machine_type': _params.machineType,
+      'orchestrator_ha': _params.orchestratorHa,
+      'orchestrator_location_type': _params.orchestratorLocationType,
+      'orchestrator_name': _params.orchestratorName,
+      'orchestrator_password': _params.orchestratorPassword,
+      'orchestrator_workspace_id': _params.orchestratorWorkspaceId,
+      'orchestrator_workspace_location': _params.orchestratorWorkspaceLocation,
+      'proxy_ip': _params.proxyIp,
+      'region_id': _params.regionId,
+      'resource_instance': _params.resourceInstance,
+      'schematic_workspace_id': _params.schematicWorkspaceId,
+      'secondary_workspace_id': _params.secondaryWorkspaceId,
+      'secret': _params.secret,
+      'secret_group': _params.secretGroup,
+      'ssh_key_name': _params.sshKeyName,
+      'ssh_public_key': _params.sshPublicKey,
+      'standby_machine_type': _params.standbyMachineType,
+      'standby_orchestrator_name': _params.standbyOrchestratorName,
+      'standby_orchestrator_workspace_id': _params.standbyOrchestratorWorkspaceId,
+      'standby_orchestrator_workspace_location': _params.standbyOrchestratorWorkspaceLocation,
+      'standby_schematic_workspace_id': _params.standbySchematicWorkspaceId,
+      'standby_tier': _params.standbyTier,
+      'tier': _params.tier,
+      'transit_gateway_id': _params.transitGatewayId,
+      'vpc_id': _params.vpcId,
     };
 
     const query = {
@@ -1226,66 +941,7 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * dr deployment api.
-   *
-   * Retrieves disaster recovery (DR) deployment details for the specified service instance using the provided instance
-   * ID.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DeploymentStatus>>}
-   */
-  public getServiceInstanceDrDeployment(
-    params: DrAutomationServiceV1.GetServiceInstanceDrDeploymentParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DeploymentStatus>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'ifNoneMatch', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getServiceInstanceDrDeployment'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/dr_deployment/{instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * last operation api.
+   * View details of Last operation performed on the instance id.
    *
    * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
    * updating, or deprovisioning.
@@ -1526,30 +1182,8 @@ namespace DrAutomationServiceV1 {
     signal?: AbortSignal;
   }
 
-  /** Parameters for the `getServiceInstanceKeyV1` operation. */
-  export interface GetServiceInstanceKeyV1Params extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `createServiceInstanceKeyValidation` operation. */
-  export interface CreateServiceInstanceKeyValidationParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** The API key to validate. */
-    apiKey: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `replaceServiceInstanceApiKey` operation. */
-  export interface ReplaceServiceInstanceApiKeyParams extends DefaultParams {
+  /** Parameters for the `updateApikey` operation. */
+  export interface UpdateApikeyParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
     /** The new API key value that will replace the existing one. */
@@ -1570,8 +1204,8 @@ namespace DrAutomationServiceV1 {
     ifNoneMatch?: string;
   }
 
-  /** Parameters for the `getDrLocation` operation. */
-  export interface GetDrLocationParams extends DefaultParams {
+  /** Parameters for the `getDrLocations` operation. */
+  export interface GetDrLocationsParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
     /** The language requested for the return document. */
@@ -1600,18 +1234,6 @@ namespace DrAutomationServiceV1 {
     ifNoneMatch?: string;
   }
 
-  /** Parameters for the `getValidateClusterType` operation. */
-  export interface GetValidateClusterTypeParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** orchestrator cluster type value. */
-    orchestratorClusterType: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
   /** Parameters for the `getMachineType` operation. */
   export interface GetMachineTypeParams extends DefaultParams {
     /** instance id of instance to provision. */
@@ -1634,36 +1256,8 @@ namespace DrAutomationServiceV1 {
     ifNoneMatch?: string;
   }
 
-  /** Parameters for the `getValidatePowerVsWorkspace` operation. */
-  export interface GetValidatePowerVsWorkspaceParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** standBy workspaceID value. */
-    workspaceId: string;
-    /** crn value. */
-    crn: string;
-    /** schematic_workspace_id value. */
-    locationUrl: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `getValidateProxyip` operation. */
-  export interface GetValidateProxyipParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** proxyip value. */
-    proxyip: string;
-    /** vpc location value. */
-    vpcLocation: string;
-    /** vpc id value. */
-    vpcId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `getPvsworkspacesCustomVpc` operation. */
-  export interface GetPvsworkspacesCustomVpcParams extends DefaultParams {
+  /** Parameters for the `getPowervsWorkspacesForCustomVpc` operation. */
+  export interface GetPowervsWorkspacesForCustomVpcParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
     /** Location ID value. */
@@ -1704,20 +1298,64 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** Flag to indicate if standby should be redeployed (must be "true" or "false"). */
     standByRedeploy: CreateManageDrConstants.StandByRedeploy | string;
-    /** Contextual information about the DR configuration including workspace details, orchestrator information, and
-     *  infrastructure specifications.
-     */
-    context: Context;
-    /** The identifier of the plan associated with the service instance. */
-    planId: string;
-    /** The identifier of the service being managed. */
-    serviceId: string;
-    /** The action to be performed on the service instance. */
+    /** to proceed with async operation if all the config details are updated to DB. */
     action?: string;
-    /** Additional service-specific parameters required for DR configuration. These may vary depending on the
-     *  service being managed.
-     */
-    parameters?: ManageDrParameters;
+    /** api Key of the service instance. */
+    apiKey?: string;
+    /** Global unique identifier of the service instance. */
+    guid?: string;
+    /** Location or data center identifier where the service instance is deployed. */
+    locationId?: string;
+    /** Machine type or flavor used for virtual machines in the service instance. */
+    machineType?: string;
+    /** Flag to enable or disable High Availability (HA) for the service instance. */
+    orchestratorHa?: boolean;
+    /** Type of orchestrator cluster used in the service instance. */
+    orchestratorLocationType?: string;
+    /** Username for the orchestrator management interface. */
+    orchestratorName?: string;
+    /** Password for the orchestrator management interface. */
+    orchestratorPassword?: string;
+    /** ID of the orchestrator workspace. */
+    orchestratorWorkspaceId?: string;
+    /** Location of the orchestrator workspace. */
+    orchestratorWorkspaceLocation?: string;
+    /** Proxy IP address used by the service instance for communication. */
+    proxyIp?: string;
+    /** Cloud region where the service instance is deployed. */
+    regionId?: string;
+    /** ID of the associated IBM Cloud resource instance. */
+    resourceInstance?: string;
+    /** ID of the IBM Cloud Schematics workspace linked to the service instance. */
+    schematicWorkspaceId?: string;
+    /** ID of the secondary workspace used for redundancy or disaster recovery. */
+    secondaryWorkspaceId?: string;
+    /** Secret name or identifier used for retrieving credentials from Secrets Manager. */
+    secret?: string;
+    /** Secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
+    secretGroup?: string;
+    /** Name of the SSH key stored in the cloud provider. */
+    sshKeyName?: string;
+    /** SSH public key for accessing virtual machines in the service instance. */
+    sshPublicKey?: string;
+    /** Machine type or flavor used for standby virtual machines. */
+    standbyMachineType?: string;
+    /** Username for the standby orchestrator management interface. */
+    standbyOrchestratorName?: string;
+    /** ID of the standby orchestrator workspace. */
+    standbyOrchestratorWorkspaceId?: string;
+    /** Location of the standby orchestrator workspace. */
+    standbyOrchestratorWorkspaceLocation?: string;
+    /** ID of the standby IBM Cloud Schematics workspace. */
+    standbySchematicWorkspaceId?: string;
+    /** Tier of the standby service instance. */
+    standbyTier?: string;
+    /** Tier of the service instance (e.g., Standard, Premium). */
+    tier?: string;
+    /** ID of the transit gateway used for interconnecting networks. */
+    transitGatewayId?: string;
+    /** ID of the Virtual Private Cloud (VPC) associated with the service instance. */
+    vpcId?: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
     /** ETag for conditional requests (optional). */
@@ -1735,14 +1373,6 @@ namespace DrAutomationServiceV1 {
       TRUE = 'true',
       FALSE = 'false',
     }
-  }
-
-  /** Parameters for the `getServiceInstanceDrDeployment` operation. */
-  export interface GetServiceInstanceDrDeploymentParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getLastOperation` operation. */
@@ -1788,28 +1418,6 @@ namespace DrAutomationServiceV1 {
    ************************/
 
   /**
-   * Context.
-   *
-   * This type supports additional properties of type any.
-   */
-  export interface Context {
-    /**
-     * Context accepts additional properties of type any.
-     */
-    [propName: string]: any;
-  }
-
-  /**
-   * Contains the list of primary and standby DR workspaces.
-   */
-  export interface DRData {
-    /** List of standby disaster recovery workspaces. */
-    dr_standby_workspaces: DRStandbyWorkspace[];
-    /** List of primary disaster recovery workspaces. */
-    dr_workspaces: DRWorkspace[];
-  }
-
-  /**
    * Represents the standby DR workspace details.
    */
   export interface DRStandbyWorkspace {
@@ -1841,38 +1449,6 @@ namespace DrAutomationServiceV1 {
     name?: string;
     /** Current status of the DR workspace. */
     status?: string;
-  }
-
-  /**
-   * Represents the detailed deployment status of orchestrators and related resources.
-   */
-  export interface DeploymentStatus {
-    /** External connectivity status of the orchestrator cluster. */
-    orch_ext_connectivity_status?: string;
-    /** Status of the standby node addition process. */
-    orch_standby_node_addition_status: string;
-    /** Cluster status message. */
-    orchestrator_cluster_message: string;
-    /** Type of orchestrator cluster. */
-    orchestrator_cluster_type: string;
-    /** Configuration status of the orchestrator. */
-    orchestrator_config_status: string;
-    /** Name of the orchestrator acting as the cluster leader. */
-    orchestrator_group_leader: string;
-    /** Name of the primary orchestrator. */
-    orchestrator_name: string;
-    /** Status of the primary orchestrator. */
-    orchestrator_status: string;
-    /** Name of the schematic workspace. */
-    schematic_workspace_name: string;
-    /** Status of the schematic workspace. */
-    schematic_workspace_status: string;
-    /** Name of the SSH key associated with the orchestrator. */
-    ssh_key_name: string;
-    /** Name of the standby orchestrator. */
-    standby_orchestrator_name: string;
-    /** Status of the standby orchestrator. */
-    standby_orchestrator_status: string;
   }
 
   /**
@@ -1925,6 +1501,26 @@ namespace DrAutomationServiceV1 {
     name?: string;
     /** Current lifecycle status of the Schematics workspace. */
     status?: string;
+  }
+
+  /**
+   * Contains the list of primary and standby DR workspaces.
+   */
+  export interface DrData {
+    /** List of standby disaster recovery workspaces. */
+    dr_standby_workspaces: DRStandbyWorkspace[];
+    /** List of primary disaster recovery workspaces. */
+    dr_workspaces: DRWorkspace[];
+  }
+
+  /**
+   * Contains the list of primary and standby DR workspaces.
+   */
+  export interface DrDataCustomVPC {
+    /** List of standby disaster recovery workspaces. */
+    dr_standby_workspaces: DRStandbyWorkspace[];
+    /** List of primary disaster recovery workspaces. */
+    dr_workspaces: DRWorkspace[];
   }
 
   /**
@@ -2033,31 +1629,24 @@ namespace DrAutomationServiceV1 {
   }
 
   /**
-   * Parameters required to manage DR service.
+   * Detailed information of a managed virtual machine.
    */
-  export interface ManageDrParameters {
-    /** The location of the workspace. */
-    location?: string;
-    /** Parameter required by your service. */
-    optional_param?: string;
-  }
-
-  /**
-   * Contains information about a managed VM.
-   */
-  export interface ManagedVmList {
-    /** Unique identifier of the VM. */
-    vm_id?: string;
-    /** Name of the VM. */
+  export interface ManagedVmDetails {
+    core?: string;
+    dr_average_time?: string;
+    dr_region?: string;
+    memory?: string;
+    region?: string;
     vm_name?: string;
+    workgroup_name?: string;
+    workspace_name?: string;
   }
 
   /**
-   * Response object containing the list of managed virtual machines.
+   * Map of VM IDs to managed VM details.
    */
-  export interface ManagedVmListResponse {
-    /** List of managed VMs associated with the service instance. */
-    managed_vms: ManagedVmList[];
+  export interface ManagedVmMapResponse {
+    managed_vms?: JsonObject;
   }
 
   /**
@@ -2191,38 +1780,6 @@ namespace DrAutomationServiceV1 {
     standby_status: string;
     /** Overall status of the service instance. */
     status: string;
-  }
-
-  /**
-   * Response object returned after validating the cluster type.
-   */
-  export interface ValidateClusterTypeResponse {
-    /** Human-readable message explaining the cluster type validation result. */
-    description?: string;
-    /** Status of the cluster type validation (for example, valid, invalid, or error). */
-    status?: string;
-  }
-
-  /**
-   * Response object returned after validating a proxy IP against VPC reserved IPs and subnets.
-   */
-  export interface ValidateProxyipResponse {
-    /** Human-readable message explaining the proxy IP validation result. */
-    description?: string;
-    /** Status of the proxy IP validation (for example, valid, invalid, or error). */
-    status?: string;
-    /** Indicates whether the proxy IP is valid but has an advisory (e.g., not in reserved IPs). */
-    warning?: boolean;
-  }
-
-  /**
-   * Response object returned after validating a workspace.
-   */
-  export interface ValidateWorkspaceResponse {
-    /** Human-readable message describing the validation result. */
-    description?: string;
-    /** Status of the workspace validation (for example, Valid, Invalid, or Pending). */
-    status?: string;
   }
 
   /**
