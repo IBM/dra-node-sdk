@@ -49,7 +49,7 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'adfadfdsafsdfdsf',
+      apiKey: 'api-key-here',
       acceptLanguage: 'testString',
       ifNoneMatch: 'testString',
     };
@@ -196,7 +196,7 @@ describe('DrAutomationServiceV1_integration', () => {
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       standByRedeploy: 'true',
       action: 'done',
-      apiKey: 'testString',
+      apiKey: 'api-key-here',
       guid: '123e4567-e89b-12d3-a456-426614174000',
       locationId: 'dal10',
       machineType: 'bx2-4x16',

@@ -209,7 +209,7 @@ describe('ServicebrokerV1', () => {
         // Construct the params object for operation serviceInstanceValidateKey
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const apiKey = 'abcdefrg_izklmnop_fxbEED';
+        const apiKey = 'api-key-here';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
         const serviceInstanceValidateKeyParams = {
@@ -260,7 +260,7 @@ describe('ServicebrokerV1', () => {
         // parameters
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const apiKey = 'abcdefrg_izklmnop_fxbEED';
+        const apiKey = 'api-key-here';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const serviceInstanceValidateKeyParams = {
@@ -1615,12 +1615,12 @@ describe('ServicebrokerV1', () => {
       const contextModel = {
         dr_location_id: 'dal10',
         dr_orchestrator_name: 'drautomationprimary',
-        dr_orchestrator_password: 'Password1234567',
+        dr_orchestrator_password: 'teststring',
         dr_orchestrator_workspace_id: '75cbf05b-78f6-406e-afe7-a904f646d798',
         machine_type: 's922',
         orchestrator_cluster_type: 'off-premises',
         schematic_workspace_id: 'us-south.workspace.projects-service.3ae96a02',
-        ssh_key_name: 'vijaykey',
+        ssh_key_name: 'testStringy',
         standby_machine_type: 's922',
         standby_orchestrator_name: 'drautomationstandby',
         standby_orchestrator_workspace_id: '71027b79-0e31-44f6-a499-63eca1a66feb',

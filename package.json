@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "dra-node-sdk-1",
   "version": "0.0.1",
   "description": "IBM Cloud DrAutomation Node SDK",
   "repository": {
@@ -78,5 +78,11 @@
       "<rootDir>/examples/"
     ],
     "testEnvironment": "node"
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
   }
 }
