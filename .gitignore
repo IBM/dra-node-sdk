@@ -13,7 +13,7 @@ auth/*.js
 test/resources/auth.js
 
 # release folder for typescript-generated source files
-dist/
+#dist/
 
 ### GitHub recommended ###
 # Logs
