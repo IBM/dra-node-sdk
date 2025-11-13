@@ -37,7 +37,7 @@ import { getSdkHeaders } from '../lib/common';
  */
 
 class DrAutomationServiceV1 extends BaseService {
-  static DEFAULT_SERVICE_URL: string = 'https://power-dra.test.cloud.ibm.com/drautomation/v1';
+  static DEFAULT_SERVICE_URL: string = 'https://power-dra.test.cloud.ibm.com';
 
   static DEFAULT_SERVICE_NAME: string = 'dr_automation_service';
 
@@ -172,9 +172,9 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Get GRS location pairs by instance ID.
+   * Get GRS location pairs based on managed vms.
    *
-   * Retrieves the (GRS) location pairs associated with the specified service instance.
+   * Retrieves the (GRS) location pairs associated with the specified service instance based on managed VMs.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
@@ -292,7 +292,7 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Get managed VMs by instance ID.
+   * Get managed vms for the instance.
    *
    * Retrieves the list of disaster recovery (DR) managed virtual machines for the specified service instance.
    *
@@ -352,10 +352,10 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Disaster Recovery deployment details.
+   * Disaster recovery deployment details.
    *
    * Retrieves the disaster recovery (DR) summary details for the specified service instance, including key
-   * configuration and status information.
+   * configuration, status information and managed vm details.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
@@ -416,17 +416,17 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Get MachineTypes by Instance Id.
+   * Get MachineTypes based on selected workspaces.
    *
-   * Retrieves the list of supported machine types for the given service instance ID. This endpoint is used to identify
-   * machine types available for disaster recovery automation.
+   * Retrieves the list of supported machine types for the given workspace. This endpoint is used to identify machine
+   * types available for disaster recovery automation.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.primaryWorkspaceName - Primary Workspace Name.
+   * @param {string} params.primaryWorkspaceName - The primary Power virtual server workspace name.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {string} [params.standbyWorkspaceName] - Standby Workspace Name.
+   * @param {string} [params.standbyWorkspaceName] - The standby Power virtual server workspace name.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.MachineTypesByWorkspace>>}
    */
@@ -493,172 +493,29 @@ class DrAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * List of schematic workspaces.
+   * List of primary and standby powervs workspaces.
    *
-   * Retrieves the list of schematics workspaces associated with the specified disaster recovery service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.SchematicWorkspacesResponse>>}
-   */
-  public getSchematicWorkspace(
-    params: DrAutomationServiceV1.GetSchematicWorkspaceParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.SchematicWorkspacesResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'ifNoneMatch', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getSchematicWorkspace'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/schematics_workspaces/{instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * List of primary and standby powervs workspaces for custom vpc.
-   *
-   * Retrieves the details of the specified custom VPC workspace for a disaster recovery service instance.
+   * Retrieves the power virtual server workspaces for primary and standby orchestrator based on location id.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.locationId - Location ID value.
-   * @param {string} params.vpcId - vpc id value.
-   * @param {string} params.tgId - transit gateway id value.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrDataCustomVPC>>}
-   */
-  public getPowervsWorkspacesForCustomVpc(
-    params: DrAutomationServiceV1.GetPowervsWorkspacesForCustomVpcParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrDataCustomVPC>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId', 'locationId', 'vpcId', 'tgId'];
-    const _validParams = [
-      'instanceId',
-      'locationId',
-      'vpcId',
-      'tgId',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const query = {
-      'location_id': _params.locationId,
-      'vpc_id': _params.vpcId,
-      'tg_id': _params.tgId,
-    };
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getPowervsWorkspacesForCustomVpc'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/workspaces_custom_vpc/{instance_id}',
-        method: 'GET',
-        qs: query,
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * List of primary and standby powervs workspaces for schematic workspace.
-   *
-   * Retrieves the details of the specified workspace schematic for a disaster recovery service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.schematicId - Schematic ID value.
    * @param {string} params.locationId - Location ID value.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>>}
    */
-  public getPvsworkspaceSchematic(
-    params: DrAutomationServiceV1.GetPvsworkspaceSchematicParams
+  public getPowervsWorkspaces(
+    params: DrAutomationServiceV1.GetPowervsWorkspacesParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>> {
     const _params = { ...params };
-    const _requiredParams = ['instanceId', 'schematicId', 'locationId'];
-    const _validParams = [
-      'instanceId',
-      'schematicId',
-      'locationId',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
+    const _requiredParams = ['instanceId', 'locationId'];
+    const _validParams = ['instanceId', 'locationId', 'ifNoneMatch', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
     }
 
     const query = {
-      'schematic_id': _params.schematicId,
       'location_id': _params.locationId,
     };
 
@@ -669,12 +526,12 @@ class DrAutomationServiceV1 extends BaseService {
     const sdkHeaders = getSdkHeaders(
       DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
       'v1',
-      'getPvsworkspaceSchematic'
+      'getPowervsWorkspaces'
     );
 
     const parameters = {
       options: {
-        url: '/drautomation/v1/workspaces_schematic/{instance_id}',
+        url: '/drautomation/v1/powervs_workspaces/{instance_id}',
         method: 'GET',
         qs: query,
         path,
@@ -703,106 +560,47 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * View configured DR automation details.
+   * Create DR Deployment.
    *
-   * Retrieves the (DR) management configuration and status for the specified service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceManageDR>>}
-   */
-  public getManageDr(
-    params: DrAutomationServiceV1.GetManageDrParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceManageDR>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getManageDr'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/manage_dr/{instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
-   * Configure DR automation.
-   *
-   * Initiates or updates the disaster recovery (DR) management workflow for the specified service instance. Use this
-   * API to configure DR automation.
+   * Creates Orchestrator VM in the given workspace and configuration. Orchestrator VM can be used to manage multiple
+   * virtual servers and help ensure continuous availability. For more details, refer Deploying the Orchestrator -
+   * https://test.cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-idep-the-orch.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.action] - to proceed with async operation if all the config details are updated to DB.
-   * @param {string} [params.apiKey] - api Key of the service instance.
-   * @param {string} [params.guid] - Global unique identifier of the service instance.
-   * @param {string} [params.locationId] - Location or data center identifier where the service instance is deployed.
-   * @param {string} [params.machineType] - Machine type or flavor used for virtual machines in the service instance.
-   * @param {boolean} [params.orchestratorHa] - Flag to enable or disable High Availability (HA) for the service
-   * instance.
-   * @param {string} [params.orchestratorLocationType] - Type of orchestrator cluster used in the service instance.
-   * @param {string} [params.orchestratorName] - Username for the orchestrator management interface.
-   * @param {string} [params.orchestratorPassword] - Password for the orchestrator management interface.
-   * @param {string} [params.orchestratorWorkspaceId] - ID of the orchestrator workspace.
-   * @param {string} [params.orchestratorWorkspaceLocation] - Location of the orchestrator workspace.
-   * @param {string} [params.proxyIp] - Proxy IP address used by the service instance for communication.
-   * @param {string} [params.regionId] - Cloud region where the service instance is deployed.
-   * @param {string} [params.resourceInstance] - ID of the associated IBM Cloud resource instance.
-   * @param {string} [params.schematicWorkspaceId] - ID of the IBM Cloud Schematics workspace linked to the service
-   * instance.
-   * @param {string} [params.secondaryWorkspaceId] - ID of the secondary workspace used for redundancy or disaster
-   * recovery.
-   * @param {string} [params.secret] - Secret name or identifier used for retrieving credentials from Secrets Manager.
-   * @param {string} [params.secretGroup] - Secret group name in IBM Cloud Secrets Manager containing sensitive data for
+   * @param {string} [params.apiKey] - The api Key of the service instance for deploying the disaster recovery service.
+   * @param {string} [params.clientId] - The Client Id created for MFA authentication API.
+   * @param {string} [params.clientSecret] - The client secret created for MFA authentication API.
+   * @param {string} [params.guid] - The global unique identifier of the service instance.
+   * @param {string} [params.locationId] - The location or data center identifier where the service instance is
+   * deployed.
+   * @param {string} [params.machineType] - The machine type used for deploying orchestrator.
+   * @param {boolean} [params.orchestratorHa] - Indicates whether the orchestrator High Availability (HA) is enabled for
    * the service instance.
-   * @param {string} [params.sshKeyName] - Name of the SSH key stored in the cloud provider.
-   * @param {string} [params.sshPublicKey] - SSH public key for accessing virtual machines in the service instance.
-   * @param {string} [params.standbyMachineType] - Machine type or flavor used for standby virtual machines.
-   * @param {string} [params.standbyOrchestratorName] - Username for the standby orchestrator management interface.
-   * @param {string} [params.standbyOrchestratorWorkspaceId] - ID of the standby orchestrator workspace.
-   * @param {string} [params.standbyOrchestratorWorkspaceLocation] - Location of the standby orchestrator workspace.
-   * @param {string} [params.standbySchematicWorkspaceId] - ID of the standby IBM Cloud Schematics workspace.
-   * @param {string} [params.standbyTier] - Tier of the standby service instance.
-   * @param {string} [params.tier] - Tier of the service instance (e.g., Standard, Premium).
-   * @param {string} [params.transitGatewayId] - ID of the transit gateway used for interconnecting networks.
-   * @param {string} [params.vpcId] - ID of the Virtual Private Cloud (VPC) associated with the service instance.
+   * @param {string} [params.orchestratorLocationType] - The cloud location where your orchestator need to be created.
+   * @param {string} [params.orchestratorName] - The username used for the orchestrator.
+   * @param {string} [params.orchestratorPassword] - The password that you can use to access your orchestrator.
+   * @param {string} [params.orchestratorWorkspaceId] - The unique identifier orchestrator workspace.
+   * @param {string} [params.orchestratorWorkspaceLocation] - The location of the orchestrator workspace.
+   * @param {string} [params.proxyIp] - Proxy IP for the Communication between Orchestrator and Service broker.
+   * @param {string} [params.regionId] - The power virtual server region where the service instance is deployed.
+   * @param {string} [params.resourceInstance] - The uniquie identifier of the associated IBM Cloud resource instance.
+   * @param {string} [params.secondaryWorkspaceId] - The unique identifier of the secondary workspace used for the
+   * disaster recovery.
+   * @param {string} [params.secret] - The secret name or identifier used for retrieving credentials from secrets
+   * manager.
+   * @param {string} [params.secretGroup] - The secret group name in IBM Cloud Secrets Manager containing sensitive data
+   * for the service instance.
+   * @param {string} [params.sshKeyName] - The name of the SSH key used for deploying the orchestator.
+   * @param {string} [params.standbyMachineType] - The machine type used for deploying standby virtual machines.
+   * @param {string} [params.standbyOrchestratorName] - The username for the standby orchestrator management interface.
+   * @param {string} [params.standbyOrchestratorWorkspaceId] - The unique identifier of the standby orchestrator
+   * workspace.
+   * @param {string} [params.standbyOrchestratorWorkspaceLocation] - The location of the standby orchestrator workspace.
+   * @param {string} [params.standbyTier] - The storage tier used for deploying standby orchestrator.
+   * @param {string} [params.tenantName] - The tenant name for MFA authentication API.
+   * @param {string} [params.tier] - The storage tier used for deploying primary orchestrator.
    * @param {string} [params.standByRedeploy] - Flag to indicate if standby should be redeployed (must be "true" or
    * "false").
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
@@ -821,6 +619,8 @@ class DrAutomationServiceV1 extends BaseService {
       'instanceId',
       'action',
       'apiKey',
+      'clientId',
+      'clientSecret',
       'guid',
       'locationId',
       'machineType',
@@ -833,21 +633,17 @@ class DrAutomationServiceV1 extends BaseService {
       'proxyIp',
       'regionId',
       'resourceInstance',
-      'schematicWorkspaceId',
       'secondaryWorkspaceId',
       'secret',
       'secretGroup',
       'sshKeyName',
-      'sshPublicKey',
       'standbyMachineType',
       'standbyOrchestratorName',
       'standbyOrchestratorWorkspaceId',
       'standbyOrchestratorWorkspaceLocation',
-      'standbySchematicWorkspaceId',
       'standbyTier',
+      'tenantName',
       'tier',
-      'transitGatewayId',
-      'vpcId',
       'standByRedeploy',
       'acceptLanguage',
       'ifNoneMatch',
@@ -863,6 +659,8 @@ class DrAutomationServiceV1 extends BaseService {
     const body = {
       'action': _params.action,
       'api_key': _params.apiKey,
+      'client_id': _params.clientId,
+      'client_secret': _params.clientSecret,
       'guid': _params.guid,
       'location_id': _params.locationId,
       'machine_type': _params.machineType,
@@ -875,21 +673,17 @@ class DrAutomationServiceV1 extends BaseService {
       'proxy_ip': _params.proxyIp,
       'region_id': _params.regionId,
       'resource_instance': _params.resourceInstance,
-      'schematic_workspace_id': _params.schematicWorkspaceId,
       'secondary_workspace_id': _params.secondaryWorkspaceId,
       'secret': _params.secret,
       'secret_group': _params.secretGroup,
       'ssh_key_name': _params.sshKeyName,
-      'ssh_public_key': _params.sshPublicKey,
       'standby_machine_type': _params.standbyMachineType,
       'standby_orchestrator_name': _params.standbyOrchestratorName,
       'standby_orchestrator_workspace_id': _params.standbyOrchestratorWorkspaceId,
       'standby_orchestrator_workspace_location': _params.standbyOrchestratorWorkspaceLocation,
-      'standby_schematic_workspace_id': _params.standbySchematicWorkspaceId,
       'standby_tier': _params.standbyTier,
+      'tenant_name': _params.tenantName,
       'tier': _params.tier,
-      'transit_gateway_id': _params.transitGatewayId,
-      'vpc_id': _params.vpcId,
     };
 
     const query = {
@@ -941,7 +735,7 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * View details of Last operation performed on the instance id.
+   * View details of Last operation performed on the instance.
    *
    * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
    * updating, or deprovisioning.
@@ -1005,9 +799,9 @@ class DrAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Get events from this cloud instance since a specific timestamp.
+   * Get events from the cloud instance since a specific timestamp.
    *
-   * Retrieves the list of events for the specified service instance provision ID.
+   * Retrieves the list of events from the specified service instance provision ID.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.provisionId - provision id.
@@ -1238,56 +1032,22 @@ namespace DrAutomationServiceV1 {
   export interface GetMachineTypeParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
-    /** Primary Workspace Name. */
+    /** The primary Power virtual server workspace name. */
     primaryWorkspaceName: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
     /** ETag for conditional requests (optional). */
     ifNoneMatch?: string;
-    /** Standby Workspace Name. */
+    /** The standby Power virtual server workspace name. */
     standbyWorkspaceName?: string;
   }
 
-  /** Parameters for the `getSchematicWorkspace` operation. */
-  export interface GetSchematicWorkspaceParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `getPowervsWorkspacesForCustomVpc` operation. */
-  export interface GetPowervsWorkspacesForCustomVpcParams extends DefaultParams {
+  /** Parameters for the `getPowervsWorkspaces` operation. */
+  export interface GetPowervsWorkspacesParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
     /** Location ID value. */
     locationId: string;
-    /** vpc id value. */
-    vpcId: string;
-    /** transit gateway id value. */
-    tgId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `getPvsworkspaceSchematic` operation. */
-  export interface GetPvsworkspaceSchematicParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** Schematic ID value. */
-    schematicId: string;
-    /** Location ID value. */
-    locationId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
-  /** Parameters for the `getManageDr` operation. */
-  export interface GetManageDrParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
     /** ETag for conditional requests (optional). */
     ifNoneMatch?: string;
   }
@@ -1298,62 +1058,58 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** to proceed with async operation if all the config details are updated to DB. */
     action?: string;
-    /** api Key of the service instance. */
+    /** The api Key of the service instance for deploying the disaster recovery service. */
     apiKey?: string;
-    /** Global unique identifier of the service instance. */
+    /** The Client Id created for MFA authentication API. */
+    clientId?: string;
+    /** The client secret created for MFA authentication API. */
+    clientSecret?: string;
+    /** The global unique identifier of the service instance. */
     guid?: string;
-    /** Location or data center identifier where the service instance is deployed. */
+    /** The location or data center identifier where the service instance is deployed. */
     locationId?: string;
-    /** Machine type or flavor used for virtual machines in the service instance. */
+    /** The machine type used for deploying orchestrator. */
     machineType?: string;
-    /** Flag to enable or disable High Availability (HA) for the service instance. */
+    /** Indicates whether the orchestrator High Availability (HA) is enabled for the service instance. */
     orchestratorHa?: boolean;
-    /** Type of orchestrator cluster used in the service instance. */
+    /** The cloud location where your orchestator need to be created. */
     orchestratorLocationType?: string;
-    /** Username for the orchestrator management interface. */
+    /** The username used for the orchestrator. */
     orchestratorName?: string;
-    /** Password for the orchestrator management interface. */
+    /** The password that you can use to access your orchestrator. */
     orchestratorPassword?: string;
-    /** ID of the orchestrator workspace. */
+    /** The unique identifier orchestrator workspace. */
     orchestratorWorkspaceId?: string;
-    /** Location of the orchestrator workspace. */
+    /** The location of the orchestrator workspace. */
     orchestratorWorkspaceLocation?: string;
-    /** Proxy IP address used by the service instance for communication. */
+    /** Proxy IP for the Communication between Orchestrator and Service broker. */
     proxyIp?: string;
-    /** Cloud region where the service instance is deployed. */
+    /** The power virtual server region where the service instance is deployed. */
     regionId?: string;
-    /** ID of the associated IBM Cloud resource instance. */
+    /** The uniquie identifier of the associated IBM Cloud resource instance. */
     resourceInstance?: string;
-    /** ID of the IBM Cloud Schematics workspace linked to the service instance. */
-    schematicWorkspaceId?: string;
-    /** ID of the secondary workspace used for redundancy or disaster recovery. */
+    /** The unique identifier of the secondary workspace used for the disaster recovery. */
     secondaryWorkspaceId?: string;
-    /** Secret name or identifier used for retrieving credentials from Secrets Manager. */
+    /** The secret name or identifier used for retrieving credentials from secrets manager. */
     secret?: string;
-    /** Secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
+    /** The secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
     secretGroup?: string;
-    /** Name of the SSH key stored in the cloud provider. */
+    /** The name of the SSH key used for deploying the orchestator. */
     sshKeyName?: string;
-    /** SSH public key for accessing virtual machines in the service instance. */
-    sshPublicKey?: string;
-    /** Machine type or flavor used for standby virtual machines. */
+    /** The machine type used for deploying standby virtual machines. */
     standbyMachineType?: string;
-    /** Username for the standby orchestrator management interface. */
+    /** The username for the standby orchestrator management interface. */
     standbyOrchestratorName?: string;
-    /** ID of the standby orchestrator workspace. */
+    /** The unique identifier of the standby orchestrator workspace. */
     standbyOrchestratorWorkspaceId?: string;
-    /** Location of the standby orchestrator workspace. */
+    /** The location of the standby orchestrator workspace. */
     standbyOrchestratorWorkspaceLocation?: string;
-    /** ID of the standby IBM Cloud Schematics workspace. */
-    standbySchematicWorkspaceId?: string;
-    /** Tier of the standby service instance. */
+    /** The storage tier used for deploying standby orchestrator. */
     standbyTier?: string;
-    /** Tier of the service instance (e.g., Standard, Premium). */
+    /** The tenant name for MFA authentication API. */
+    tenantName?: string;
+    /** The storage tier used for deploying primary orchestrator. */
     tier?: string;
-    /** ID of the transit gateway used for interconnecting networks. */
-    transitGatewayId?: string;
-    /** ID of the Virtual Private Cloud (VPC) associated with the service instance. */
-    vpcId?: string;
     /** Flag to indicate if standby should be redeployed (must be "true" or "false"). */
     standByRedeploy?: string;
     /** The language requested for the return document. */
@@ -1412,33 +1168,33 @@ namespace DrAutomationServiceV1 {
    * Represents the standby DR workspace details.
    */
   export interface DRStandbyWorkspace {
-    /** Detailed information of the standby DR workspace. */
+    /** The detailed information of the standby DR workspace. */
     details?: DetailsDr;
-    /** Unique identifier of the standby workspace. */
+    /** The unique identifier of the standby workspace. */
     id?: string;
-    /** Location information of the standby workspace. */
+    /** The location information of the standby workspace. */
     location?: LocationDr;
-    /** Name of the standby workspace. */
+    /** The name of the standby workspace. */
     name?: string;
-    /** Current status of the standby workspace. */
+    /** The status of the standby workspace. */
     status?: string;
   }
 
   /**
-   * Represents a disaster recovery workspace, including its details, location, and status.
+   * Represents a disaster recovery workspace, including the details, location, and status.
    */
   export interface DRWorkspace {
     /** Indicates if this is the default DR workspace. */
     default?: boolean;
-    /** Detailed information about the DR workspace. */
+    /** The detailed information about the DR workspace. */
     details?: DetailsDr;
-    /** Unique identifier of the DR workspace. */
+    /** The unique identifier of the DR workspace. */
     id?: string;
-    /** Location information of the DR workspace. */
+    /** The location information of the DR workspace. */
     location?: LocationDr;
-    /** Name of the DR workspace. */
+    /** The name of the DR workspace. */
     name?: string;
-    /** Current status of the DR workspace. */
+    /** The status of the DR workspace. */
     status?: string;
   }
 
@@ -1448,14 +1204,6 @@ namespace DrAutomationServiceV1 {
   export interface DetailsDr {
     /** Cloud Resource Name (CRN) of the DR workspace. */
     crn?: string;
-  }
-
-  /**
-   * Reference to a catalog item associated with the DR automation workspace.
-   */
-  export interface DrAutomationCatalogRef {
-    /** Name of the catalog item that defines the resource or configuration. */
-    item_name?: string;
   }
 
   /**
@@ -1471,60 +1219,26 @@ namespace DrAutomationServiceV1 {
   }
 
   /**
-   * Represents a Schematics workspace configuration used for DR automation.
-   */
-  export interface DrAutomationSchematicsWorkspace {
-    /** Reference to a catalog item associated with the DR automation workspace. */
-    catalog_ref?: DrAutomationCatalogRef;
-    /** Timestamp when the Schematics workspace was created, in ISO 8601 format (UTC). */
-    created_at?: string;
-    /** CRN of the user or service that created the Schematics workspace. */
-    created_by?: string;
-    /** Cloud Resource Name (CRN) of the Schematics workspace. */
-    crn?: string;
-    /** Detailed description of the Schematics workspace. */
-    description?: string;
-    /** Unique identifier of the Schematics workspace. */
-    id?: string;
-    /** Region where the Schematics workspace is hosted. */
-    location?: string;
-    /** Human-readable name of the Schematics workspace. */
-    name?: string;
-    /** Current lifecycle status of the Schematics workspace. */
-    status?: string;
-  }
-
-  /**
-   * Contains the list of primary and standby DR workspaces.
+   * The list of primary and standby disaster recovery Power virtual server workspaces.
    */
   export interface DrData {
     /** Description of Standby Workspace. */
     dr_standby_workspace_description?: any;
-    /** List of standby disaster recovery workspaces. */
+    /** The list of standby disaster recovery workspaces. */
     dr_standby_workspaces: DRStandbyWorkspace[];
     /** Description of Workspace. */
     dr_workspace_description?: any;
-    /** List of primary disaster recovery workspaces. */
+    /** The list of primary disaster recovery workspaces. */
     dr_workspaces: DRWorkspace[];
   }
 
   /**
-   * Contains the list of primary and standby DR workspaces.
-   */
-  export interface DrDataCustomVPC {
-    /** List of standby disaster recovery workspaces. */
-    dr_standby_workspaces: DRStandbyWorkspace[];
-    /** List of primary disaster recovery workspaces. */
-    dr_workspaces: DRWorkspace[];
-  }
-
-  /**
-   * Represents a disaster recovery location with its ID and name.
+   * Represents a disaster recovery location with its ID and name. .
    */
   export interface DrLocation {
     /** Unique identifier of the DR location. */
     id?: string;
-    /** Name of the DR location. */
+    /** The name of the Power virtual server DR location . */
     name?: string;
   }
 
@@ -1616,32 +1330,32 @@ namespace DrAutomationServiceV1 {
   }
 
   /**
-   * Response body containing machine types grouped by workspace.
+   * The Response body containing machine types supported by power virtual server workspace.
    */
   export interface MachineTypesByWorkspace {
-    /** Map of workspace IDs to lists of machine types. */
+    /** The Map of workspace IDs to lists of machine types. */
     workspaces?: JsonObject;
   }
 
   /**
-   * Detailed information of a managed virtual machine.
+   * The detailed information of a disaster recovery enabled virtual machines for the service.
    */
   export interface ManagedVmDetails {
-    /** Number of CPU cores allocated to the managed VM. */
+    /** The Number of cores assigned to the managed vitual machine. */
     core?: string;
-    /** Average DR operation time in minutes for this VM. */
+    /** The DR operation average time(in minutes) for the managed virtual machine. */
     dr_average_time?: string;
-    /** Target region for disaster recovery. */
+    /** The name of the region where the virtual machine is recovered. */
     dr_region?: string;
-    /** Amount of memory (in GB) allocated to the VM. */
+    /** The amount of memory (in GB) assigned to the managed virtual machine. */
     memory?: string;
-    /** Primary region where the VM is deployed. */
+    /** The source region where the managed virtual machine is deployed. */
     region?: string;
-    /** Name of the managed virtual machine. */
+    /** The name of the managed virtual machine. */
     vm_name?: string;
-    /** Name of the workgroup to which this VM belongs. */
+    /** The name of the workgroup where the managed virtual machine is added for disaster recovery. */
     workgroup_name?: string;
-    /** Name of the workspace where the VM resides. */
+    /** The Name of the power virtual server workspace. */
     workspace_name?: string;
   }
 
@@ -1657,89 +1371,85 @@ namespace DrAutomationServiceV1 {
    * Contains details about the orchestrator configuration.
    */
   export interface OrchestratorDetails {
-    /** Deployment time of primary orchestrator VM. */
+    /** The deployment time of primary orchestrator VM. */
     last_updated_orchestrator_deployment_time: string;
-    /** Deployment time of StandBy orchestrator VM. */
+    /** The deployment time of StandBy orchestrator VM. */
     last_updated_standby_orchestrator_deployment_time: string;
-    /** Location identifier. */
+    /** Latest Orchestrator Time in COS. */
+    latest_orchestrator_time?: string;
+    /** The unique identifier of location. */
     location_id: string;
-    /** External connectivity status of the orchestrator. */
+    /** indicates if Multi Factor Authentication is enabled or not. */
+    mfa_enabled: string;
+    /** The external connectivity status of the orchestrator. */
     orch_ext_connectivity_status: string;
-    /** Status of standby node addition. */
+    /** The status of standby node addition. */
     orch_standby_node_addition_status: string;
-    /** Message regarding orchestrator cluster status. */
+    /** The message regarding orchestrator cluster status. */
     orchestrator_cluster_message: string;
-    /** Configuration status of the orchestrator. */
+    /** The configuration status of the orchestrator. */
     orchestrator_config_status: string;
-    /** Leader node of the orchestrator group. */
+    /** The leader node of the orchestrator group. */
     orchestrator_group_leader: string;
-    /** Type of orchestrator Location. */
+    /** The type of orchestrator Location. */
     orchestrator_location_type: string;
-    /** Name of the primary orchestrator. */
+    /** The name of the primary orchestrator. */
     orchestrator_name: string;
-    /** Status of the primary orchestrator. */
+    /** The status of the primary orchestrator. */
     orchestrator_status: string;
-    /** Name of the orchestrator workspace. */
+    /** The name of the orchestrator workspace. */
     orchestrator_workspace_name: string;
-    /** IP address of the proxy. */
+    /** The IP address of the proxy. */
     proxy_ip: string;
-    /** Name of the schematic workspace. */
+    /** The name of the schematic workspace. */
     schematic_workspace_name: string;
-    /** Status of the schematic workspace. */
+    /** The status of the schematic workspace. */
     schematic_workspace_status: string;
     /** SSH key name used for the orchestrator. */
     ssh_key_name: string;
-    /** Name of the standby orchestrator. */
+    /** The name of the standby orchestrator. */
     standby_orchestrator_name: string;
-    /** Status of the standby orchestrator. */
+    /** The status of the standby orchestrator. */
     standby_orchestrator_status: string;
-    /** Name of the standby orchestrator workspace. */
+    /** The name of the standby orchestrator workspace. */
     standby_orchestrator_workspace_name: string;
-    /** Name of the transit gateway. */
+    /** The name of the transit gateway. */
     transit_gateway_name: string;
-    /** Name of the VPC. */
+    /** The name of the VPC. */
     vpc_name: string;
-  }
-
-  /**
-   * Response object containing the list of Schematics workspaces.
-   */
-  export interface SchematicWorkspacesResponse {
-    /** List of Schematics workspaces associated with the DR automation service instance. */
-    workspaces: DrAutomationSchematicsWorkspace[];
   }
 
   /**
    * Contains details about the DR automation service.
    */
   export interface ServiceDetails {
-    /** Cloud Resource Name identifier. */
+    /** The deployment crn. */
     crn: string;
-    /** Name of the deployment. */
+    /** The name of the deployment. */
     deployment_name: string;
-    /** Description of the primary service. */
+    /** The Service description. */
     description: string;
-    /** Flag indicating if KSYS HA is enabled. */
-    is_ksys_ha: boolean;
-    /** plan name. */
+    /** The flag indicating whether orchestartor HA is enabled. */
+    orchestrator_ha: boolean;
+    /** The plan name. */
     plan_name: string;
-    /** IP address of the primary service. */
+    /** The service Orchestator primary IP address. */
     primary_ip_address: string;
-    /** Primary Orchestrator Dashboard URL. */
+    /** The Primary Orchestrator Dashboard URL. */
     primary_orchestrator_dashboard_url: string;
-    /** Location for disaster recovery. */
+    /** The disaster recovery location. */
     recovery_location: string;
-    /** Resource group name. */
+    /** The Resource group name. */
     resource_group: string;
-    /** Description of the standby service. */
+    /** The standby orchestrator current status details. */
     standby_description: string;
-    /** IP address of the standby service. */
+    /** The service Orchestator standby IP address. */
     standby_ip_address: string;
-    /** Standby Orchestrator Dashboard URL. */
+    /** The Standby Orchestrator Dashboard URL. */
     standby_orchestrator_dashboard_url: string;
-    /** Current status of the standby service. */
+    /** The standby orchestrator current status. */
     standby_status: string;
-    /** Current status of the primary service. */
+    /** The Status of the service. */
     status: string;
   }
 
@@ -1758,43 +1468,45 @@ namespace DrAutomationServiceV1 {
    * recovery information.
    */
   export interface ServiceInstanceStatus {
-    /** Cloud Resource Name (CRN) of the service instance. */
+    /** The service instance crn. */
     crn: string;
-    /** Name of the service instance deployment. */
+    /** The name of the service instance deployment. */
     deployment_name: string;
-    /** Indicates whether high availability (HA) is enabled for the orchestrator. */
-    is_ksys_ha: boolean;
-    /** Deployment time of primary orchestrator VM. */
+    /** The deployment time of primary orchestrator VM. */
     last_updated_orchestrator_deployment_time: string;
-    /** Deployment time of StandBy orchestrator VM. */
+    /** The deployment time of StandBy orchestrator VM. */
     last_updated_standby_orchestrator_deployment_time: string;
+    /** Indicated whether multi factor authentication is ennabled or not. */
+    mfa_enabled: string;
     /** Status of standby node addition to the orchestrator cluster. */
     orch_ext_connectivity_status?: string;
-    /** Health or informational message about the orchestrator cluster. */
+    /** The status of standby node in the Orchestrator cluster. */
     orch_standby_node_addtion_status: string;
-    /** Current status of the primary orchestrator VM. */
+    /** The current status of the primary orchestrator VM. */
     orchestrator_cluster_message: string;
-    /** Configuration status of the orchestrator cluster. */
+    /** The configuration status of the orchestrator cluster. */
     orchestrator_config_status: string;
-    /** Name of the Plan. */
+    /** Indicates whether high availability (HA) is enabled for the orchestrator. */
+    orchestrator_ha: boolean;
+    /** The name of the DR Automation plan. */
     plan_name: string;
-    /** Detailed status message for the primary orchestrator VM. */
+    /** Indicates the progress details of primary orchestrator creation. */
     primary_description: string;
-    /** IP address of the primary orchestrator VM. */
+    /** The IP address of the primary orchestrator VM. */
     primary_ip_address: string;
-    /** Configuration status of the orchestrator cluster. */
+    /** The configuration status of the orchestrator cluster. */
     primary_orchestrator_status: string;
-    /** Disaster recovery location associated with the instance. */
+    /** The disaster recovery location associated with the instance. */
     recovery_location: string;
-    /** Resource group to which the service instance belongs. */
+    /** The resource group to which the service instance belongs. */
     resource_group: string;
-    /** Detailed status message for the standby orchestrator VM. */
+    /** Indicates the progress details of primary orchestrator creation. */
     standby_description: string;
-    /** IP address of the standby orchestrator VM. */
+    /** The IP address of the standby orchestrator VM. */
     standby_ip_address: string;
-    /** Current state of the standby orchestrator VM. */
+    /** The current state of the standby orchestrator. */
     standby_status: string;
-    /** Overall status of the service instance. */
+    /** The current state of the primary orchestrator. */
     status: string;
   }
 

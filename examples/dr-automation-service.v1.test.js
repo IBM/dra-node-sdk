@@ -242,7 +242,7 @@ describe('DrAutomationServiceV1', () => {
     // end-get_machine_type
   });
 
-  test('getSchematicWorkspace request example', async () => {
+  test('getPowervsWorkspaces request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -252,115 +252,24 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getSchematicWorkspace() result:');
-    // begin-get_schematic_workspace
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getSchematicWorkspace(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_schematic_workspace
-  });
-
-  test('getPowervsWorkspacesForCustomVpc request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getPowervsWorkspacesForCustomVpc() result:');
-    // begin-get_powervs_workspaces_for_custom_vpc
+    originalLog('getPowervsWorkspaces() result:');
+    // begin-get_powervs_workspaces
 
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       locationId: 'testString',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      tgId: '925a7b81-a826-4d0a-8ef9-7496e9dc58bc',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getPowervsWorkspacesForCustomVpc(params);
+      res = await drAutomationServiceService.getPowervsWorkspaces(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_powervs_workspaces_for_custom_vpc
-  });
-
-  test('getPvsworkspaceSchematic request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getPvsworkspaceSchematic() result:');
-    // begin-get_pvsworkspace_schematic
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      schematicId: 'us-south.workspace.projects-service.3ae96a02',
-      locationId: 'testString',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getPvsworkspaceSchematic(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_pvsworkspace_schematic
-  });
-
-  test('getManageDr request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getManageDr() result:');
-    // begin-get_manage_dr
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getManageDr(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_manage_dr
+    // end-get_powervs_workspaces
   });
 
   test('createManageDr request example', async () => {

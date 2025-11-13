@@ -29,7 +29,7 @@ const DrAutomationServiceV1 = require('../../dist/dr-automation-service/v1');
 
 const drAutomationServiceServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://power-dra.test.cloud.ibm.com/drautomation/v1',
+  url: 'https://power-dra.test.cloud.ibm.com',
 };
 
 const drAutomationServiceService = new DrAutomationServiceV1(drAutomationServiceServiceOptions);
@@ -687,126 +687,26 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getSchematicWorkspace', () => {
+  describe('getPowervsWorkspaces', () => {
     describe('positive tests', () => {
-      function __getSchematicWorkspaceTest() {
-        // Construct the params object for operation getSchematicWorkspace
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const ifNoneMatch = 'testString';
-        const getSchematicWorkspaceParams = {
-          instanceId,
-          ifNoneMatch,
-        };
-
-        const getSchematicWorkspaceResult = drAutomationServiceService.getSchematicWorkspace(
-          getSchematicWorkspaceParams
-        );
-
-        // all methods should return a Promise
-        expectToBePromise(getSchematicWorkspaceResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/schematics_workspaces/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getSchematicWorkspaceTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getSchematicWorkspaceTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getSchematicWorkspaceTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getSchematicWorkspaceParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getSchematicWorkspace(getSchematicWorkspaceParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getSchematicWorkspace({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getSchematicWorkspace();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getPowervsWorkspacesForCustomVpc', () => {
-    describe('positive tests', () => {
-      function __getPowervsWorkspacesForCustomVpcTest() {
-        // Construct the params object for operation getPowervsWorkspacesForCustomVpc
+      function __getPowervsWorkspacesTest() {
+        // Construct the params object for operation getPowervsWorkspaces
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const locationId = 'testString';
-        const vpcId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
-        const tgId = '925a7b81-a826-4d0a-8ef9-7496e9dc58bc';
         const ifNoneMatch = 'testString';
-        const getPowervsWorkspacesForCustomVpcParams = {
+        const getPowervsWorkspacesParams = {
           instanceId,
           locationId,
-          vpcId,
-          tgId,
           ifNoneMatch,
         };
 
-        const getPowervsWorkspacesForCustomVpcResult =
-          drAutomationServiceService.getPowervsWorkspacesForCustomVpc(
-            getPowervsWorkspacesForCustomVpcParams
-          );
+        const getPowervsWorkspacesResult = drAutomationServiceService.getPowervsWorkspaces(
+          getPowervsWorkspacesParams
+        );
 
         // all methods should return a Promise
-        expectToBePromise(getPowervsWorkspacesForCustomVpcResult);
+        expectToBePromise(getPowervsWorkspacesResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -815,7 +715,7 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/workspaces_custom_vpc/{instance_id}',
+          '/drautomation/v1/powervs_workspaces/{instance_id}',
           'GET'
         );
         const expectedAccept = 'application/json';
@@ -823,24 +723,22 @@ describe('DrAutomationServiceV1', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.qs.location_id).toEqual(locationId);
-        expect(mockRequestOptions.qs.vpc_id).toEqual(vpcId);
-        expect(mockRequestOptions.qs.tg_id).toEqual(tgId);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getPowervsWorkspacesForCustomVpcTest();
+        __getPowervsWorkspacesTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.enableRetries();
-        __getPowervsWorkspacesForCustomVpcTest();
+        __getPowervsWorkspacesTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
         drAutomationServiceService.disableRetries();
-        __getPowervsWorkspacesForCustomVpcTest();
+        __getPowervsWorkspacesTest();
       });
 
       test('should prioritize user-given headers', () => {
@@ -848,24 +746,18 @@ describe('DrAutomationServiceV1', () => {
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const locationId = 'testString';
-        const vpcId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
-        const tgId = '925a7b81-a826-4d0a-8ef9-7496e9dc58bc';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getPowervsWorkspacesForCustomVpcParams = {
+        const getPowervsWorkspacesParams = {
           instanceId,
           locationId,
-          vpcId,
-          tgId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.getPowervsWorkspacesForCustomVpc(
-          getPowervsWorkspacesForCustomVpcParams
-        );
+        drAutomationServiceService.getPowervsWorkspaces(getPowervsWorkspacesParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -874,7 +766,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPowervsWorkspacesForCustomVpc({});
+          await drAutomationServiceService.getPowervsWorkspaces({});
         } catch (e) {
           err = e;
         }
@@ -885,204 +777,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPowervsWorkspacesForCustomVpc();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getPvsworkspaceSchematic', () => {
-    describe('positive tests', () => {
-      function __getPvsworkspaceSchematicTest() {
-        // Construct the params object for operation getPvsworkspaceSchematic
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const schematicId = 'us-south.workspace.projects-service.3ae96a02';
-        const locationId = 'testString';
-        const ifNoneMatch = 'testString';
-        const getPvsworkspaceSchematicParams = {
-          instanceId,
-          schematicId,
-          locationId,
-          ifNoneMatch,
-        };
-
-        const getPvsworkspaceSchematicResult = drAutomationServiceService.getPvsworkspaceSchematic(
-          getPvsworkspaceSchematicParams
-        );
-
-        // all methods should return a Promise
-        expectToBePromise(getPvsworkspaceSchematicResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/workspaces_schematic/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.qs.schematic_id).toEqual(schematicId);
-        expect(mockRequestOptions.qs.location_id).toEqual(locationId);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getPvsworkspaceSchematicTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getPvsworkspaceSchematicTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getPvsworkspaceSchematicTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const schematicId = 'us-south.workspace.projects-service.3ae96a02';
-        const locationId = 'testString';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getPvsworkspaceSchematicParams = {
-          instanceId,
-          schematicId,
-          locationId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getPvsworkspaceSchematic(getPvsworkspaceSchematicParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getPvsworkspaceSchematic({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getPvsworkspaceSchematic();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getManageDr', () => {
-    describe('positive tests', () => {
-      function __getManageDrTest() {
-        // Construct the params object for operation getManageDr
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
-        const getManageDrParams = {
-          instanceId,
-          acceptLanguage,
-          ifNoneMatch,
-        };
-
-        const getManageDrResult = drAutomationServiceService.getManageDr(getManageDrParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getManageDrResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/manage_dr/{instance_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getManageDrTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getManageDrTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getManageDrTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getManageDrParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getManageDr(getManageDrParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getManageDr({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getManageDr();
+          await drAutomationServiceService.getPowervsWorkspaces();
         } catch (e) {
           err = e;
         }
@@ -1100,6 +795,8 @@ describe('DrAutomationServiceV1', () => {
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const action = 'done';
         const apiKey = 'testString';
+        const clientId = 'd9f2c83a-97d2-4b14-bf62-8eaecc67a122';
+        const clientSecret = 'N8lQ4tP2xM1yT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC';
         const guid = '123e4567-e89b-12d3-a456-426614174000';
         const locationId = 'dal10';
         const machineType = 'bx2-4x16';
@@ -1109,24 +806,20 @@ describe('DrAutomationServiceV1', () => {
         const orchestratorPassword = 'testString';
         const orchestratorWorkspaceId = 'orch-workspace-01';
         const orchestratorWorkspaceLocation = 'us-south';
-        const proxyIp = '192.168.1.10';
+        const proxyIp = '10.40.30.10:8888';
         const regionId = 'us-south';
         const resourceInstance = 'crn:v1:bluemix:public:resource-controller::res123';
-        const schematicWorkspaceId = 'workspace123';
         const secondaryWorkspaceId = 'secondary-workspace789';
         const secret = 'testString';
         const secretGroup = 'default-secret-group';
         const sshKeyName = 'my-ssh-key';
-        const sshPublicKey = 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAr...';
         const standbyMachineType = 'bx2-8x32';
         const standbyOrchestratorName = 'standbyAdmin';
         const standbyOrchestratorWorkspaceId = 'orch-standby-02';
         const standbyOrchestratorWorkspaceLocation = 'us-east';
-        const standbySchematicWorkspaceId = 'standby-workspace456';
         const standbyTier = 'Premium';
+        const tenantName = 'xxx.ibm.com';
         const tier = 'Standard';
-        const transitGatewayId = 'tgw-67890';
-        const vpcId = 'vpc-12345';
         const standByRedeploy = 'testString';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
@@ -1135,6 +828,8 @@ describe('DrAutomationServiceV1', () => {
           instanceId,
           action,
           apiKey,
+          clientId,
+          clientSecret,
           guid,
           locationId,
           machineType,
@@ -1147,21 +842,17 @@ describe('DrAutomationServiceV1', () => {
           proxyIp,
           regionId,
           resourceInstance,
-          schematicWorkspaceId,
           secondaryWorkspaceId,
           secret,
           secretGroup,
           sshKeyName,
-          sshPublicKey,
           standbyMachineType,
           standbyOrchestratorName,
           standbyOrchestratorWorkspaceId,
           standbyOrchestratorWorkspaceLocation,
-          standbySchematicWorkspaceId,
           standbyTier,
+          tenantName,
           tier,
-          transitGatewayId,
-          vpcId,
           standByRedeploy,
           acceptLanguage,
           ifNoneMatch,
@@ -1187,6 +878,8 @@ describe('DrAutomationServiceV1', () => {
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.body.action).toEqual(action);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.client_id).toEqual(clientId);
+        expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
         expect(mockRequestOptions.body.guid).toEqual(guid);
         expect(mockRequestOptions.body.location_id).toEqual(locationId);
         expect(mockRequestOptions.body.machine_type).toEqual(machineType);
@@ -1203,12 +896,10 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.body.proxy_ip).toEqual(proxyIp);
         expect(mockRequestOptions.body.region_id).toEqual(regionId);
         expect(mockRequestOptions.body.resource_instance).toEqual(resourceInstance);
-        expect(mockRequestOptions.body.schematic_workspace_id).toEqual(schematicWorkspaceId);
         expect(mockRequestOptions.body.secondary_workspace_id).toEqual(secondaryWorkspaceId);
         expect(mockRequestOptions.body.secret).toEqual(secret);
         expect(mockRequestOptions.body.secret_group).toEqual(secretGroup);
         expect(mockRequestOptions.body.ssh_key_name).toEqual(sshKeyName);
-        expect(mockRequestOptions.body.ssh_public_key).toEqual(sshPublicKey);
         expect(mockRequestOptions.body.standby_machine_type).toEqual(standbyMachineType);
         expect(mockRequestOptions.body.standby_orchestrator_name).toEqual(standbyOrchestratorName);
         expect(mockRequestOptions.body.standby_orchestrator_workspace_id).toEqual(
@@ -1217,13 +908,9 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.body.standby_orchestrator_workspace_location).toEqual(
           standbyOrchestratorWorkspaceLocation
         );
-        expect(mockRequestOptions.body.standby_schematic_workspace_id).toEqual(
-          standbySchematicWorkspaceId
-        );
         expect(mockRequestOptions.body.standby_tier).toEqual(standbyTier);
+        expect(mockRequestOptions.body.tenant_name).toEqual(tenantName);
         expect(mockRequestOptions.body.tier).toEqual(tier);
-        expect(mockRequestOptions.body.transit_gateway_id).toEqual(transitGatewayId);
-        expect(mockRequestOptions.body.vpc_id).toEqual(vpcId);
         expect(mockRequestOptions.qs.stand_by_redeploy).toEqual(standByRedeploy);
         expect(mockRequestOptions.qs.accepts_incomplete).toEqual(acceptsIncomplete);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);

@@ -132,59 +132,15 @@ describe('DrAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('getSchematicWorkspace()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getSchematicWorkspace(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getPowervsWorkspacesForCustomVpc()', async () => {
+  test('getPowervsWorkspaces()', async () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       locationId: 'testString',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      tgId: '925a7b81-a826-4d0a-8ef9-7496e9dc58bc',
       ifNoneMatch: 'testString',
     };
 
-    const res = await drAutomationServiceService.getPowervsWorkspacesForCustomVpc(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getPvsworkspaceSchematic()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      schematicId: 'us-south.workspace.projects-service.3ae96a02',
-      locationId: 'testString',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getPvsworkspaceSchematic(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('getManageDr()', async () => {
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getManageDr(params);
+    const res = await drAutomationServiceService.getPowervsWorkspaces(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -196,6 +152,8 @@ describe('DrAutomationServiceV1_integration', () => {
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       action: 'done',
       apiKey: 'testString',
+      clientId: 'd9f2c83a-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'N8lQ4tP2xM1yT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
       guid: '123e4567-e89b-12d3-a456-426614174000',
       locationId: 'dal10',
       machineType: 'bx2-4x16',
@@ -205,24 +163,20 @@ describe('DrAutomationServiceV1_integration', () => {
       orchestratorPassword: 'testString',
       orchestratorWorkspaceId: 'orch-workspace-01',
       orchestratorWorkspaceLocation: 'us-south',
-      proxyIp: '192.168.1.10',
+      proxyIp: '10.40.30.10:8888',
       regionId: 'us-south',
       resourceInstance: 'crn:v1:bluemix:public:resource-controller::res123',
-      schematicWorkspaceId: 'workspace123',
       secondaryWorkspaceId: 'secondary-workspace789',
       secret: 'testString',
       secretGroup: 'default-secret-group',
       sshKeyName: 'my-ssh-key',
-      sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAr...',
       standbyMachineType: 'bx2-8x32',
       standbyOrchestratorName: 'standbyAdmin',
       standbyOrchestratorWorkspaceId: 'orch-standby-02',
       standbyOrchestratorWorkspaceLocation: 'us-east',
-      standbySchematicWorkspaceId: 'standby-workspace456',
       standbyTier: 'Premium',
+      tenantName: 'xxx.ibm.com',
       tier: 'Standard',
-      transitGatewayId: 'tgw-67890',
-      vpcId: 'vpc-12345',
       standByRedeploy: 'testString',
       acceptLanguage: 'testString',
       ifNoneMatch: 'testString',
