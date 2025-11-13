@@ -1,5 +1,5 @@
 [![Build Status](https://v3.travis-ci.com/DRAutomation/dra-node-sdk.svg?token=Z799xXryYYPor3yyJxEs&branch=main)](https://v3.travis.ibm.com/DRAutomation/dra-node-sdk)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://cloud.ibm.com/docs/dr-automation-powervs)
 <!--
 [![npm-version](https://img.shields.io/npm/v/DRAutomation/dra-node-sdk.svg)](https://www.npmjs.com/package/)
 -->
@@ -43,7 +43,7 @@ IBM Cloud services:
 
 Service Name | Import Path
 --- | ---
-DrAutomation Service (https://cloud.ibm.com/docs/dr-automation-powervs) | drautomationservicev1
+[DrAutomation Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
 
 ## Prerequisites
 * You need an [IBM Cloud][ibm-cloud-onboarding] account.
@@ -54,8 +54,15 @@ DrAutomation Service (https://cloud.ibm.com/docs/dr-automation-powervs) | drauto
 ## Installation
 
 ```sh
-npm install 
+npm install git+ssh://git@github.ibm.com/DRAutomation/dra-node-sdk.git
 ```
+
+## How to Import 
+
+```sh
+const DrAutomationServiceV1 = require('dra-node-sdk');
+```
+
 
 ## Using the SDK
 For general SDK usage information, please see

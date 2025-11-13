@@ -81,7 +81,7 @@ describe('DrAutomationServiceV1', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'api-key-here',
+      apiKey: 'adfadfdsafsdfdsf',
     };
 
     let res;
@@ -209,7 +209,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_dr_summary
-  }, 20000);
+  });
 
   test('getMachineType request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -240,7 +240,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_machine_type
-  }, 20000);
+  });
 
   test('getSchematicWorkspace request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -332,7 +332,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_pvsworkspace_schematic
-  }, 20000);
+  });
 
   test('getManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -378,23 +378,7 @@ describe('DrAutomationServiceV1', () => {
 
     const params = {
       instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
-      orchestratorHa: true,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh1dsdkks',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
-      sshKeyName: 'testStringy',
-      action: 'done',
-      apiKey: 'api-key-here',
-      standbyOrchestratorName: 'drautomationstandbymh1dd',
-      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      standbyMachineType: 's922',
+        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
     };
 
     let res;
@@ -406,7 +390,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-create_manage_dr
-  }, 20000);
+  });
 
   test('getLastOperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -435,7 +419,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_last_operation
-  }, 20000);
+  });
 
   test('listEvents request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -467,7 +451,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-list_events
-  }, 20000);
+  });
 
   test('getEvent request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -497,5 +481,5 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_event
-  }, 20000);
+  });
 });

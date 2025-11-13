@@ -770,8 +770,6 @@ class DrAutomationServiceV1 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} params.standByRedeploy - Flag to indicate if standby should be redeployed (must be "true" or
-   * "false").
    * @param {string} [params.action] - to proceed with async operation if all the config details are updated to DB.
    * @param {string} [params.apiKey] - api Key of the service instance.
    * @param {string} [params.guid] - Global unique identifier of the service instance.
@@ -805,6 +803,8 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.tier] - Tier of the service instance (e.g., Standard, Premium).
    * @param {string} [params.transitGatewayId] - ID of the transit gateway used for interconnecting networks.
    * @param {string} [params.vpcId] - ID of the Virtual Private Cloud (VPC) associated with the service instance.
+   * @param {string} [params.standByRedeploy] - Flag to indicate if standby should be redeployed (must be "true" or
+   * "false").
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {boolean} [params.acceptsIncomplete] - A value of true indicates that both the IBM Cloud platform and the
@@ -816,10 +816,9 @@ class DrAutomationServiceV1 extends BaseService {
     params: DrAutomationServiceV1.CreateManageDrParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceManageDR>> {
     const _params = { ...params };
-    const _requiredParams = ['instanceId', 'standByRedeploy'];
+    const _requiredParams = ['instanceId'];
     const _validParams = [
       'instanceId',
-      'standByRedeploy',
       'action',
       'apiKey',
       'guid',
@@ -849,6 +848,7 @@ class DrAutomationServiceV1 extends BaseService {
       'tier',
       'transitGatewayId',
       'vpcId',
+      'standByRedeploy',
       'acceptLanguage',
       'ifNoneMatch',
       'acceptsIncomplete',
@@ -1296,8 +1296,6 @@ namespace DrAutomationServiceV1 {
   export interface CreateManageDrParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
-    /** Flag to indicate if standby should be redeployed (must be "true" or "false"). */
-    standByRedeploy: CreateManageDrConstants.StandByRedeploy | string;
     /** to proceed with async operation if all the config details are updated to DB. */
     action?: string;
     /** api Key of the service instance. */
@@ -1356,6 +1354,8 @@ namespace DrAutomationServiceV1 {
     transitGatewayId?: string;
     /** ID of the Virtual Private Cloud (VPC) associated with the service instance. */
     vpcId?: string;
+    /** Flag to indicate if standby should be redeployed (must be "true" or "false"). */
+    standByRedeploy?: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
     /** ETag for conditional requests (optional). */
@@ -1364,15 +1364,6 @@ namespace DrAutomationServiceV1 {
      *  deprovisioning.
      */
     acceptsIncomplete?: boolean;
-  }
-
-  /** Constants for the `createManageDr` operation. */
-  export namespace CreateManageDrConstants {
-    /** Flag to indicate if standby should be redeployed (must be "true" or "false"). */
-    export enum StandByRedeploy {
-      TRUE = 'true',
-      FALSE = 'false',
-    }
   }
 
   /** Parameters for the `getLastOperation` operation. */
@@ -1507,8 +1498,12 @@ namespace DrAutomationServiceV1 {
    * Contains the list of primary and standby DR workspaces.
    */
   export interface DrData {
+    /** Description of Standby Workspace. */
+    dr_standby_workspace_description?: any;
     /** List of standby disaster recovery workspaces. */
     dr_standby_workspaces: DRStandbyWorkspace[];
+    /** Description of Workspace. */
+    dr_workspace_description?: any;
     /** List of primary disaster recovery workspaces. */
     dr_workspaces: DRWorkspace[];
   }
@@ -1632,13 +1627,21 @@ namespace DrAutomationServiceV1 {
    * Detailed information of a managed virtual machine.
    */
   export interface ManagedVmDetails {
+    /** Number of CPU cores allocated to the managed VM. */
     core?: string;
+    /** Average DR operation time in minutes for this VM. */
     dr_average_time?: string;
+    /** Target region for disaster recovery. */
     dr_region?: string;
+    /** Amount of memory (in GB) allocated to the VM. */
     memory?: string;
+    /** Primary region where the VM is deployed. */
     region?: string;
+    /** Name of the managed virtual machine. */
     vm_name?: string;
+    /** Name of the workgroup to which this VM belongs. */
     workgroup_name?: string;
+    /** Name of the workspace where the VM resides. */
     workspace_name?: string;
   }
 
@@ -1646,6 +1649,7 @@ namespace DrAutomationServiceV1 {
    * Map of VM IDs to managed VM details.
    */
   export interface ManagedVmMapResponse {
+    /** A map where the key is the VM ID and the value is the corresponding ManagedVmDetails object. */
     managed_vms?: JsonObject;
   }
 
@@ -1653,6 +1657,10 @@ namespace DrAutomationServiceV1 {
    * Contains details about the orchestrator configuration.
    */
   export interface OrchestratorDetails {
+    /** Deployment time of primary orchestrator VM. */
+    last_updated_orchestrator_deployment_time: string;
+    /** Deployment time of StandBy orchestrator VM. */
+    last_updated_standby_orchestrator_deployment_time: string;
     /** Location identifier. */
     location_id: string;
     /** External connectivity status of the orchestrator. */
@@ -1661,12 +1669,12 @@ namespace DrAutomationServiceV1 {
     orch_standby_node_addition_status: string;
     /** Message regarding orchestrator cluster status. */
     orchestrator_cluster_message: string;
-    /** Type of orchestrator cluster. */
-    orchestrator_cluster_type: string;
     /** Configuration status of the orchestrator. */
     orchestrator_config_status: string;
     /** Leader node of the orchestrator group. */
     orchestrator_group_leader: string;
+    /** Type of orchestrator Location. */
+    orchestrator_location_type: string;
     /** Name of the primary orchestrator. */
     orchestrator_name: string;
     /** Status of the primary orchestrator. */
@@ -1713,6 +1721,8 @@ namespace DrAutomationServiceV1 {
     description: string;
     /** Flag indicating if KSYS HA is enabled. */
     is_ksys_ha: boolean;
+    /** plan name. */
+    plan_name: string;
     /** IP address of the primary service. */
     primary_ip_address: string;
     /** Primary Orchestrator Dashboard URL. */
@@ -1754,6 +1764,10 @@ namespace DrAutomationServiceV1 {
     deployment_name: string;
     /** Indicates whether high availability (HA) is enabled for the orchestrator. */
     is_ksys_ha: boolean;
+    /** Deployment time of primary orchestrator VM. */
+    last_updated_orchestrator_deployment_time: string;
+    /** Deployment time of StandBy orchestrator VM. */
+    last_updated_standby_orchestrator_deployment_time: string;
     /** Status of standby node addition to the orchestrator cluster. */
     orch_ext_connectivity_status?: string;
     /** Health or informational message about the orchestrator cluster. */
@@ -1762,6 +1776,8 @@ namespace DrAutomationServiceV1 {
     orchestrator_cluster_message: string;
     /** Configuration status of the orchestrator cluster. */
     orchestrator_config_status: string;
+    /** Name of the Plan. */
+    plan_name: string;
     /** Detailed status message for the primary orchestrator VM. */
     primary_description: string;
     /** IP address of the primary orchestrator VM. */

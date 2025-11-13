@@ -49,7 +49,7 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'api-key-here',
+      apiKey: 'adfadfdsafsdfdsf',
       acceptLanguage: 'testString',
       ifNoneMatch: 'testString',
     };
@@ -149,8 +149,8 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      locationId: 'lon06',
-      vpcId: 'r018-846943b1-2a88-4203-80fe-3454157d5c49',
+      locationId: 'testString',
+      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
       tgId: '925a7b81-a826-4d0a-8ef9-7496e9dc58bc',
       ifNoneMatch: 'testString',
     };
@@ -166,7 +166,7 @@ describe('DrAutomationServiceV1_integration', () => {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       schematicId: 'us-south.workspace.projects-service.3ae96a02',
-      locationId: 'lon06',
+      locationId: 'testString',
       ifNoneMatch: 'testString',
     };
 
@@ -194,9 +194,8 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      standByRedeploy: 'true',
       action: 'done',
-      apiKey: 'api-key-here',
+      apiKey: 'testString',
       guid: '123e4567-e89b-12d3-a456-426614174000',
       locationId: 'dal10',
       machineType: 'bx2-4x16',
@@ -224,6 +223,7 @@ describe('DrAutomationServiceV1_integration', () => {
       tier: 'Standard',
       transitGatewayId: 'tgw-67890',
       vpcId: 'vpc-12345',
+      standByRedeploy: 'testString',
       acceptLanguage: 'testString',
       ifNoneMatch: 'testString',
       acceptsIncomplete: true,

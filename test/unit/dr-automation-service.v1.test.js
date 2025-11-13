@@ -1098,7 +1098,6 @@ describe('DrAutomationServiceV1', () => {
         // Construct the params object for operation createManageDr
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const standByRedeploy = 'true';
         const action = 'done';
         const apiKey = 'testString';
         const guid = '123e4567-e89b-12d3-a456-426614174000';
@@ -1128,12 +1127,12 @@ describe('DrAutomationServiceV1', () => {
         const tier = 'Standard';
         const transitGatewayId = 'tgw-67890';
         const vpcId = 'vpc-12345';
+        const standByRedeploy = 'testString';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
         const acceptsIncomplete = true;
         const createManageDrParams = {
           instanceId,
-          standByRedeploy,
           action,
           apiKey,
           guid,
@@ -1163,6 +1162,7 @@ describe('DrAutomationServiceV1', () => {
           tier,
           transitGatewayId,
           vpcId,
+          standByRedeploy,
           acceptLanguage,
           ifNoneMatch,
           acceptsIncomplete,
@@ -1248,12 +1248,10 @@ describe('DrAutomationServiceV1', () => {
         // parameters
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const standByRedeploy = 'true';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const createManageDrParams = {
           instanceId,
-          standByRedeploy,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
