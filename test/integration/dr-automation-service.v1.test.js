@@ -150,7 +150,6 @@ describe('DrAutomationServiceV1_integration', () => {
     const params = {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      action: 'done',
       apiKey: 'testString',
       clientId: 'd9f2c83a-97d2-4b14-bf62-8eaecc67a122',
       clientSecret: 'N8lQ4tP2xM1yT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
@@ -205,7 +204,7 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('listEvents()', async () => {
     const params = {
-      provisionId:
+      instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
@@ -222,7 +221,7 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getEvent()', async () => {
     const params = {
-      provisionId:
+      instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
       acceptLanguage: 'testString',

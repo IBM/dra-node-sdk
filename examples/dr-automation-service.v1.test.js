@@ -344,7 +344,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-list_events
 
     const params = {
-      provisionId:
+      instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
@@ -376,7 +376,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_event
 
     const params = {
-      provisionId:
+      instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
     };

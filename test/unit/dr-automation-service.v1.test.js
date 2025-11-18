@@ -793,7 +793,6 @@ describe('DrAutomationServiceV1', () => {
         // Construct the params object for operation createManageDr
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const action = 'done';
         const apiKey = 'testString';
         const clientId = 'd9f2c83a-97d2-4b14-bf62-8eaecc67a122';
         const clientSecret = 'N8lQ4tP2xM1yT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC';
@@ -826,7 +825,6 @@ describe('DrAutomationServiceV1', () => {
         const acceptsIncomplete = true;
         const createManageDrParams = {
           instanceId,
-          action,
           apiKey,
           clientId,
           clientSecret,
@@ -876,7 +874,6 @@ describe('DrAutomationServiceV1', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.body.action).toEqual(action);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
         expect(mockRequestOptions.body.client_id).toEqual(clientId);
         expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
@@ -1076,7 +1073,7 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __listEventsTest() {
         // Construct the params object for operation listEvents
-        const provisionId =
+        const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const time = '2025-06-19T23:59:59Z';
         const fromTime = '2025-06-19T00:00:00Z';
@@ -1084,7 +1081,7 @@ describe('DrAutomationServiceV1', () => {
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
         const listEventsParams = {
-          provisionId,
+          instanceId,
           time,
           fromTime,
           toTime,
@@ -1104,7 +1101,7 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/service_instances/{provision_id}/events',
+          '/drautomation/v1/service_instances/{instance_id}/events',
           'GET'
         );
         const expectedAccept = 'application/json';
@@ -1115,7 +1112,7 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.qs.time).toEqual(time);
         expect(mockRequestOptions.qs.from_time).toEqual(fromTime);
         expect(mockRequestOptions.qs.to_time).toEqual(toTime);
-        expect(mockRequestOptions.path.provision_id).toEqual(provisionId);
+        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
@@ -1135,12 +1132,12 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const provisionId =
+        const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const listEventsParams = {
-          provisionId,
+          instanceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -1181,13 +1178,13 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getEventTest() {
         // Construct the params object for operation getEvent
-        const provisionId =
+        const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
         const acceptLanguage = 'testString';
         const ifNoneMatch = 'testString';
         const getEventParams = {
-          provisionId,
+          instanceId,
           eventId,
           acceptLanguage,
           ifNoneMatch,
@@ -1205,7 +1202,7 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/service_instances/{provision_id}/events/{event_id}',
+          '/drautomation/v1/service_instances/{instance_id}/events/{event_id}',
           'GET'
         );
         const expectedAccept = 'application/json';
@@ -1213,7 +1210,7 @@ describe('DrAutomationServiceV1', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.provision_id).toEqual(provisionId);
+        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
         expect(mockRequestOptions.path.event_id).toEqual(eventId);
       }
 
@@ -1234,13 +1231,13 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const provisionId =
+        const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getEventParams = {
-          provisionId,
+          instanceId,
           eventId,
           headers: {
             Accept: userAccept,

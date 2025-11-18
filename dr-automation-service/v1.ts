@@ -564,11 +564,10 @@ class DrAutomationServiceV1 extends BaseService {
    *
    * Creates Orchestrator VM in the given workspace and configuration. Orchestrator VM can be used to manage multiple
    * virtual servers and help ensure continuous availability. For more details, refer Deploying the Orchestrator -
-   * https://test.cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-idep-the-orch.
+   * https://cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-idep-the-orch.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.action] - to proceed with async operation if all the config details are updated to DB.
    * @param {string} [params.apiKey] - The api Key of the service instance for deploying the disaster recovery service.
    * @param {string} [params.clientId] - The Client Id created for MFA authentication API.
    * @param {string} [params.clientSecret] - The client secret created for MFA authentication API.
@@ -617,7 +616,6 @@ class DrAutomationServiceV1 extends BaseService {
     const _requiredParams = ['instanceId'];
     const _validParams = [
       'instanceId',
-      'action',
       'apiKey',
       'clientId',
       'clientSecret',
@@ -657,7 +655,6 @@ class DrAutomationServiceV1 extends BaseService {
     }
 
     const body = {
-      'action': _params.action,
       'api_key': _params.apiKey,
       'client_id': _params.clientId,
       'client_secret': _params.clientSecret,
@@ -801,10 +798,10 @@ class DrAutomationServiceV1 extends BaseService {
   /**
    * Get events from the cloud instance since a specific timestamp.
    *
-   * Retrieves the list of events from the specified service instance provision ID.
+   * Retrieves the list of events from the specified service instance ID.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.provisionId - provision id.
+   * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.time] - (deprecated - use from_time) A time in either ISO 8601 or unix epoch format.
    * @param {string} [params.fromTime] - A from query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.toTime] - A to query time in either ISO 8601 or unix epoch format.
@@ -817,9 +814,9 @@ class DrAutomationServiceV1 extends BaseService {
     params: DrAutomationServiceV1.ListEventsParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.EventCollection>> {
     const _params = { ...params };
-    const _requiredParams = ['provisionId'];
+    const _requiredParams = ['instanceId'];
     const _validParams = [
-      'provisionId',
+      'instanceId',
       'time',
       'fromTime',
       'toTime',
@@ -840,7 +837,7 @@ class DrAutomationServiceV1 extends BaseService {
     };
 
     const path = {
-      'provision_id': _params.provisionId,
+      'instance_id': _params.instanceId,
     };
 
     const sdkHeaders = getSdkHeaders(
@@ -851,7 +848,7 @@ class DrAutomationServiceV1 extends BaseService {
 
     const parameters = {
       options: {
-        url: '/drautomation/v1/service_instances/{provision_id}/events',
+        url: '/drautomation/v1/service_instances/{instance_id}/events',
         method: 'GET',
         qs: query,
         path,
@@ -883,7 +880,7 @@ class DrAutomationServiceV1 extends BaseService {
    * Retrieves the details of a specific event for the given service instance provision ID.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.provisionId - provision id.
+   * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.eventId - Event ID.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
@@ -894,9 +891,9 @@ class DrAutomationServiceV1 extends BaseService {
     params: DrAutomationServiceV1.GetEventParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.Event>> {
     const _params = { ...params };
-    const _requiredParams = ['provisionId', 'eventId'];
+    const _requiredParams = ['instanceId', 'eventId'];
     const _validParams = [
-      'provisionId',
+      'instanceId',
       'eventId',
       'acceptLanguage',
       'ifNoneMatch',
@@ -909,7 +906,7 @@ class DrAutomationServiceV1 extends BaseService {
     }
 
     const path = {
-      'provision_id': _params.provisionId,
+      'instance_id': _params.instanceId,
       'event_id': _params.eventId,
     };
 
@@ -917,7 +914,7 @@ class DrAutomationServiceV1 extends BaseService {
 
     const parameters = {
       options: {
-        url: '/drautomation/v1/service_instances/{provision_id}/events/{event_id}',
+        url: '/drautomation/v1/service_instances/{instance_id}/events/{event_id}',
         method: 'GET',
         path,
       },
@@ -1056,8 +1053,6 @@ namespace DrAutomationServiceV1 {
   export interface CreateManageDrParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
-    /** to proceed with async operation if all the config details are updated to DB. */
-    action?: string;
     /** The api Key of the service instance for deploying the disaster recovery service. */
     apiKey?: string;
     /** The Client Id created for MFA authentication API. */
@@ -1134,8 +1129,8 @@ namespace DrAutomationServiceV1 {
 
   /** Parameters for the `listEvents` operation. */
   export interface ListEventsParams extends DefaultParams {
-    /** provision id. */
-    provisionId: string;
+    /** instance id of instance to provision. */
+    instanceId: string;
     /** (deprecated - use from_time) A time in either ISO 8601 or unix epoch format. */
     time?: string;
     /** A from query time in either ISO 8601 or unix epoch format. */
@@ -1150,8 +1145,8 @@ namespace DrAutomationServiceV1 {
 
   /** Parameters for the `getEvent` operation. */
   export interface GetEventParams extends DefaultParams {
-    /** provision id. */
-    provisionId: string;
+    /** instance id of instance to provision. */
+    instanceId: string;
     /** Event ID. */
     eventId: string;
     /** The language requested for the return document. */
@@ -1364,7 +1359,7 @@ namespace DrAutomationServiceV1 {
    */
   export interface ManagedVmMapResponse {
     /** A map where the key is the VM ID and the value is the corresponding ManagedVmDetails object. */
-    managed_vms?: JsonObject;
+    managed_vm_list?: JsonObject;
   }
 
   /**
