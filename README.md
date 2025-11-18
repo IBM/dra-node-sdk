@@ -4,7 +4,7 @@
 [![npm-version](https://img.shields.io/npm/v/DRAutomation/dra-node-sdk.svg)](https://www.npmjs.com/package/)
 -->
 # IBM Cloud DrAutomation Node SDK
-Node.js client library to interact with various [DrAutomation services APIs](https://cloud.ibm.com/docs?tab=api-docs?category=drautomation).
+Node.js client library to interact with various [IBM Cloud DrAutomation services](https://cloud.ibm.com/docs/dr-automation-powervs).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
 Changes might occur which impact applications that use this SDK.
