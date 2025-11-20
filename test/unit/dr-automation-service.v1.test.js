@@ -794,8 +794,8 @@ describe('DrAutomationServiceV1', () => {
         const instanceId =
           'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
         const apiKey = 'testString';
-        const clientId = 'd9f2c83a-97d2-4b14-bf62-8eaecc67a122';
-        const clientSecret = 'N8lQ4tP2xM1yT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC';
+        const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
+        const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
         const guid = '123e4567-e89b-12d3-a456-426614174000';
         const locationId = 'dal10';
         const machineType = 'bx2-4x16';
