@@ -19,7 +19,7 @@
 
 /* eslint-disable no-console */
 
-const ServicebrokerV1 = require('../dist/servicebroker/v1');
+const ServicebrokerV1 = require('../dist/dr-automation-service/v1.js');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values

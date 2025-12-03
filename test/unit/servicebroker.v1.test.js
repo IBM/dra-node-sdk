@@ -25,7 +25,7 @@ const {
   expectToBePromise,
   checkUserHeader,
 } = require('@ibm-cloud/sdk-test-utilities');
-const ServicebrokerV1 = require('../../dist/servicebroker/v1');
+const ServicebrokerV1 = require('../../dist/dr-automation-service/v1.js');
 
 const servicebrokerServiceOptions = {
   authenticator: new NoAuthAuthenticator(),

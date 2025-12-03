@@ -113,16 +113,13 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __updateApikeyTest() {
         // Construct the params object for operation updateApikey
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const apiKey = 'adfadfdsafsdfdsf';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const updateApikeyParams = {
           instanceId,
           apiKey,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const updateApikeyResult = drAutomationServiceService.updateApikey(updateApikeyParams);
@@ -140,7 +137,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
@@ -162,8 +158,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const apiKey = 'adfadfdsafsdfdsf';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
@@ -210,14 +205,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getDrGrsLocationPairTest() {
         // Construct the params object for operation getDrGrsLocationPair
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getDrGrsLocationPairParams = {
           instanceId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getDrGrsLocationPairResult = drAutomationServiceService.getDrGrsLocationPair(
@@ -241,7 +233,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
@@ -262,8 +253,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getDrGrsLocationPairParams = {
@@ -308,14 +298,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getDrLocationsTest() {
         // Construct the params object for operation getDrLocations
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getDrLocationsParams = {
           instanceId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getDrLocationsResult =
@@ -334,7 +321,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
@@ -355,8 +341,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getDrLocationsParams = {
@@ -401,14 +386,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getDrManagedVmTest() {
         // Construct the params object for operation getDrManagedVm
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getDrManagedVmParams = {
           instanceId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getDrManagedVmResult =
@@ -431,7 +413,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
@@ -452,8 +433,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getDrManagedVmParams = {
@@ -498,14 +478,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getDrSummaryTest() {
         // Construct the params object for operation getDrSummary
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getDrSummaryParams = {
           instanceId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getDrSummaryResult = drAutomationServiceService.getDrSummary(getDrSummaryParams);
@@ -523,7 +500,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
@@ -544,8 +520,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getDrSummaryParams = {
@@ -590,17 +565,14 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getMachineTypeTest() {
         // Construct the params object for operation getMachineType
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const primaryWorkspaceName = 'Test-workspace-wdc06';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const standbyWorkspaceName = 'Test-workspace-wdc07';
         const getMachineTypeParams = {
           instanceId,
           primaryWorkspaceName,
           acceptLanguage,
-          ifNoneMatch,
           standbyWorkspaceName,
         };
 
@@ -620,7 +592,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.qs.primary_workspace_name).toEqual(primaryWorkspaceName);
         expect(mockRequestOptions.qs.standby_workspace_name).toEqual(standbyWorkspaceName);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
@@ -643,8 +614,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const primaryWorkspaceName = 'Test-workspace-wdc06';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
@@ -691,14 +661,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getPowervsWorkspacesTest() {
         // Construct the params object for operation getPowervsWorkspaces
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const locationId = 'testString';
-        const ifNoneMatch = 'testString';
         const getPowervsWorkspacesParams = {
           instanceId,
           locationId,
-          ifNoneMatch,
         };
 
         const getPowervsWorkspacesResult = drAutomationServiceService.getPowervsWorkspaces(
@@ -721,7 +688,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.qs.location_id).toEqual(locationId);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
@@ -743,8 +709,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const locationId = 'testString';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
@@ -791,69 +756,60 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __createManageDrTest() {
         // Construct the params object for operation createManageDr
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
-        const apiKey = 'testString';
-        const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
-        const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
-        const guid = '123e4567-e89b-12d3-a456-426614174000';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const locationId = 'dal10';
         const machineType = 'bx2-4x16';
-        const orchestratorHa = true;
         const orchestratorLocationType = 'off-premises';
         const orchestratorName = 'adminUser';
         const orchestratorPassword = 'testString';
         const orchestratorWorkspaceId = 'orch-workspace-01';
-        const orchestratorWorkspaceLocation = 'us-south';
+        const apiKey = 'testString';
+        const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
+        const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
+        const guid = '123e4567-e89b-12d3-a456-426614174000';
+        const orchestratorHa = true;
         const proxyIp = '10.40.30.10:8888';
         const regionId = 'us-south';
         const resourceInstance = 'crn:v1:bluemix:public:resource-controller::res123';
-        const secondaryWorkspaceId = 'secondary-workspace789';
         const secret = 'testString';
         const secretGroup = 'default-secret-group';
         const sshKeyName = 'my-ssh-key';
         const standbyMachineType = 'bx2-8x32';
         const standbyOrchestratorName = 'standbyAdmin';
         const standbyOrchestratorWorkspaceId = 'orch-standby-02';
-        const standbyOrchestratorWorkspaceLocation = 'us-east';
         const standbyTier = 'Premium';
         const tenantName = 'xxx.ibm.com';
         const tier = 'Standard';
         const standByRedeploy = 'testString';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const acceptsIncomplete = true;
         const createManageDrParams = {
           instanceId,
-          apiKey,
-          clientId,
-          clientSecret,
-          guid,
           locationId,
           machineType,
-          orchestratorHa,
           orchestratorLocationType,
           orchestratorName,
           orchestratorPassword,
           orchestratorWorkspaceId,
-          orchestratorWorkspaceLocation,
+          apiKey,
+          clientId,
+          clientSecret,
+          guid,
+          orchestratorHa,
           proxyIp,
           regionId,
           resourceInstance,
-          secondaryWorkspaceId,
           secret,
           secretGroup,
           sshKeyName,
           standbyMachineType,
           standbyOrchestratorName,
           standbyOrchestratorWorkspaceId,
-          standbyOrchestratorWorkspaceLocation,
           standbyTier,
           tenantName,
           tier,
           standByRedeploy,
           acceptLanguage,
-          ifNoneMatch,
           acceptsIncomplete,
         };
 
@@ -873,27 +829,22 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
-        expect(mockRequestOptions.body.client_id).toEqual(clientId);
-        expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
-        expect(mockRequestOptions.body.guid).toEqual(guid);
         expect(mockRequestOptions.body.location_id).toEqual(locationId);
         expect(mockRequestOptions.body.machine_type).toEqual(machineType);
-        expect(mockRequestOptions.body.orchestrator_ha).toEqual(orchestratorHa);
         expect(mockRequestOptions.body.orchestrator_location_type).toEqual(
           orchestratorLocationType
         );
         expect(mockRequestOptions.body.orchestrator_name).toEqual(orchestratorName);
         expect(mockRequestOptions.body.orchestrator_password).toEqual(orchestratorPassword);
         expect(mockRequestOptions.body.orchestrator_workspace_id).toEqual(orchestratorWorkspaceId);
-        expect(mockRequestOptions.body.orchestrator_workspace_location).toEqual(
-          orchestratorWorkspaceLocation
-        );
+        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.client_id).toEqual(clientId);
+        expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
+        expect(mockRequestOptions.body.guid).toEqual(guid);
+        expect(mockRequestOptions.body.orchestrator_ha).toEqual(orchestratorHa);
         expect(mockRequestOptions.body.proxy_ip).toEqual(proxyIp);
         expect(mockRequestOptions.body.region_id).toEqual(regionId);
         expect(mockRequestOptions.body.resource_instance).toEqual(resourceInstance);
-        expect(mockRequestOptions.body.secondary_workspace_id).toEqual(secondaryWorkspaceId);
         expect(mockRequestOptions.body.secret).toEqual(secret);
         expect(mockRequestOptions.body.secret_group).toEqual(secretGroup);
         expect(mockRequestOptions.body.ssh_key_name).toEqual(sshKeyName);
@@ -901,9 +852,6 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.body.standby_orchestrator_name).toEqual(standbyOrchestratorName);
         expect(mockRequestOptions.body.standby_orchestrator_workspace_id).toEqual(
           standbyOrchestratorWorkspaceId
-        );
-        expect(mockRequestOptions.body.standby_orchestrator_workspace_location).toEqual(
-          standbyOrchestratorWorkspaceLocation
         );
         expect(mockRequestOptions.body.standby_tier).toEqual(standbyTier);
         expect(mockRequestOptions.body.tenant_name).toEqual(tenantName);
@@ -930,12 +878,23 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const locationId = 'dal10';
+        const machineType = 'bx2-4x16';
+        const orchestratorLocationType = 'off-premises';
+        const orchestratorName = 'adminUser';
+        const orchestratorPassword = 'testString';
+        const orchestratorWorkspaceId = 'orch-workspace-01';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const createManageDrParams = {
           instanceId,
+          locationId,
+          machineType,
+          orchestratorLocationType,
+          orchestratorName,
+          orchestratorPassword,
+          orchestratorWorkspaceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -976,14 +935,11 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getLastOperationTest() {
         // Construct the params object for operation getLastOperation
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getLastOperationParams = {
           instanceId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getLastOperationResult =
@@ -1006,7 +962,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
       }
 
@@ -1027,8 +982,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const getLastOperationParams = {
@@ -1073,20 +1027,17 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __listEventsTest() {
         // Construct the params object for operation listEvents
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const time = '2025-06-19T23:59:59Z';
         const fromTime = '2025-06-19T00:00:00Z';
         const toTime = '2025-06-19T23:59:59Z';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const listEventsParams = {
           instanceId,
           time,
           fromTime,
           toTime,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const listEventsResult = drAutomationServiceService.listEvents(listEventsParams);
@@ -1108,7 +1059,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.qs.time).toEqual(time);
         expect(mockRequestOptions.qs.from_time).toEqual(fromTime);
         expect(mockRequestOptions.qs.to_time).toEqual(toTime);
@@ -1132,8 +1082,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const listEventsParams = {
@@ -1178,16 +1127,13 @@ describe('DrAutomationServiceV1', () => {
     describe('positive tests', () => {
       function __getEventTest() {
         // Construct the params object for operation getEvent
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
         const acceptLanguage = 'testString';
-        const ifNoneMatch = 'testString';
         const getEventParams = {
           instanceId,
           eventId,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const getEventResult = drAutomationServiceService.getEvent(getEventParams);
@@ -1209,7 +1155,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
         expect(mockRequestOptions.path.event_id).toEqual(eventId);
       }
@@ -1231,8 +1176,7 @@ describe('DrAutomationServiceV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId =
-          'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::';
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';

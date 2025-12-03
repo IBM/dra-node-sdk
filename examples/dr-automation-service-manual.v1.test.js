@@ -79,7 +79,7 @@ describe('DrAutomationServiceV1', () => {
     originalLog('\ncreate_manage_dr_ha_with_sshkey() result:');
 
     const params = {
-      instanceId:'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh1::',
+      instanceId: '050ebe3b-13f4-4db8-8ece-501a3c13be80mh1',
       orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
@@ -129,7 +129,7 @@ describe('DrAutomationServiceV1', () => {
     originalLog('\ncreate_manage_dr_ha_with_secrets() result:');
 
     const params = {
-      instanceId: 'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh3::',
+      instanceId: '050ebe3b-13f4-4db8-8ece-501a3c13be80mh1',
       orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
@@ -185,7 +185,7 @@ describe('DrAutomationServiceV1', () => {
     originalLog('\ncreate_manage_dr_nonha_with_sshkey() result:');
 
     const params = {
-      instanceId:'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mnh5::',
+      instanceId: '050ebe3b-13f4-4db8-8ece-501a3c13be80mh1',
       orchestratorHa: false,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
@@ -228,7 +228,7 @@ describe('DrAutomationServiceV1', () => {
     originalLog('\ncreate_manage_dr_nonha_with_secrets() result:');
 
     const params = {
-      instanceId: 'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mnh7::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       orchestratorHa: false,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',

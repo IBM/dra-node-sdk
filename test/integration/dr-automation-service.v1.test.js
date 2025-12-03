@@ -47,11 +47,9 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('updateApikey()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       apiKey: 'adfadfdsafsdfdsf',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.updateApikey(params);
@@ -62,10 +60,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getDrGrsLocationPair()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getDrGrsLocationPair(params);
@@ -76,10 +72,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getDrLocations()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getDrLocations(params);
@@ -90,10 +84,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getDrManagedVm()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getDrManagedVm(params);
@@ -104,10 +96,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getDrSummary()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getDrSummary(params);
@@ -118,11 +108,9 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getMachineType()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       primaryWorkspaceName: 'Test-workspace-wdc06',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
       standbyWorkspaceName: 'Test-workspace-wdc07',
     };
 
@@ -134,10 +122,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getPowervsWorkspaces()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       locationId: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getPowervsWorkspaces(params);
@@ -148,37 +134,32 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('createManageDr()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
-      apiKey: 'testString',
-      clientId: 'abcd-97d2-1234-bf62-8eaecc67a1234',
-      clientSecret: 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh',
-      guid: '123e4567-e89b-12d3-a456-426614174000',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       locationId: 'dal10',
       machineType: 'bx2-4x16',
-      orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       orchestratorName: 'adminUser',
       orchestratorPassword: 'testString',
       orchestratorWorkspaceId: 'orch-workspace-01',
-      orchestratorWorkspaceLocation: 'us-south',
+      apiKey: 'testString',
+      clientId: 'abcd-97d2-1234-bf62-8eaecc67a1234',
+      clientSecret: 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh',
+      guid: '123e4567-e89b-12d3-a456-426614174000',
+      orchestratorHa: true,
       proxyIp: '10.40.30.10:8888',
       regionId: 'us-south',
       resourceInstance: 'crn:v1:bluemix:public:resource-controller::res123',
-      secondaryWorkspaceId: 'secondary-workspace789',
       secret: 'testString',
       secretGroup: 'default-secret-group',
       sshKeyName: 'my-ssh-key',
       standbyMachineType: 'bx2-8x32',
       standbyOrchestratorName: 'standbyAdmin',
       standbyOrchestratorWorkspaceId: 'orch-standby-02',
-      standbyOrchestratorWorkspaceLocation: 'us-east',
       standbyTier: 'Premium',
       tenantName: 'xxx.ibm.com',
       tier: 'Standard',
       standByRedeploy: 'testString',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
       acceptsIncomplete: true,
     };
 
@@ -190,10 +171,8 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getLastOperation()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getLastOperation(params);
@@ -204,13 +183,11 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('listEvents()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.listEvents(params);
@@ -221,11 +198,9 @@ describe('DrAutomationServiceV1_integration', () => {
 
   test('getEvent()', async () => {
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
       acceptLanguage: 'testString',
-      ifNoneMatch: 'testString',
     };
 
     const res = await drAutomationServiceService.getEvent(params);

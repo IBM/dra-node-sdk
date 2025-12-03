@@ -79,8 +79,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-update_apikey
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       apiKey: 'adfadfdsafsdfdsf',
     };
 
@@ -109,8 +108,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_dr_grs_location_pair
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
     };
 
     let res;
@@ -138,8 +136,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_dr_locations
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
     };
 
     let res;
@@ -167,8 +164,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_dr_managed_vm
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
     };
 
     let res;
@@ -196,8 +192,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_dr_summary
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
     };
 
     let res;
@@ -225,8 +220,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_machine_type
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       primaryWorkspaceName: 'Test-workspace-wdc06',
       standbyWorkspaceName: 'Test-workspace-wdc07',
     };
@@ -256,8 +250,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_powervs_workspaces
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       locationId: 'testString',
     };
 
@@ -286,8 +279,13 @@ describe('DrAutomationServiceV1', () => {
     // begin-create_manage_dr
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      locationId: 'dal10',
+      machineType: 'bx2-4x16',
+      orchestratorLocationType: 'off-premises',
+      orchestratorName: 'adminUser',
+      orchestratorPassword: 'testString',
+      orchestratorWorkspaceId: 'orch-workspace-01',
     };
 
     let res;
@@ -315,8 +313,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_last_operation
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
     };
 
     let res;
@@ -344,8 +341,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-list_events
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
@@ -376,8 +372,7 @@ describe('DrAutomationServiceV1', () => {
     // begin-get_event
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
     };
 

@@ -17,7 +17,7 @@
 /* eslint-disable no-console */
 
 const { readExternalSources } = require('ibm-cloud-sdk-core');
-const ServicebrokerV1 = require('../../dist/servicebroker/v1');
+const ServicebrokerV1 = require('../../dist/dr-automation-service/v1.js');
 const authHelper = require('../resources/auth-helper.js');
 
 // testcase timeout value (200s).

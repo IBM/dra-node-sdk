@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
+ * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
  */
 
 import * as extend from 'extend';
@@ -106,7 +106,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.apiKey - The new API key value that will replace the existing one.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>>}
    */
@@ -115,14 +114,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ValidationKeyResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'apiKey'];
-    const _validParams = [
-      'instanceId',
-      'apiKey',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
+    const _validParams = ['instanceId', 'apiKey', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -158,7 +150,6 @@ class DrAutomationServiceV1 extends BaseService {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -179,7 +170,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetGRSLocationPairResponse>>}
    */
@@ -188,7 +178,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetGRSLocationPairResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -218,7 +208,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -239,7 +228,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetDrLocationsResponse>>}
    */
@@ -248,7 +236,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.GetDrLocationsResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -278,7 +266,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -299,7 +286,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmMapResponse>>}
    */
@@ -308,7 +294,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ManagedVmMapResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -338,7 +324,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -360,7 +345,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrAutomationGetSummaryResponse>>}
    */
@@ -369,7 +353,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrAutomationGetSummaryResponse>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -399,7 +383,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -425,7 +408,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.primaryWorkspaceName - The primary Power virtual server workspace name.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {string} [params.standbyWorkspaceName] - The standby Power virtual server workspace name.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.MachineTypesByWorkspace>>}
@@ -439,7 +421,6 @@ class DrAutomationServiceV1 extends BaseService {
       'instanceId',
       'primaryWorkspaceName',
       'acceptLanguage',
-      'ifNoneMatch',
       'standbyWorkspaceName',
       'signal',
       'headers',
@@ -479,7 +460,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -500,7 +480,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.locationId - Location ID value.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>>}
    */
@@ -509,7 +488,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.DrData>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'locationId'];
-    const _validParams = ['instanceId', 'locationId', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'locationId', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -543,7 +522,6 @@ class DrAutomationServiceV1 extends BaseService {
           this.baseOptions.headers,
           {
             'Accept': 'application/json',
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -562,31 +540,28 @@ class DrAutomationServiceV1 extends BaseService {
   /**
    * Create DR Deployment.
    *
-   * Creates Orchestrator VM in the given workspace and configuration. Orchestrator VM can be used to manage multiple
-   * virtual servers and help ensure continuous availability. For more details, refer Deploying the Orchestrator -
+   * Creates DR Deployment by creating Orchestrator instance in the given PowerVS workspace and configuration.
+   * Orchestrator instance can be used to manage multiple virtual servers and ensure continuous availability. For more
+   * details, refer Deploying the Orchestrator -
    * https://cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-idep-the-orch.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
+   * @param {string} params.locationId - The location or data center identifier where the service instance is deployed.
+   * @param {string} params.machineType - The machine type used for deploying orchestrator.
+   * @param {string} params.orchestratorLocationType - The cloud location where your orchestator need to be created.
+   * @param {string} params.orchestratorName - The username used for the orchestrator.
+   * @param {string} params.orchestratorPassword - The password that you can use to access your orchestrator.
+   * @param {string} params.orchestratorWorkspaceId - The unique identifier orchestrator workspace.
    * @param {string} [params.apiKey] - The api Key of the service instance for deploying the disaster recovery service.
    * @param {string} [params.clientId] - The Client Id created for MFA authentication API.
    * @param {string} [params.clientSecret] - The client secret created for MFA authentication API.
    * @param {string} [params.guid] - The global unique identifier of the service instance.
-   * @param {string} [params.locationId] - The location or data center identifier where the service instance is
-   * deployed.
-   * @param {string} [params.machineType] - The machine type used for deploying orchestrator.
    * @param {boolean} [params.orchestratorHa] - Indicates whether the orchestrator High Availability (HA) is enabled for
    * the service instance.
-   * @param {string} [params.orchestratorLocationType] - The cloud location where your orchestator need to be created.
-   * @param {string} [params.orchestratorName] - The username used for the orchestrator.
-   * @param {string} [params.orchestratorPassword] - The password that you can use to access your orchestrator.
-   * @param {string} [params.orchestratorWorkspaceId] - The unique identifier orchestrator workspace.
-   * @param {string} [params.orchestratorWorkspaceLocation] - The location of the orchestrator workspace.
    * @param {string} [params.proxyIp] - Proxy IP for the Communication between Orchestrator and Service broker.
    * @param {string} [params.regionId] - The power virtual server region where the service instance is deployed.
    * @param {string} [params.resourceInstance] - The uniquie identifier of the associated IBM Cloud resource instance.
-   * @param {string} [params.secondaryWorkspaceId] - The unique identifier of the secondary workspace used for the
-   * disaster recovery.
    * @param {string} [params.secret] - The secret name or identifier used for retrieving credentials from secrets
    * manager.
    * @param {string} [params.secretGroup] - The secret group name in IBM Cloud Secrets Manager containing sensitive data
@@ -596,14 +571,12 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.standbyOrchestratorName] - The username for the standby orchestrator management interface.
    * @param {string} [params.standbyOrchestratorWorkspaceId] - The unique identifier of the standby orchestrator
    * workspace.
-   * @param {string} [params.standbyOrchestratorWorkspaceLocation] - The location of the standby orchestrator workspace.
    * @param {string} [params.standbyTier] - The storage tier used for deploying standby orchestrator.
    * @param {string} [params.tenantName] - The tenant name for MFA authentication API.
    * @param {string} [params.tier] - The storage tier used for deploying primary orchestrator.
    * @param {string} [params.standByRedeploy] - Flag to indicate if standby should be redeployed (must be "true" or
    * "false").
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {boolean} [params.acceptsIncomplete] - A value of true indicates that both the IBM Cloud platform and the
    * requesting client support asynchronous deprovisioning.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -613,38 +586,42 @@ class DrAutomationServiceV1 extends BaseService {
     params: DrAutomationServiceV1.CreateManageDrParams
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceManageDR>> {
     const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = [
+    const _requiredParams = [
       'instanceId',
-      'apiKey',
-      'clientId',
-      'clientSecret',
-      'guid',
       'locationId',
       'machineType',
-      'orchestratorHa',
       'orchestratorLocationType',
       'orchestratorName',
       'orchestratorPassword',
       'orchestratorWorkspaceId',
-      'orchestratorWorkspaceLocation',
+    ];
+    const _validParams = [
+      'instanceId',
+      'locationId',
+      'machineType',
+      'orchestratorLocationType',
+      'orchestratorName',
+      'orchestratorPassword',
+      'orchestratorWorkspaceId',
+      'apiKey',
+      'clientId',
+      'clientSecret',
+      'guid',
+      'orchestratorHa',
       'proxyIp',
       'regionId',
       'resourceInstance',
-      'secondaryWorkspaceId',
       'secret',
       'secretGroup',
       'sshKeyName',
       'standbyMachineType',
       'standbyOrchestratorName',
       'standbyOrchestratorWorkspaceId',
-      'standbyOrchestratorWorkspaceLocation',
       'standbyTier',
       'tenantName',
       'tier',
       'standByRedeploy',
       'acceptLanguage',
-      'ifNoneMatch',
       'acceptsIncomplete',
       'signal',
       'headers',
@@ -655,29 +632,26 @@ class DrAutomationServiceV1 extends BaseService {
     }
 
     const body = {
-      'api_key': _params.apiKey,
-      'client_id': _params.clientId,
-      'client_secret': _params.clientSecret,
-      'guid': _params.guid,
       'location_id': _params.locationId,
       'machine_type': _params.machineType,
-      'orchestrator_ha': _params.orchestratorHa,
       'orchestrator_location_type': _params.orchestratorLocationType,
       'orchestrator_name': _params.orchestratorName,
       'orchestrator_password': _params.orchestratorPassword,
       'orchestrator_workspace_id': _params.orchestratorWorkspaceId,
-      'orchestrator_workspace_location': _params.orchestratorWorkspaceLocation,
+      'api_key': _params.apiKey,
+      'client_id': _params.clientId,
+      'client_secret': _params.clientSecret,
+      'guid': _params.guid,
+      'orchestrator_ha': _params.orchestratorHa,
       'proxy_ip': _params.proxyIp,
       'region_id': _params.regionId,
       'resource_instance': _params.resourceInstance,
-      'secondary_workspace_id': _params.secondaryWorkspaceId,
       'secret': _params.secret,
       'secret_group': _params.secretGroup,
       'ssh_key_name': _params.sshKeyName,
       'standby_machine_type': _params.standbyMachineType,
       'standby_orchestrator_name': _params.standbyOrchestratorName,
       'standby_orchestrator_workspace_id': _params.standbyOrchestratorWorkspaceId,
-      'standby_orchestrator_workspace_location': _params.standbyOrchestratorWorkspaceLocation,
       'standby_tier': _params.standbyTier,
       'tenant_name': _params.tenantName,
       'tier': _params.tier,
@@ -715,7 +689,6 @@ class DrAutomationServiceV1 extends BaseService {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -740,7 +713,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>>}
    */
@@ -749,7 +721,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -779,7 +751,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -806,7 +777,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.fromTime] - A from query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.toTime] - A to query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.EventCollection>>}
    */
@@ -821,7 +791,6 @@ class DrAutomationServiceV1 extends BaseService {
       'fromTime',
       'toTime',
       'acceptLanguage',
-      'ifNoneMatch',
       'signal',
       'headers',
     ];
@@ -861,7 +830,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -883,7 +851,6 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.instanceId - instance id of instance to provision.
    * @param {string} params.eventId - Event ID.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.Event>>}
    */
@@ -892,14 +859,7 @@ class DrAutomationServiceV1 extends BaseService {
   ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.Event>> {
     const _params = { ...params };
     const _requiredParams = ['instanceId', 'eventId'];
-    const _validParams = [
-      'instanceId',
-      'eventId',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
+    const _validParams = ['instanceId', 'eventId', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -926,7 +886,6 @@ class DrAutomationServiceV1 extends BaseService {
           {
             'Accept': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -981,8 +940,6 @@ namespace DrAutomationServiceV1 {
     apiKey: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getDrGrsLocationPair` operation. */
@@ -991,8 +948,6 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getDrLocations` operation. */
@@ -1001,8 +956,6 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getDrManagedVm` operation. */
@@ -1011,8 +964,6 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getDrSummary` operation. */
@@ -1021,8 +972,6 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getMachineType` operation. */
@@ -1033,8 +982,6 @@ namespace DrAutomationServiceV1 {
     primaryWorkspaceName: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
     /** The standby Power virtual server workspace name. */
     standbyWorkspaceName?: string;
   }
@@ -1045,14 +992,24 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** Location ID value. */
     locationId: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `createManageDr` operation. */
   export interface CreateManageDrParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
+    /** The location or data center identifier where the service instance is deployed. */
+    locationId: string;
+    /** The machine type used for deploying orchestrator. */
+    machineType: string;
+    /** The cloud location where your orchestator need to be created. */
+    orchestratorLocationType: string;
+    /** The username used for the orchestrator. */
+    orchestratorName: string;
+    /** The password that you can use to access your orchestrator. */
+    orchestratorPassword: string;
+    /** The unique identifier orchestrator workspace. */
+    orchestratorWorkspaceId: string;
     /** The api Key of the service instance for deploying the disaster recovery service. */
     apiKey?: string;
     /** The Client Id created for MFA authentication API. */
@@ -1061,30 +1018,14 @@ namespace DrAutomationServiceV1 {
     clientSecret?: string;
     /** The global unique identifier of the service instance. */
     guid?: string;
-    /** The location or data center identifier where the service instance is deployed. */
-    locationId?: string;
-    /** The machine type used for deploying orchestrator. */
-    machineType?: string;
     /** Indicates whether the orchestrator High Availability (HA) is enabled for the service instance. */
     orchestratorHa?: boolean;
-    /** The cloud location where your orchestator need to be created. */
-    orchestratorLocationType?: string;
-    /** The username used for the orchestrator. */
-    orchestratorName?: string;
-    /** The password that you can use to access your orchestrator. */
-    orchestratorPassword?: string;
-    /** The unique identifier orchestrator workspace. */
-    orchestratorWorkspaceId?: string;
-    /** The location of the orchestrator workspace. */
-    orchestratorWorkspaceLocation?: string;
     /** Proxy IP for the Communication between Orchestrator and Service broker. */
     proxyIp?: string;
     /** The power virtual server region where the service instance is deployed. */
     regionId?: string;
     /** The uniquie identifier of the associated IBM Cloud resource instance. */
     resourceInstance?: string;
-    /** The unique identifier of the secondary workspace used for the disaster recovery. */
-    secondaryWorkspaceId?: string;
     /** The secret name or identifier used for retrieving credentials from secrets manager. */
     secret?: string;
     /** The secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
@@ -1097,8 +1038,6 @@ namespace DrAutomationServiceV1 {
     standbyOrchestratorName?: string;
     /** The unique identifier of the standby orchestrator workspace. */
     standbyOrchestratorWorkspaceId?: string;
-    /** The location of the standby orchestrator workspace. */
-    standbyOrchestratorWorkspaceLocation?: string;
     /** The storage tier used for deploying standby orchestrator. */
     standbyTier?: string;
     /** The tenant name for MFA authentication API. */
@@ -1109,8 +1048,6 @@ namespace DrAutomationServiceV1 {
     standByRedeploy?: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
     /** A value of true indicates that both the IBM Cloud platform and the requesting client support asynchronous
      *  deprovisioning.
      */
@@ -1123,8 +1060,6 @@ namespace DrAutomationServiceV1 {
     instanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `listEvents` operation. */
@@ -1139,8 +1074,6 @@ namespace DrAutomationServiceV1 {
     toTime?: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getEvent` operation. */
@@ -1151,8 +1084,6 @@ namespace DrAutomationServiceV1 {
     eventId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /*************************
