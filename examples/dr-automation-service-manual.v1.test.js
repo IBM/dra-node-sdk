@@ -65,8 +65,8 @@ describe('DrAutomationServiceV1', () => {
     // end-common
   });
 
-  // 1. ManageDR with HA + schematic id + sshkey
-  test('ServiceInstanceManageDr with HA + schematic id + sshkey', async () => {
+  //  ---------- 1. HA with SSHKey ----------
+  test('ServiceInstanceManageDr HA with sshkey', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -76,27 +76,32 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('\nServiceInstanceManageDr() - HA with schematic id + sshkey:');
+    originalLog('\ncreate_manage_dr_ha_with_sshkey() result:');
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
+      instanceId:'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh1::',
       orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
-      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
       orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh1dsdkks',
-      orchestratorPassword: 'testString',
+      orchestratorName: 'drautomationprimarymh1',
+      orchestratorPassword: 'EverytimeNewPassword@1',
       machineType: 's922',
       tier: 'tier1',
-      sshKeyName: 'abcKey',
-      action: 'done',
-      apiKey: 'api-key-here',
-      standbyOrchestratorName: 'drautomationstandbymh1dd',
+      sshKeyName: 'vijaykey',
+      apiKey: 'apikey is required',
+
+      // HA standby fields
+      standbyOrchestratorName: 'drautomationstandbymh1',
       standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
       standbyMachineType: 's922',
+      standbyTier: 'tier1',
+      standByRedeploy: 'false',
+
+      // MFA
+      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      tenantName: 'xxx.ibm.com',
     };
 
     let res;
@@ -110,8 +115,8 @@ describe('DrAutomationServiceV1', () => {
     }
   }, 20000);
 
-  // 2. ManageDR with HA + custom VPC + sshkey
-  test('ServiceInstanceManageDr with HA + custom VPC + sshkey', async () => {
+  // 2. ---------- 2. HA with Secrets ----------
+  test('ServiceInstanceManageDr HA with secrets', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -121,277 +126,139 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('\nServiceInstanceManageDr() - HA with custom VPC + sshkey:');
+    originalLog('\ncreate_manage_dr_ha_with_secrets() result:');
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
+      instanceId: 'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh3::',
       orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxyIp: '10.30.40.4:3128',
       orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh2testkffff',
-      orchestratorPassword: 'testString',
+      orchestratorName: 'drautomationprimarymh3',
+      orchestratorPassword: 'EverytimeNewPassword@1',
       machineType: 's922',
       tier: 'tier1',
-      sshKeyName: 'abcKey',
-      action: 'done',
-      apiKey: 'api-key-here',
-      standbyOrchestratorName: 'drautomationstandbymh2testjd',
-      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      standbyMachineType: 's922',
-    };
 
-    let res;
-    try {
-      res = await drAutomationServiceService.createManageDr(params);
-      expect(res).toBeDefined();
-      expect(res.result).not.toBeNull();
-      originalLog(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-  }, 20000);
-
-  // 3. ManageDR with HA + schematic id + secrets
-  test('ServiceInstanceManageDr with HA + schematic id + secrets', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('\nServiceInstanceManageDr() - HA with schematic id + secrets:');
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
-      orchestratorHa: true,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh3testfd',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      secretGroup: 'secret-group-here',
-      secret: 'secret-here',
-      regionId: 'us-south',
-      action: 'done',
-      apiKey: 'api-key-here',
-      standbyOrchestratorName: 'drautomationstandbymh2testjdd',
-      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      standbyMachineType: 's922',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.createManageDr(params);
-      expect(res).toBeDefined();
-      expect(res.result).not.toBeNull();
-      originalLog(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-  }, 20000);
-
-  // 4. ManageDR with HA + custom VPC + secrets
-  test('ServiceInstanceManageDr with HA + custom VPC + secrets', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('\nServiceInstanceManageDr() - HA with custom VPC + secrets:');
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      orchestratorHa: true,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxyIp: '10.30.40.4:3128',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymnhdnn',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      secretGroup: 'secret-group-here',
-      secret: 'secret-here',
-      action: 'done',
-      apiKey: 'api-key-here',
-      standbyOrchestratorName: 'drautomationstandbymh2tesddadd',
-      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
-      standbyMachineType: 's922',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.createManageDr(params);
-      expect(res).toBeDefined();
-      expect(res.result).not.toBeNull();
-      originalLog(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-  }, 20000);
-
-  // -------- Non-HA Cases ---------
-
-  // 1. ManageDR without HA + schematic id + sshkey
-  test('ServiceInstanceManageDr without HA + schematic id + sshkey', async () => {
-    console.log('\nServiceInstanceManageDr() - HA without schematic id + sshkey:');
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
-      // instanceId: "crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mh1::",
-      orchestratorHa: false,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh1dsds',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
-      sshKeyName: 'abcKey',
-      action: 'done',
-      apiKey: 'api-key-here',
-      // standbyOrchestratorName: "drautomationstandbymh1",
-      // standbyOrchestratorWorkspaceId: "71027b79-0e31-44f6-a499-63eca1a66feb",
-      // standbyMachineType: "s922"
-    };
-
-    const response = await drAutomationServiceService.createManageDr(params);
-
-    expect(response).toBeDefined();
-    expect(response.result).toBeDefined();
-    expect(response.status).toBe(200);
-
-    console.log(JSON.stringify(response.result, null, 2));
-  }, 20000);
-
-  // 2. ManageDR without HA + custom VPC + sshkey
-
-  test('ServiceInstanceManageDr without HA + custom VPC + sshkey', async () => {
-    console.log('\nServiceInstanceManageDr() - without HA custom VPC + sshkey:');
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
-      orchestratorHa: false,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxyIp: '10.30.40.4:3128',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh2testk',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
-      sshKeyName: 'abcKey',
-      action: 'done',
-      apiKey: 'api-key-here',
-      // standbyOrchestratorName: "drautomationstandbymh2testj",
-      // standbyOrchestratorWorkspaceId: "71027b79-0e31-44f6-a499-63eca1a66feb",
-      // standbyMachineType: "s922",
-    };
-
-    const response = await drAutomationServiceService.createManageDr(params);
-
-    // ✅ Wrap in expect so Jest knows this is part of the test
-    await expect(Promise.resolve(response.status)).resolves.toBe(200);
-
-    console.log('ServiceInstanceManageDr Response:', JSON.stringify(response.result, null, 2));
-
-    expect(response.result).not.toBeNull();
-  }, 20000);
-
-  // 3. ManageDR without HA + schematic id + secrets
-  test('ServiceInstanceManageDr without HA + schematic id + secrets', async () => {
-    console.log('\nServiceInstanceManageDr() - HA without schematic id + secrets:');
-
-    const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
-      orchestratorHa: false,
-      orchestratorLocationType: 'off-premises',
-      locationId: 'dal10',
-      schematicWorkspaceId: 'us-south.workspace.projects-service.3ae96a02',
-      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymh3testf',
-      orchestratorPassword: 'testString',
-      machineType: 's922',
-      tier: 'tier1',
+      // Secrets Model
       guid: '397dc20d-9f66-46dc-a750-d15392872023',
       secretGroup: '12345-714f-86a6-6a50-2f128a4e7ac2',
-      secret: 'secret-here',
+      secret: '12345-997c-1d0d-5503-27ca856f2b5a',
       regionId: 'us-south',
-      action: 'done',
-      apiKey: 'api-key-here',
+
+      apiKey: 'apikey is required',
+
+      // HA standby fields
+      standbyOrchestratorName: 'drautomationstandbymh3',
+      standbyOrchestratorWorkspaceId: '71027b79-0e31-44f6-a499-63eca1a66feb',
+      standbyMachineType: 's922',
+      standbyTier: 'tier1',
+      standByRedeploy: 'false',
+
+      // MFA
+      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      tenantName: 'xxx.ibm.com',
     };
 
-    const response = await drAutomationServiceService.createManageDr(params);
-
-    console.log(JSON.stringify(response.result, null, 2));
-
-    expect(response.status).toBe(200);
-    expect(response.result).not.toBeNull();
+    let res;
+    try {
+      res = await drAutomationServiceService.createManageDr(params);
+      expect(res).toBeDefined();
+      expect(res.result).not.toBeNull();
+      originalLog(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
   }, 20000);
 
-  // 4. ManageDR without HA + custom VPC + secrets
-  test('ServiceInstanceManageDr without HA + custom VPC + secrets', async () => {
-    console.log('\nServiceInstanceManageDr() - HA without custom VPC + secrets:');
+  // ---------- 3. Non-HA with SSHKey ----------
+  test('ServiceInstanceManageDr Non-HA with sshkey', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('\ncreate_manage_dr_nonha_with_sshkey() result:');
 
     const params = {
-      instanceId:
-        'crn:v1:staging:public:power-dr-automation:global:a/6462f6198c864dd7b0cbf10ea0d073e4:f78deba4-3e87-4bd1-85c0-7c8412cdb14a::',
-      standByRedeploy: 'true',
+      instanceId:'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mnh5::',
       orchestratorHa: false,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
-      vpcId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
-      transitGatewayId: '024fcff9-c676-46e4-ad42-3b2d349c9f8f',
-      proxyIp: '10.30.40.4:3128',
       orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      orchestratorName: 'drautomationprimarymnh8dddnn',
-      orchestratorPassword: 'testString',
+      orchestratorName: 'drautomationprimarymnh5',
+      orchestratorPassword: 'EverytimeNewPassword@1',
       machineType: 's922',
       tier: 'tier1',
-      guid: '397dc20d-9f66-46dc-a750-d15392872023',
-      secretGroup: 'secret-group-here',
-      secret: 'secret-here',
-      action: 'done',
-      apiKey: 'api-key-here',
+      sshKeyName: 'vijaykey',
+      apiKey: 'apikey is required',
+
+      // MFA
+      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      tenantName: 'xxx.ibm.com',
     };
 
-    const response = await drAutomationServiceService.createManageDr(params);
+    let res;
+    try {
+      res = await drAutomationServiceService.createManageDr(params);
+      expect(res).toBeDefined();
+      expect(res.result).not.toBeNull();
+      originalLog(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+  }, 20000);
 
-    console.log(JSON.stringify(response.result, null, 2));
+  // ---------- 4. Non-HA with Secrets ----------
+  test('ServiceInstanceManageDr Non-HA with secrets', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
 
-    expect(response.status).toBe(200);
-    expect(response.result).not.toBeNull();
+    originalLog('\ncreate_manage_dr_nonha_with_secrets() result:');
+
+    const params = {
+      instanceId: 'crn:v1:staging:public:power-dr-automation:global:a/a09202c1bfb04ceebfb4a9fd38c87721:050ebe3b-13f4-4db8-8ece-501a3c13be80mnh7::',
+      orchestratorHa: false,
+      orchestratorLocationType: 'off-premises',
+      locationId: 'dal10',
+      orchestratorWorkspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
+      orchestratorName: 'drautomationprimarymnh7',
+      orchestratorPassword: 'EverytimeNewPassword@1',
+      machineType: 's922',
+      tier: 'tier1',
+
+      guid: '397dc20d-9f66-46dc-a750-d15392872023',
+      secretGroup: '12345-714f-86a6-6a50-2f128a4e7ac2',
+      secret: '12345-997c-1d0d-5503-27ca856f2b5a',
+      regionId: 'us-south',
+
+      apiKey: 'apikey is required',
+
+      // MFA
+      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      tenantName: 'xxx.ibm.com',
+    };
+
+    let res;
+    try {
+      res = await drAutomationServiceService.createManageDr(params);
+      expect(res).toBeDefined();
+      expect(res.result).not.toBeNull();
+      originalLog(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
   }, 20000);
 });
