@@ -1212,7 +1212,7 @@ namespace DrAutomationServiceV1 {
    */
   export interface EventCollection {
     /** Events. */
-    event: Event[];
+    events: Event[];
   }
 
   /**

@@ -39,9 +39,10 @@
     "node": ">=24.9.0"
   },
   "dependencies": {
+    "@ibm-cloud/platform-services": "^0.79.0",
     "@types/node": "^24.9.1",
     "extend": "3.0.2",
-    "ibm-cloud-sdk-core": "^5.4.1"
+    "ibm-cloud-sdk-core": "^5.4.4"
   },
   "devDependencies": {
     "@ibm-cloud/sdk-test-utilities": "^1.0.0",

@@ -18,7 +18,7 @@
  */
 
 /* eslint-disable no-console */
-
+const { IamAuthenticator } = require('ibm-cloud-sdk-core');
 const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
