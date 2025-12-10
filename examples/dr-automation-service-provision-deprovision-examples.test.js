@@ -19,7 +19,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   const planName = 'power-virtual-server-dr-automation';
   const resourceInstanceName = 'mympsdktest-temp2';
   const targetRegion = 'global';
-  const iamAPIKey = 'Z7l54jd5ixAoXfWCwFTgGFEFiLyNs5Uh0wuTT1wO9bOj'; // Replace with valid key
+  const iamAPIKey = 'api-key'; // Replace with valid key
 
   // ----------------------------------------------
   // INITIALIZE SERVICE CLIENT

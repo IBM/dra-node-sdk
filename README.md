@@ -68,6 +68,25 @@ const DrAutomationServiceV1 = require('dra-node-sdk');
 For general SDK usage information, please see
 [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/main/README.md)
 
+### Environment Configuration
+
+The SDK can be configured using environment variables. Here's an example configuration:
+
+```bash
+# Service URL (for development/testing)
+export DR_AUTOMATION_SERVICE_URL=https://power-dra.cloud.ibm.com
+
+# Authentication type
+export DR_AUTOMATION_SERVICE_AUTH_TYPE=bearerToken
+
+# Bearer token for authentication
+export DR_AUTOMATION_SERVICE_BEARER_TOKEN=eyJraWQiOiIyMDE5MD......
+```
+
+**Note:** The bearer token shown above is an example. For production use:
+- Use the actual service endpoint URL 
+- Generate your own valid IAM bearer token
+
 ## Questions
 
 If you are having difficulties using this SDK or have a question about the IBM Cloud services,
