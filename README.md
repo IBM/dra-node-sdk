@@ -60,7 +60,7 @@ npm install @ibm-cloud/dr-automation-service
 ## How to Import 
 
 ```sh
-const DrAutomationServiceV1 = require('dra-node-sdk');
+const DrAutomationServiceV1 = require('@ibm-cloud/dr-automation-service');
 ```
 
 
