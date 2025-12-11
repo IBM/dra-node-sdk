@@ -54,7 +54,7 @@ Service Name | Import Path
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com/IBM/dra-node-sdk.git
+npm install @ibm-cloud/dr-automation-service
 ```
 
 ## How to Import 
