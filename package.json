@@ -1,5 +1,5 @@
 {
-  "name": "dra-node-sdk",
+  "name": "@ibm-cloud/dr-automation-service",
   "version": "0.0.1",
   "description": "IBM Cloud DrAutomation Node SDK",
   "repository": {
@@ -39,6 +39,7 @@
     "node": ">=24.9.0"
   },
   "dependencies": {
+    "@ibm-cloud/platform-services": "^0.79.1",
     "@types/node": "^24.9.1",
     "dotenv": "^16.4.5",
     "extend": "3.0.2",
