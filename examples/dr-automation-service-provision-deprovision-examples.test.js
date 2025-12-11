@@ -16,7 +16,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   let resourceControllerService;
 
   // Configurable values
-  const resourceGroup = '9d445dfd58484a489220751d0077f906';
+  const resourceGroup = '12345678-1234-1234-1234-123456789012'; // Replace with valid resource group ID
   const serviceName = 'power-dr-automation';
   const planName = 'power-virtual-server-dr-automation';
   const resourceInstanceName = 'mympsdktest-temp2';
