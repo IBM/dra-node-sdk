@@ -89,5 +89,10 @@
     "example": "examples",
     "lib": "lib",
     "test": "test"
-  }
+  },
+  "types": "./dr-automation-service/v1.d.ts",
+  "bugs": {
+    "url": "https://github.com/IBM/dra-node-sdk/issues"
+  },
+  "homepage": "https://github.com/IBM/dra-node-sdk#readme"
 }
