@@ -16,7 +16,7 @@
     "eslint:check": "eslint . --cache",
     "lint": "npm run eslint:check",
     "lint-fix": "npm run eslint:fix",
-    "build": "tsc && cp package.json dist/ && mkdir -p dist/test/resources && cp test/resources/auth-helper.js dist/test/resources/",
+    "build": "tsc && mkdir -p dist && cp package.json dist/ && mkdir -p dist/test/resources && cp test/resources/auth-helper.js dist/test/resources/",
     "prepublishOnly": "npm run build",
     "prepare": "npm run build && mkdir -p auth && cp test/resources/auth-helper.js auth/ && shx cp -r dist/* . && shx rm -rf dist",
     "postversion": "",
