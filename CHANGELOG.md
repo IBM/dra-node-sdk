@@ -3,6 +3,13 @@
 
 ### Bug Fixes
 
+* inital commit ([23ff263](https://github.com/IBM/dra-node-sdk/commit/23ff2638ec12e6697ec965986719059091cb15b4))
+
+## [0.0.1](https://github.com/IBM/dra-node-sdk/compare/v0.0.0...v0.0.1) (2025-12-12)
+
+
+### Bug Fixes
+
 * inital commit ([c0b43db](https://github.com/IBM/dra-node-sdk/commit/c0b43dbbdd8d6833236bab1ecd454dc4498d6c9b))
 
 ## [0.0.2](https://github.com/IBM/dra-node-sdk/compare/v0.0.1...v0.0.2) (2025-12-12)
