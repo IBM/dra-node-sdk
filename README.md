@@ -54,13 +54,13 @@ Service Name | Import Path
 ## Installation
 
 ```sh
-npm install @ibm-cloud/dr-automation-service
+npm install @ibm-cloud/ibm-dr-automation-service
 ```
 
 ## How to Import 
 
 ```sh
-const DrAutomationServiceV1 = require('@ibm-cloud/dr-automation-service');
+const DrAutomationServiceV1 = require('@ibm-cloud/ibm-dr-automation-service');
 ```
 
 

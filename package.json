@@ -1,5 +1,5 @@
 {
-  "name": "@ibm-cloud/dr-automation-service",
+  "name": "@ibm-cloud/ibm-dr-automation-service",
   "version": "0.0.1",
   "description": "IBM Cloud DrAutomation Node SDK",
   "repository": {
