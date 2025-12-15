@@ -1,3 +1,10 @@
+## [0.0.1](https://github.com/IBM/dra-node-sdk/compare/v0.0.0...v0.0.1) (2025-12-15)
+
+
+### Bug Fixes
+
+* inital commit ([c4ed91a](https://github.com/IBM/dra-node-sdk/commit/c4ed91a5f317bccea02a7fd2d6b78a907cf2a005))
+
 # 1.0.0 (2025-12-15)
 
 
