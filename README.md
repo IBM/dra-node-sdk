@@ -43,7 +43,7 @@ IBM Cloud services:
 
 Service Name | Import Path
 --- | ---
-[DrAutomation Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
+[DrAutomation Service](https://cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
 
 ## Prerequisites
 * You need an [IBM Cloud][ibm-cloud-onboarding] account.
@@ -54,13 +54,13 @@ Service Name | Import Path
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.ibm.com/DRAutomation/dra-node-sdk.git
+npm install @ibm-cloud/ibm-dr-automation-service
 ```
 
 ## How to Import 
 
 ```sh
-const DrAutomationServiceV1 = require('dra-node-sdk');
+const DrAutomationServiceV1 = require('@ibm-cloud/ibm-dr-automation-service');
 ```
 
 
@@ -95,7 +95,7 @@ please ask a question at
 
 ## Issues
 If you encounter an issue with the SDK, you are welcome to submit
-a [bug report](https://github.ibm.com/DRAutomation/dra-node-sdk/issues).
+a [bug report](https://github.com/IBM/dra-node-sdk/issues).
 Before that, please search for similar issues. It's possible someone has
 already encountered this issue.
 
