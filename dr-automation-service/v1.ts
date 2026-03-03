@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -395,6 +395,68 @@ class DrAutomationServiceV1 extends BaseService {
     return this.createRequest(parameters);
   }
   /*************************
+   * drAutomationServiceInstance
+   ************************/
+
+  /**
+   * View details of Last operation performed on the instance.
+   *
+   * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
+   * updating, or deprovisioning.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.instanceId - instance id of instance to provision.
+   * @param {string} [params.acceptLanguage] - The language requested for the return document.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>>}
+   */
+  public getLastOperation(
+    params: DrAutomationServiceV1.GetLastOperationParams
+  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>> {
+    const _params = { ...params };
+    const _requiredParams = ['instanceId'];
+    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'instance_id': _params.instanceId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
+      'v1',
+      'getLastOperation'
+    );
+
+    const parameters = {
+      options: {
+        url: '/drautomation/v1/last_operation/{instance_id}',
+        method: 'GET',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          this.baseOptions.headers,
+          {
+            'Accept': 'application/json',
+            'Accept-Language': _params.acceptLanguage,
+          },
+          _params.headers
+        ),
+        axiosOptions: {
+          signal: _params.signal,
+        },
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+  /*************************
    * drAutomationIbmCloud
    ************************/
 
@@ -559,9 +621,13 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.guid] - The global unique identifier of the service instance.
    * @param {boolean} [params.orchestratorHa] - Indicates whether the orchestrator High Availability (HA) is enabled for
    * the service instance.
+   * @param {string[]} [params.orchestratorNetworkIds] - List of network IDs for primary orchestrator VM.
+   * @param {string} [params.orchestratorWorkspaceLocation] - The location of the orchestrator workspace.
    * @param {string} [params.proxyIp] - Proxy IP for the Communication between Orchestrator and Service broker.
    * @param {string} [params.regionId] - The power virtual server region where the service instance is deployed.
    * @param {string} [params.resourceInstance] - The uniquie identifier of the associated IBM Cloud resource instance.
+   * @param {string} [params.secondaryWorkspaceId] - The unique identifier of the secondary workspace used for the
+   * disaster recovery.
    * @param {string} [params.secret] - The secret name or identifier used for retrieving credentials from secrets
    * manager.
    * @param {string} [params.secretGroup] - The secret group name in IBM Cloud Secrets Manager containing sensitive data
@@ -569,8 +635,11 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} [params.sshKeyName] - The name of the SSH key used for deploying the orchestator.
    * @param {string} [params.standbyMachineType] - The machine type used for deploying standby virtual machines.
    * @param {string} [params.standbyOrchestratorName] - The username for the standby orchestrator management interface.
+   * @param {string[]} [params.standbyOrchestratorNetworkIds] - List of network IDs for standby orchestrator VM.
+   * @param {string} [params.standbySshKeyName] - The name of the SSH key used for deploying the standby orchestator.
    * @param {string} [params.standbyOrchestratorWorkspaceId] - The unique identifier of the standby orchestrator
    * workspace.
+   * @param {string} [params.standbyOrchestratorWorkspaceLocation] - The location of the standby orchestrator workspace.
    * @param {string} [params.standbyTier] - The storage tier used for deploying standby orchestrator.
    * @param {string} [params.tenantName] - The tenant name for MFA authentication API.
    * @param {string} [params.tier] - The storage tier used for deploying primary orchestrator.
@@ -608,15 +677,21 @@ class DrAutomationServiceV1 extends BaseService {
       'clientSecret',
       'guid',
       'orchestratorHa',
+      'orchestratorNetworkIds',
+      'orchestratorWorkspaceLocation',
       'proxyIp',
       'regionId',
       'resourceInstance',
+      'secondaryWorkspaceId',
       'secret',
       'secretGroup',
       'sshKeyName',
       'standbyMachineType',
       'standbyOrchestratorName',
+      'standbyOrchestratorNetworkIds',
+      'standbySshKeyName',
       'standbyOrchestratorWorkspaceId',
+      'standbyOrchestratorWorkspaceLocation',
       'standbyTier',
       'tenantName',
       'tier',
@@ -643,15 +718,21 @@ class DrAutomationServiceV1 extends BaseService {
       'client_secret': _params.clientSecret,
       'guid': _params.guid,
       'orchestrator_ha': _params.orchestratorHa,
+      'orchestrator_network_ids': _params.orchestratorNetworkIds,
+      'orchestrator_workspace_location': _params.orchestratorWorkspaceLocation,
       'proxy_ip': _params.proxyIp,
       'region_id': _params.regionId,
       'resource_instance': _params.resourceInstance,
+      'secondary_workspace_id': _params.secondaryWorkspaceId,
       'secret': _params.secret,
       'secret_group': _params.secretGroup,
       'ssh_key_name': _params.sshKeyName,
       'standby_machine_type': _params.standbyMachineType,
       'standby_orchestrator_name': _params.standbyOrchestratorName,
+      'standby_orchestrator_network_ids': _params.standbyOrchestratorNetworkIds,
+      'standby_ssh_key_name': _params.standbySshKeyName,
       'standby_orchestrator_workspace_id': _params.standbyOrchestratorWorkspaceId,
+      'standby_orchestrator_workspace_location': _params.standbyOrchestratorWorkspaceLocation,
       'standby_tier': _params.standbyTier,
       'tenant_name': _params.tenantName,
       'tier': _params.tier,
@@ -701,68 +782,6 @@ class DrAutomationServiceV1 extends BaseService {
     return this.createRequest(parameters);
   }
   /*************************
-   * drAutomationServiceInstance
-   ************************/
-
-  /**
-   * View details of Last operation performed on the instance.
-   *
-   * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
-   * updating, or deprovisioning.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>>}
-   */
-  public getLastOperation(
-    params: DrAutomationServiceV1.GetLastOperationParams
-  ): Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>> {
-    const _params = { ...params };
-    const _requiredParams = ['instanceId'];
-    const _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'instance_id': _params.instanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      DrAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getLastOperation'
-    );
-
-    const parameters = {
-      options: {
-        url: '/drautomation/v1/last_operation/{instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-  /*************************
    * drEvents
    ************************/
 
@@ -773,7 +792,6 @@ class DrAutomationServiceV1 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
-   * @param {string} [params.time] - (deprecated - use from_time) A time in either ISO 8601 or unix epoch format.
    * @param {string} [params.fromTime] - A from query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.toTime] - A to query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
@@ -787,7 +805,6 @@ class DrAutomationServiceV1 extends BaseService {
     const _requiredParams = ['instanceId'];
     const _validParams = [
       'instanceId',
-      'time',
       'fromTime',
       'toTime',
       'acceptLanguage',
@@ -800,7 +817,6 @@ class DrAutomationServiceV1 extends BaseService {
     }
 
     const query = {
-      'time': _params.time,
       'from_time': _params.fromTime,
       'to_time': _params.toTime,
     };
@@ -974,6 +990,14 @@ namespace DrAutomationServiceV1 {
     acceptLanguage?: string;
   }
 
+  /** Parameters for the `getLastOperation` operation. */
+  export interface GetLastOperationParams extends DefaultParams {
+    /** instance id of instance to provision. */
+    instanceId: string;
+    /** The language requested for the return document. */
+    acceptLanguage?: string;
+  }
+
   /** Parameters for the `getMachineType` operation. */
   export interface GetMachineTypeParams extends DefaultParams {
     /** instance id of instance to provision. */
@@ -1020,12 +1044,18 @@ namespace DrAutomationServiceV1 {
     guid?: string;
     /** Indicates whether the orchestrator High Availability (HA) is enabled for the service instance. */
     orchestratorHa?: boolean;
+    /** List of network IDs for primary orchestrator VM. */
+    orchestratorNetworkIds?: string[];
+    /** The location of the orchestrator workspace. */
+    orchestratorWorkspaceLocation?: string;
     /** Proxy IP for the Communication between Orchestrator and Service broker. */
     proxyIp?: string;
     /** The power virtual server region where the service instance is deployed. */
     regionId?: string;
     /** The uniquie identifier of the associated IBM Cloud resource instance. */
     resourceInstance?: string;
+    /** The unique identifier of the secondary workspace used for the disaster recovery. */
+    secondaryWorkspaceId?: string;
     /** The secret name or identifier used for retrieving credentials from secrets manager. */
     secret?: string;
     /** The secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
@@ -1036,8 +1066,14 @@ namespace DrAutomationServiceV1 {
     standbyMachineType?: string;
     /** The username for the standby orchestrator management interface. */
     standbyOrchestratorName?: string;
+    /** List of network IDs for standby orchestrator VM. */
+    standbyOrchestratorNetworkIds?: string[];
+    /** The name of the SSH key used for deploying the standby orchestator. */
+    standbySshKeyName?: string;
     /** The unique identifier of the standby orchestrator workspace. */
     standbyOrchestratorWorkspaceId?: string;
+    /** The location of the standby orchestrator workspace. */
+    standbyOrchestratorWorkspaceLocation?: string;
     /** The storage tier used for deploying standby orchestrator. */
     standbyTier?: string;
     /** The tenant name for MFA authentication API. */
@@ -1054,20 +1090,10 @@ namespace DrAutomationServiceV1 {
     acceptsIncomplete?: boolean;
   }
 
-  /** Parameters for the `getLastOperation` operation. */
-  export interface GetLastOperationParams extends DefaultParams {
-    /** instance id of instance to provision. */
-    instanceId: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
-  }
-
   /** Parameters for the `listEvents` operation. */
   export interface ListEventsParams extends DefaultParams {
     /** instance id of instance to provision. */
     instanceId: string;
-    /** (deprecated - use from_time) A time in either ISO 8601 or unix epoch format. */
-    time?: string;
     /** A from query time in either ISO 8601 or unix epoch format. */
     fromTime?: string;
     /** A to query time in either ISO 8601 or unix epoch format. */
@@ -1297,6 +1323,8 @@ namespace DrAutomationServiceV1 {
    * Contains details about the orchestrator configuration.
    */
   export interface OrchestratorDetails {
+    /** api key. */
+    api_key: string;
     /** The deployment time of primary orchestrator VM. */
     last_updated_orchestrator_deployment_time: string;
     /** The deployment time of StandBy orchestrator VM. */
@@ -1339,6 +1367,8 @@ namespace DrAutomationServiceV1 {
     standby_orchestrator_status: string;
     /** The name of the standby orchestrator workspace. */
     standby_orchestrator_workspace_name: string;
+    /** SSH key name used for the standby orchestrator. */
+    standby_ssh_key_name: string;
     /** The name of the transit gateway. */
     transit_gateway_name: string;
     /** The name of the VPC. */
@@ -1418,6 +1448,8 @@ namespace DrAutomationServiceV1 {
     plan_name: string;
     /** Indicates the progress details of primary orchestrator creation. */
     primary_description: string;
+    /** Capture the error while creating primary orchestrator. */
+    primary_error_description: string;
     /** The IP address of the primary orchestrator VM. */
     primary_ip_address: string;
     /** The configuration status of the orchestrator cluster. */
@@ -1428,6 +1460,8 @@ namespace DrAutomationServiceV1 {
     resource_group: string;
     /** Indicates the progress details of primary orchestrator creation. */
     standby_description: string;
+    /** Capture the error while creating standby orchestrator. */
+    standby_error_description: string;
     /** The IP address of the standby orchestrator VM. */
     standby_ip_address: string;
     /** The current state of the standby orchestrator. */

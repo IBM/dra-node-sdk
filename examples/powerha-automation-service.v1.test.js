@@ -19,26 +19,26 @@
 
 /* eslint-disable no-console */
 
-const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
+const PowerhaAutomationServiceV1 = require('../dist/powerha-automation-service/v1');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values
 // const { readExternalSources } = require('ibm-cloud-sdk-core');
 
 //
-// This file provides an example of how to use the DrAutomation Service service.
+// This file provides an example of how to use the PowerhaAutomation Service service.
 //
 // The following configuration properties are assumed to be defined:
-// DR_AUTOMATION_SERVICE_URL=<service base url>
-// DR_AUTOMATION_SERVICE_AUTH_TYPE=iam
-// DR_AUTOMATION_SERVICE_APIKEY=<IAM apikey>
-// DR_AUTOMATION_SERVICE_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
+// POWERHA_AUTOMATION_SERVICE_URL=<service base url>
+// POWERHA_AUTOMATION_SERVICE_AUTH_TYPE=iam
+// POWERHA_AUTOMATION_SERVICE_APIKEY=<IAM apikey>
+// POWERHA_AUTOMATION_SERVICE_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
 //
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
 //
-const configFile = 'dr_automation_service_v1.env';
+const configFile = 'powerha_automation_service_v1.env';
 
 const describe = authHelper.prepareTests(configFile);
 
@@ -50,22 +50,22 @@ const originalWarn = console.warn;
 const consoleLogMock = jest.spyOn(console, 'log');
 const consoleWarnMock = jest.spyOn(console, 'warn');
 
-describe('DrAutomationServiceV1', () => {
+describe('PowerhaAutomationServiceV1', () => {
   // Service instance
-  let drAutomationServiceService;
+  let powerhaAutomationServiceService;
 
   // To access additional configuration values, uncomment this line and extract the values from config
-  // const config = readExternalSources(DrAutomationServiceV1.DEFAULT_SERVICE_NAME);
+  // const config = readExternalSources(PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME);
 
   test('Initialize service', async () => {
     // begin-common
 
-    drAutomationServiceService = DrAutomationServiceV1.newInstance();
+    powerhaAutomationServiceService = PowerhaAutomationServiceV1.newInstance();
 
     // end-common
   });
 
-  test('updateApikey request example', async () => {
+  test('getApiKey request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -75,26 +75,27 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('updateApikey() result:');
-    // begin-update_apikey
+    originalLog('getApiKey() result:');
+    // begin-get_api_key
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      apiKey: 'adfadfdsafsdfdsf',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.updateApikey(params);
+      res = await powerhaAutomationServiceService.getApiKey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-update_apikey
+    // end-get_api_key
   });
 
-  test('getDrGrsLocationPair request example', async () => {
+  test('createApiKey request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -104,25 +105,28 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getDrGrsLocationPair() result:');
-    // begin-get_dr_grs_location_pair
+    originalLog('createApiKey() result:');
+    // begin-create_api_key
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+      apiKey: 'test-string',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getDrGrsLocationPair(params);
+      res = await powerhaAutomationServiceService.createApiKey(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_dr_grs_location_pair
+    // end-create_api_key
   });
 
-  test('getDrLocations request example', async () => {
+  test('getClusterNode request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -132,53 +136,26 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getDrLocations() result:');
-    // begin-get_dr_locations
+    originalLog('getClusterNode() result:');
+    // begin-get_cluster_node
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getDrLocations(params);
+      res = await powerhaAutomationServiceService.getClusterNode(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_dr_locations
-  }, 20000);
-
-  test('getDrManagedVm request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getDrManagedVm() result:');
-    // begin-get_dr_managed_vm
-
-    const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getDrManagedVm(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_dr_managed_vm
+    // end-get_cluster_node
   });
 
-  test('getDrSummary request example', async () => {
+  test('createClusterNode request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -188,53 +165,28 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getDrSummary() result:');
-    // begin-get_dr_summary
+    originalLog('createClusterNode() result:');
+    // begin-create_cluster_node
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      primaryClusterNodes: ['ede4c36e-002c-48da-992e-6039d230c478'],
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getDrSummary(params);
+      res = await powerhaAutomationServiceService.createClusterNode(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_dr_summary
-  }, 20000);
-
-  test('getLastOperation request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getLastOperation() result:');
-    // begin-get_last_operation
-
-    const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getLastOperation(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_last_operation
+    // end-create_cluster_node
   });
 
-  test('getMachineType request example', async () => {
+  test('getPowervsWorkspace request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -244,27 +196,28 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getMachineType() result:');
-    // begin-get_machine_type
+    originalLog('getPowervsWorkspace() result:');
+    // begin-get_powervs_workspace
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      primaryWorkspaceName: 'Test-workspace-wdc06',
-      standbyWorkspaceName: 'Test-workspace-wdc07',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      locationId: 'us-south',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getMachineType(params);
+      res = await powerhaAutomationServiceService.getPowervsWorkspace(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_machine_type
-  }, 20000);
+    // end-get_powervs_workspace
+  });
 
-  test('getPowervsWorkspaces request example', async () => {
+  test('getPhaLastOperation request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -274,26 +227,27 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getPowervsWorkspaces() result:');
-    // begin-get_powervs_workspaces
+    originalLog('getPhaLastOperation() result:');
+    // begin-get_pha_last_operation
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      locationId: 'testString',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getPowervsWorkspaces(params);
+      res = await powerhaAutomationServiceService.getPhaLastOperation(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_powervs_workspaces
-  }, 20000);
+    // end-get_pha_last_operation
+  });
 
-  test('createManageDr request example', async () => {
+  test('getPhaDeployment request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -303,41 +257,26 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('createManageDr() result:');
-    // begin-create_manage_dr
+    originalLog('getPhaDeployment() result:');
+    // begin-get_pha_deployment
 
     const params = {
-      instanceId: 'd5b8e475-fd94-490d-88d5-50fcc76f5ca0',
-      locationId: 'dal10',
-      machineType: 's922',
-      orchestratorLocationType: 'off-premises',
-      orchestratorName: 'adminUser',
-      orchestratorPassword: 'Admin@User',
-      orchestratorWorkspaceId: '281b578f-8c8f-452b-9351-d35e32c6c2d7',
-      apiKey: 'testString',
-      orchestratorNetworkIds: ['88336a7b-1890-47e7-8be4-4f6f2efa062a'],
-      orchestratorHa: false,
-      tier: 'tier1',
-      sshKeyName: 'testString',
-
-      // MFA
-      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
-      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
-      tenantName: 'xxx.ibm.com',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.createManageDr(params);
+      res = await powerhaAutomationServiceService.getPhaDeployment(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-create_manage_dr
-  }, 60000);
+    // end-get_pha_deployment
+  });
 
-  test('listEvents request example', async () => {
+  test('createPhaDeployment request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -347,27 +286,91 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('listEvents() result:');
-    // begin-list_events
+    originalLog('createPhaDeployment() result:');
+    // begin-create_pha_deployment
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      locationId: 'loc-us-south-01',
+      primaryWorkspace: 'workspace-primary',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+    };
+
+    let res;
+    try {
+      res = await powerhaAutomationServiceService.createPhaDeployment(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-create_pha_deployment
+  });
+
+  test('getSupportedLocation request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('getSupportedLocation() result:');
+    // begin-get_supported_location
+
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      ifNoneMatch: 'abcdef',
+    };
+
+    let res;
+    try {
+      res = await powerhaAutomationServiceService.getSupportedLocation(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-get_supported_location
+  });
+
+  test('listServiceInstanceEvents request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('listServiceInstanceEvents() result:');
+    // begin-list_service_instance_events
+
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.listEvents(params);
+      res = await powerhaAutomationServiceService.listServiceInstanceEvents(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-list_events
+    // end-list_service_instance_events
   });
 
-  test('getEvent request example', async () => {
+  test('getServiceInstanceEvent request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -377,22 +380,54 @@ describe('DrAutomationServiceV1', () => {
       expect(true).toBeFalsy();
     });
 
-    originalLog('getEvent() result:');
-    // begin-get_event
+    originalLog('getServiceInstanceEvent() result:');
+    // begin-get_service_instance_event
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
     };
 
     let res;
     try {
-      res = await drAutomationServiceService.getEvent(params);
+      res = await powerhaAutomationServiceService.getServiceInstanceEvent(params);
       console.log(JSON.stringify(res.result, null, 2));
     } catch (err) {
       console.warn(err);
     }
 
-    // end-get_event
+    // end-get_service_instance_event
+  });
+
+  test('deleteClusterNode request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('deleteClusterNode() result:');
+    // begin-delete_cluster_node
+
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      vmId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
+      ifNoneMatch: 'abcdef',
+    };
+
+    let res;
+    try {
+      res = await powerhaAutomationServiceService.deleteClusterNode(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-delete_cluster_node
   });
 });

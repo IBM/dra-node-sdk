@@ -25,19 +25,21 @@ const {
   expectToBePromise,
   checkUserHeader,
 } = require('@ibm-cloud/sdk-test-utilities');
-const DrAutomationServiceV1 = require('../../dist/dr-automation-service/v1');
+const PowerhaAutomationServiceV1 = require('../../dist/powerha-automation-service/v1');
 
-const drAutomationServiceServiceOptions = {
+const powerhaAutomationServiceServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
   url: 'https://power-dra.test.cloud.ibm.com',
 };
 
-const drAutomationServiceService = new DrAutomationServiceV1(drAutomationServiceServiceOptions);
+const powerhaAutomationServiceService = new PowerhaAutomationServiceV1(
+  powerhaAutomationServiceServiceOptions
+);
 
 let createRequestMock = null;
 function mock_createRequest() {
   if (!createRequestMock) {
-    createRequestMock = jest.spyOn(drAutomationServiceService, 'createRequest');
+    createRequestMock = jest.spyOn(powerhaAutomationServiceService, 'createRequest');
     createRequestMock.mockImplementation(() => Promise.resolve());
   }
 }
@@ -46,7 +48,7 @@ function mock_createRequest() {
 const getAuthenticatorMock = jest.spyOn(sdkCorePackage, 'getAuthenticatorFromEnvironment');
 getAuthenticatorMock.mockImplementation(() => new NoAuthAuthenticator());
 
-describe('DrAutomationServiceV1', () => {
+describe('PowerhaAutomationServiceV1', () => {
   beforeEach(() => {
     mock_createRequest();
   });
@@ -60,13 +62,17 @@ describe('DrAutomationServiceV1', () => {
 
   describe('the newInstance method', () => {
     test('should use defaults when options not provided', () => {
-      const testInstance = DrAutomationServiceV1.newInstance();
+      const testInstance = PowerhaAutomationServiceV1.newInstance();
 
       expect(getAuthenticatorMock).toHaveBeenCalled();
       expect(testInstance.baseOptions.authenticator).toBeInstanceOf(NoAuthAuthenticator);
-      expect(testInstance.baseOptions.serviceName).toBe(DrAutomationServiceV1.DEFAULT_SERVICE_NAME);
-      expect(testInstance.baseOptions.serviceUrl).toBe(DrAutomationServiceV1.DEFAULT_SERVICE_URL);
-      expect(testInstance).toBeInstanceOf(DrAutomationServiceV1);
+      expect(testInstance.baseOptions.serviceName).toBe(
+        PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME
+      );
+      expect(testInstance.baseOptions.serviceUrl).toBe(
+        PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL
+      );
+      expect(testInstance).toBeInstanceOf(PowerhaAutomationServiceV1);
     });
 
     test('should set serviceName, serviceUrl, and authenticator when provided', () => {
@@ -76,13 +82,13 @@ describe('DrAutomationServiceV1', () => {
         serviceName: 'my-service',
       };
 
-      const testInstance = DrAutomationServiceV1.newInstance(options);
+      const testInstance = PowerhaAutomationServiceV1.newInstance(options);
 
       expect(getAuthenticatorMock).not.toHaveBeenCalled();
       expect(testInstance.baseOptions.authenticator).toBeInstanceOf(NoAuthAuthenticator);
       expect(testInstance.baseOptions.serviceUrl).toBe('custom.com');
       expect(testInstance.baseOptions.serviceName).toBe('my-service');
-      expect(testInstance).toBeInstanceOf(DrAutomationServiceV1);
+      expect(testInstance).toBeInstanceOf(PowerhaAutomationServiceV1);
     });
   });
 
@@ -93,7 +99,7 @@ describe('DrAutomationServiceV1', () => {
         serviceUrl: 'custom.com',
       };
 
-      const testInstance = new DrAutomationServiceV1(options);
+      const testInstance = new PowerhaAutomationServiceV1(options);
 
       expect(testInstance.baseOptions.serviceUrl).toBe('custom.com');
     });
@@ -103,75 +109,176 @@ describe('DrAutomationServiceV1', () => {
         authenticator: new NoAuthAuthenticator(),
       };
 
-      const testInstance = new DrAutomationServiceV1(options);
+      const testInstance = new PowerhaAutomationServiceV1(options);
 
-      expect(testInstance.baseOptions.serviceUrl).toBe(DrAutomationServiceV1.DEFAULT_SERVICE_URL);
+      expect(testInstance.baseOptions.serviceUrl).toBe(
+        PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL
+      );
     });
   });
 
-  describe('updateApikey', () => {
+  describe('getApiKey', () => {
     describe('positive tests', () => {
-      function __updateApikeyTest() {
-        // Construct the params object for operation updateApikey
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const apiKey = 'adfadfdsafsdfdsf';
-        const acceptLanguage = 'testString';
-        const updateApikeyParams = {
-          instanceId,
-          apiKey,
+      function __getApiKeyTest() {
+        // Construct the params object for operation getApiKey
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const getApiKeyParams = {
+          phaInstanceId,
           acceptLanguage,
+          ifNoneMatch,
         };
 
-        const updateApikeyResult = drAutomationServiceService.updateApikey(updateApikeyParams);
+        const getApiKeyResult = powerhaAutomationServiceService.getApiKey(getApiKeyParams);
 
         // all methods should return a Promise
-        expectToBePromise(updateApikeyResult);
+        expectToBePromise(getApiKeyResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/apikey/{instance_id}', 'PUT');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/api_key/{pha_instance_id}',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __getApiKeyTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __getApiKeyTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __getApiKeyTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const getApiKeyParams = {
+          phaInstanceId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.getApiKey(getApiKeyParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getApiKey({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getApiKey();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('createApiKey', () => {
+    describe('positive tests', () => {
+      function __createApiKeyTest() {
+        // Construct the params object for operation createApiKey
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const apiKey = 'adfadfdsafsdfdsf';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const createApiKeyParams = {
+          phaInstanceId,
+          apiKey,
+          acceptLanguage,
+          ifNoneMatch,
+        };
+
+        const createApiKeyResult = powerhaAutomationServiceService.createApiKey(createApiKeyParams);
+
+        // all methods should return a Promise
+        expectToBePromise(createApiKeyResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/api_key/{pha_instance_id}',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __updateApikeyTest();
+        __createApiKeyTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __updateApikeyTest();
+        powerhaAutomationServiceService.enableRetries();
+        __createApiKeyTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __updateApikeyTest();
+        powerhaAutomationServiceService.disableRetries();
+        __createApiKeyTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const apiKey = 'adfadfdsafsdfdsf';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const updateApikeyParams = {
-          instanceId,
-          apiKey,
+        const createApiKeyParams = {
+          phaInstanceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.updateApikey(updateApikeyParams);
+        powerhaAutomationServiceService.createApiKey(createApiKeyParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -180,7 +287,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.updateApikey({});
+          await powerhaAutomationServiceService.createApiKey({});
         } catch (e) {
           err = e;
         }
@@ -191,7 +298,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.updateApikey();
+          await powerhaAutomationServiceService.createApiKey();
         } catch (e) {
           err = e;
         }
@@ -201,23 +308,22 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getDrGrsLocationPair', () => {
+  describe('getClusterNode', () => {
     describe('positive tests', () => {
-      function __getDrGrsLocationPairTest() {
-        // Construct the params object for operation getDrGrsLocationPair
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getDrGrsLocationPairParams = {
-          instanceId,
-          acceptLanguage,
+      function __getClusterNodeTest() {
+        // Construct the params object for operation getClusterNode
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const ifNoneMatch = 'abcdef';
+        const getClusterNodeParams = {
+          phaInstanceId,
+          ifNoneMatch,
         };
 
-        const getDrGrsLocationPairResult = drAutomationServiceService.getDrGrsLocationPair(
-          getDrGrsLocationPairParams
-        );
+        const getClusterNodeResult =
+          powerhaAutomationServiceService.getClusterNode(getClusterNodeParams);
 
         // all methods should return a Promise
-        expectToBePromise(getDrGrsLocationPairResult);
+        expectToBePromise(getClusterNodeResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -226,45 +332,45 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/dr_grs_location_pairs/{instance_id}',
+          '/powerha_automation/v1/cluster_nodes/{pha_instance_id}',
           'GET'
         );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getDrGrsLocationPairTest();
+        __getClusterNodeTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getDrGrsLocationPairTest();
+        powerhaAutomationServiceService.enableRetries();
+        __getClusterNodeTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getDrGrsLocationPairTest();
+        powerhaAutomationServiceService.disableRetries();
+        __getClusterNodeTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getDrGrsLocationPairParams = {
-          instanceId,
+        const getClusterNodeParams = {
+          phaInstanceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.getDrGrsLocationPair(getDrGrsLocationPairParams);
+        powerhaAutomationServiceService.getClusterNode(getClusterNodeParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -273,7 +379,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrGrsLocationPair({});
+          await powerhaAutomationServiceService.getClusterNode({});
         } catch (e) {
           err = e;
         }
@@ -284,7 +390,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrGrsLocationPair();
+          await powerhaAutomationServiceService.getClusterNode();
         } catch (e) {
           err = e;
         }
@@ -294,110 +400,28 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getDrLocations', () => {
+  describe('createClusterNode', () => {
     describe('positive tests', () => {
-      function __getDrLocationsTest() {
-        // Construct the params object for operation getDrLocations
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getDrLocationsParams = {
-          instanceId,
+      function __createClusterNodeTest() {
+        // Construct the params object for operation createClusterNode
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const primaryClusterNodes = ['ede4c36e-002c-48da-992e-6039d230c478'];
+        const secondaryClusterNodes = ['ede4c36e-1234-48da-992e-6039d230c478'];
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const createClusterNodeParams = {
+          phaInstanceId,
+          primaryClusterNodes,
+          secondaryClusterNodes,
           acceptLanguage,
+          ifNoneMatch,
         };
 
-        const getDrLocationsResult =
-          drAutomationServiceService.getDrLocations(getDrLocationsParams);
+        const createClusterNodeResult =
+          powerhaAutomationServiceService.createClusterNode(createClusterNodeParams);
 
         // all methods should return a Promise
-        expectToBePromise(getDrLocationsResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/dr_locations/{instance_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getDrLocationsTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getDrLocationsTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getDrLocationsTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getDrLocationsParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getDrLocations(getDrLocationsParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getDrLocations({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getDrLocations();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getDrManagedVm', () => {
-    describe('positive tests', () => {
-      function __getDrManagedVmTest() {
-        // Construct the params object for operation getDrManagedVm
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getDrManagedVmParams = {
-          instanceId,
-          acceptLanguage,
-        };
-
-        const getDrManagedVmResult =
-          drAutomationServiceService.getDrManagedVm(getDrManagedVmParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getDrManagedVmResult);
+        expectToBePromise(createClusterNodeResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -406,45 +430,50 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/dr_managed_vms/{instance_id}',
-          'GET'
+          '/powerha_automation/v1/cluster_nodes/{pha_instance_id}',
+          'POST'
         );
         const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
+        const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.body.primary_cluster_nodes).toEqual(primaryClusterNodes);
+        expect(mockRequestOptions.body.secondary_cluster_nodes).toEqual(secondaryClusterNodes);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getDrManagedVmTest();
+        __createClusterNodeTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getDrManagedVmTest();
+        powerhaAutomationServiceService.enableRetries();
+        __createClusterNodeTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getDrManagedVmTest();
+        powerhaAutomationServiceService.disableRetries();
+        __createClusterNodeTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const primaryClusterNodes = ['ede4c36e-002c-48da-992e-6039d230c478'];
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getDrManagedVmParams = {
-          instanceId,
+        const createClusterNodeParams = {
+          phaInstanceId,
+          primaryClusterNodes,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.getDrManagedVm(getDrManagedVmParams);
+        powerhaAutomationServiceService.createClusterNode(createClusterNodeParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -453,7 +482,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrManagedVm({});
+          await powerhaAutomationServiceService.createClusterNode({});
         } catch (e) {
           err = e;
         }
@@ -464,7 +493,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getDrManagedVm();
+          await powerhaAutomationServiceService.createClusterNode();
         } catch (e) {
           err = e;
         }
@@ -474,109 +503,24 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getDrSummary', () => {
+  describe('deleteClusterNode', () => {
     describe('positive tests', () => {
-      function __getDrSummaryTest() {
-        // Construct the params object for operation getDrSummary
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getDrSummaryParams = {
-          instanceId,
-          acceptLanguage,
+      function __deleteClusterNodeTest() {
+        // Construct the params object for operation deleteClusterNode
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const vmId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
+        const ifNoneMatch = 'abcdef';
+        const deleteClusterNodeParams = {
+          phaInstanceId,
+          vmId,
+          ifNoneMatch,
         };
 
-        const getDrSummaryResult = drAutomationServiceService.getDrSummary(getDrSummaryParams);
+        const deleteClusterNodeResult =
+          powerhaAutomationServiceService.deleteClusterNode(deleteClusterNodeParams);
 
         // all methods should return a Promise
-        expectToBePromise(getDrSummaryResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/dr_summary/{instance_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getDrSummaryTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getDrSummaryTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getDrSummaryTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getDrSummaryParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getDrSummary(getDrSummaryParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getDrSummary({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getDrSummary();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getLastOperation', () => {
-    describe('positive tests', () => {
-      function __getLastOperationTest() {
-        // Construct the params object for operation getLastOperation
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getLastOperationParams = {
-          instanceId,
-          acceptLanguage,
-        };
-
-        const getLastOperationResult =
-          drAutomationServiceService.getLastOperation(getLastOperationParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getLastOperationResult);
+        expectToBePromise(deleteClusterNodeResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -585,45 +529,48 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/last_operation/{instance_id}',
-          'GET'
+          '/powerha_automation/v1/cluster_nodes/{pha_instance_id}',
+          'DELETE'
         );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.qs.vm_id).toEqual(vmId);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getLastOperationTest();
+        __deleteClusterNodeTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getLastOperationTest();
+        powerhaAutomationServiceService.enableRetries();
+        __deleteClusterNodeTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getLastOperationTest();
+        powerhaAutomationServiceService.disableRetries();
+        __deleteClusterNodeTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const vmId = 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getLastOperationParams = {
-          instanceId,
+        const deleteClusterNodeParams = {
+          phaInstanceId,
+          vmId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.getLastOperation(getLastOperationParams);
+        powerhaAutomationServiceService.deleteClusterNode(deleteClusterNodeParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -632,7 +579,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getLastOperation({});
+          await powerhaAutomationServiceService.deleteClusterNode({});
         } catch (e) {
           err = e;
         }
@@ -643,7 +590,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getLastOperation();
+          await powerhaAutomationServiceService.deleteClusterNode();
         } catch (e) {
           err = e;
         }
@@ -653,119 +600,26 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getMachineType', () => {
+  describe('getPowervsWorkspace', () => {
     describe('positive tests', () => {
-      function __getMachineTypeTest() {
-        // Construct the params object for operation getMachineType
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const primaryWorkspaceName = 'Test-workspace-wdc06';
-        const acceptLanguage = 'testString';
-        const standbyWorkspaceName = 'Test-workspace-wdc07';
-        const getMachineTypeParams = {
-          instanceId,
-          primaryWorkspaceName,
-          acceptLanguage,
-          standbyWorkspaceName,
-        };
-
-        const getMachineTypeResult =
-          drAutomationServiceService.getMachineType(getMachineTypeParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getMachineTypeResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/machinetypes/{instance_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.qs.primary_workspace_name).toEqual(primaryWorkspaceName);
-        expect(mockRequestOptions.qs.standby_workspace_name).toEqual(standbyWorkspaceName);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getMachineTypeTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getMachineTypeTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getMachineTypeTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const primaryWorkspaceName = 'Test-workspace-wdc06';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getMachineTypeParams = {
-          instanceId,
-          primaryWorkspaceName,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getMachineType(getMachineTypeParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getMachineType({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getMachineType();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('getPowervsWorkspaces', () => {
-    describe('positive tests', () => {
-      function __getPowervsWorkspacesTest() {
-        // Construct the params object for operation getPowervsWorkspaces
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const locationId = 'testString';
-        const getPowervsWorkspacesParams = {
-          instanceId,
+      function __getPowervsWorkspaceTest() {
+        // Construct the params object for operation getPowervsWorkspace
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const locationId = 'us-south';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const getPowervsWorkspaceParams = {
+          phaInstanceId,
           locationId,
+          acceptLanguage,
+          ifNoneMatch,
         };
 
-        const getPowervsWorkspacesResult = drAutomationServiceService.getPowervsWorkspaces(
-          getPowervsWorkspacesParams
-        );
+        const getPowervsWorkspaceResult =
+          powerhaAutomationServiceService.getPowervsWorkspace(getPowervsWorkspaceParams);
 
         // all methods should return a Promise
-        expectToBePromise(getPowervsWorkspacesResult);
+        expectToBePromise(getPowervsWorkspaceResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -774,39 +628,41 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/powervs_workspaces/{instance_id}',
+          '/powerha_automation/v1/powervs_workspaces/{pha_instance_id}',
           'GET'
         );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.qs.location_id).toEqual(locationId);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getPowervsWorkspacesTest();
+        __getPowervsWorkspaceTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getPowervsWorkspacesTest();
+        powerhaAutomationServiceService.enableRetries();
+        __getPowervsWorkspaceTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getPowervsWorkspacesTest();
+        powerhaAutomationServiceService.disableRetries();
+        __getPowervsWorkspaceTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const locationId = 'testString';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const locationId = 'us-south';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getPowervsWorkspacesParams = {
-          instanceId,
+        const getPowervsWorkspaceParams = {
+          phaInstanceId,
           locationId,
           headers: {
             Accept: userAccept,
@@ -814,7 +670,7 @@ describe('DrAutomationServiceV1', () => {
           },
         };
 
-        drAutomationServiceService.getPowervsWorkspaces(getPowervsWorkspacesParams);
+        powerhaAutomationServiceService.getPowervsWorkspace(getPowervsWorkspaceParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -823,7 +679,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPowervsWorkspaces({});
+          await powerhaAutomationServiceService.getPowervsWorkspace({});
         } catch (e) {
           err = e;
         }
@@ -834,7 +690,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getPowervsWorkspaces();
+          await powerhaAutomationServiceService.getPowervsWorkspace();
         } catch (e) {
           err = e;
         }
@@ -844,187 +700,72 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('createManageDr', () => {
+  describe('getPhaLastOperation', () => {
     describe('positive tests', () => {
-      function __createManageDrTest() {
-        // Construct the params object for operation createManageDr
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const locationId = 'dal10';
-        const machineType = 'bx2-4x16';
-        const orchestratorLocationType = 'off-premises';
-        const orchestratorName = 'adminUser';
-        const orchestratorPassword = 'testString';
-        const orchestratorWorkspaceId = 'orch-workspace-01';
-        const apiKey = 'testString';
-        const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
-        const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
-        const guid = '123e4567-e89b-12d3-a456-426614174000';
-        const orchestratorHa = true;
-        const orchestratorNetworkIds = [
-          'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
-          '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
-        ];
-        const orchestratorWorkspaceLocation = 'us-south';
-        const proxyIp = '10.40.30.10:8888';
-        const regionId = 'us-south';
-        const resourceInstance =
-          'crn:v1:bluemix:public:resource-controller:us-south:a/123456fb04ceebfb4a9fd38c22334455:resource-instance::';
-        const secondaryWorkspaceId = 'secondary-workspace789';
-        const secret = 'testString';
-        const secretGroup = 'default-secret-group';
-        const sshKeyName = 'sshkey-name';
-        const standbyMachineType = 'bx2-8x32';
-        const standbyOrchestratorName = 'standbyAdmin';
-        const standbyOrchestratorNetworkIds = [
-          'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
-          '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
-        ];
-        const standbySshKeyName = 'standby-sshkey-name';
-        const standbyOrchestratorWorkspaceId = 'orch-standby-02';
-        const standbyOrchestratorWorkspaceLocation = 'us-east';
-        const standbyTier = 'Premium';
-        const tenantName = 'xxx.ibm.com';
-        const tier = 'Standard';
-        const standByRedeploy = 'testString';
-        const acceptLanguage = 'testString';
-        const acceptsIncomplete = true;
-        const createManageDrParams = {
-          instanceId,
-          locationId,
-          machineType,
-          orchestratorLocationType,
-          orchestratorName,
-          orchestratorPassword,
-          orchestratorWorkspaceId,
-          apiKey,
-          clientId,
-          clientSecret,
-          guid,
-          orchestratorHa,
-          orchestratorNetworkIds,
-          orchestratorWorkspaceLocation,
-          proxyIp,
-          regionId,
-          resourceInstance,
-          secondaryWorkspaceId,
-          secret,
-          secretGroup,
-          sshKeyName,
-          standbyMachineType,
-          standbyOrchestratorName,
-          standbyOrchestratorNetworkIds,
-          standbySshKeyName,
-          standbyOrchestratorWorkspaceId,
-          standbyOrchestratorWorkspaceLocation,
-          standbyTier,
-          tenantName,
-          tier,
-          standByRedeploy,
+      function __getPhaLastOperationTest() {
+        // Construct the params object for operation getPhaLastOperation
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const getPhaLastOperationParams = {
+          phaInstanceId,
           acceptLanguage,
-          acceptsIncomplete,
+          ifNoneMatch,
         };
 
-        const createManageDrResult =
-          drAutomationServiceService.createManageDr(createManageDrParams);
+        const getPhaLastOperationResult =
+          powerhaAutomationServiceService.getPhaLastOperation(getPhaLastOperationParams);
 
         // all methods should return a Promise
-        expectToBePromise(createManageDrResult);
+        expectToBePromise(getPhaLastOperationResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/drautomation/v1/manage_dr/{instance_id}', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/last_operation/{pha_instance_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
-        const expectedContentType = 'application/json';
+        const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.body.location_id).toEqual(locationId);
-        expect(mockRequestOptions.body.machine_type).toEqual(machineType);
-        expect(mockRequestOptions.body.orchestrator_location_type).toEqual(
-          orchestratorLocationType
-        );
-        expect(mockRequestOptions.body.orchestrator_name).toEqual(orchestratorName);
-        expect(mockRequestOptions.body.orchestrator_password).toEqual(orchestratorPassword);
-        expect(mockRequestOptions.body.orchestrator_workspace_id).toEqual(orchestratorWorkspaceId);
-        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
-        expect(mockRequestOptions.body.client_id).toEqual(clientId);
-        expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
-        expect(mockRequestOptions.body.guid).toEqual(guid);
-        expect(mockRequestOptions.body.orchestrator_ha).toEqual(orchestratorHa);
-        expect(mockRequestOptions.body.orchestrator_network_ids).toEqual(orchestratorNetworkIds);
-        expect(mockRequestOptions.body.orchestrator_workspace_location).toEqual(
-          orchestratorWorkspaceLocation
-        );
-        expect(mockRequestOptions.body.proxy_ip).toEqual(proxyIp);
-        expect(mockRequestOptions.body.region_id).toEqual(regionId);
-        expect(mockRequestOptions.body.resource_instance).toEqual(resourceInstance);
-        expect(mockRequestOptions.body.secondary_workspace_id).toEqual(secondaryWorkspaceId);
-        expect(mockRequestOptions.body.secret).toEqual(secret);
-        expect(mockRequestOptions.body.secret_group).toEqual(secretGroup);
-        expect(mockRequestOptions.body.ssh_key_name).toEqual(sshKeyName);
-        expect(mockRequestOptions.body.standby_machine_type).toEqual(standbyMachineType);
-        expect(mockRequestOptions.body.standby_orchestrator_name).toEqual(standbyOrchestratorName);
-        expect(mockRequestOptions.body.standby_orchestrator_network_ids).toEqual(
-          standbyOrchestratorNetworkIds
-        );
-        expect(mockRequestOptions.body.standby_ssh_key_name).toEqual(standbySshKeyName);
-        expect(mockRequestOptions.body.standby_orchestrator_workspace_id).toEqual(
-          standbyOrchestratorWorkspaceId
-        );
-        expect(mockRequestOptions.body.standby_orchestrator_workspace_location).toEqual(
-          standbyOrchestratorWorkspaceLocation
-        );
-        expect(mockRequestOptions.body.standby_tier).toEqual(standbyTier);
-        expect(mockRequestOptions.body.tenant_name).toEqual(tenantName);
-        expect(mockRequestOptions.body.tier).toEqual(tier);
-        expect(mockRequestOptions.qs.stand_by_redeploy).toEqual(standByRedeploy);
-        expect(mockRequestOptions.qs.accepts_incomplete).toEqual(acceptsIncomplete);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __createManageDrTest();
+        __getPhaLastOperationTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __createManageDrTest();
+        powerhaAutomationServiceService.enableRetries();
+        __getPhaLastOperationTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __createManageDrTest();
+        powerhaAutomationServiceService.disableRetries();
+        __getPhaLastOperationTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const locationId = 'dal10';
-        const machineType = 'bx2-4x16';
-        const orchestratorLocationType = 'off-premises';
-        const orchestratorName = 'adminUser';
-        const orchestratorPassword = 'testString';
-        const orchestratorWorkspaceId = 'orch-workspace-01';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const createManageDrParams = {
-          instanceId,
-          locationId,
-          machineType,
-          orchestratorLocationType,
-          orchestratorName,
-          orchestratorPassword,
-          orchestratorWorkspaceId,
+        const getPhaLastOperationParams = {
+          phaInstanceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.createManageDr(createManageDrParams);
+        powerhaAutomationServiceService.getPhaLastOperation(getPhaLastOperationParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -1033,7 +774,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.createManageDr({});
+          await powerhaAutomationServiceService.getPhaLastOperation({});
         } catch (e) {
           err = e;
         }
@@ -1044,7 +785,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.createManageDr();
+          await powerhaAutomationServiceService.getPhaLastOperation();
         } catch (e) {
           err = e;
         }
@@ -1054,25 +795,346 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('listEvents', () => {
+  describe('getPhaDeployment', () => {
     describe('positive tests', () => {
-      function __listEventsTest() {
-        // Construct the params object for operation listEvents
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+      function __getPhaDeploymentTest() {
+        // Construct the params object for operation getPhaDeployment
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const ifNoneMatch = 'abcdef';
+        const getPhaDeploymentParams = {
+          phaInstanceId,
+          ifNoneMatch,
+        };
+
+        const getPhaDeploymentResult =
+          powerhaAutomationServiceService.getPhaDeployment(getPhaDeploymentParams);
+
+        // all methods should return a Promise
+        expectToBePromise(getPhaDeploymentResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/pha_deployment/{pha_instance_id}',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __getPhaDeploymentTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __getPhaDeploymentTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __getPhaDeploymentTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const getPhaDeploymentParams = {
+          phaInstanceId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.getPhaDeployment(getPhaDeploymentParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getPhaDeployment({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getPhaDeployment();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('createPhaDeployment', () => {
+    describe('positive tests', () => {
+      function __createPhaDeploymentTest() {
+        // Construct the params object for operation createPhaDeployment
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const locationId = 'loc-us-south-01';
+        const primaryWorkspace = 'workspace-primary';
+        const apiKey = '123635364646fghrtfhbfdhb';
+        const clusterType = 'standard';
+        const configureType = 'automatic';
+        const primaryClusterNodes = ['ede4c36e-002c-48da-992e-6039d230c478'];
+        const standbyClusterNodes = ['843a8e1f-05bb-4164-8c73-de39e016c2b4'];
+        const primaryLocation = 'us-south';
+        const secondaryLocation = 'us-east';
+        const secondaryWorkspace = 'workspace-secondary';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const createPhaDeploymentParams = {
+          phaInstanceId,
+          locationId,
+          primaryWorkspace,
+          apiKey,
+          clusterType,
+          configureType,
+          primaryClusterNodes,
+          standbyClusterNodes,
+          primaryLocation,
+          secondaryLocation,
+          secondaryWorkspace,
+          acceptLanguage,
+          ifNoneMatch,
+        };
+
+        const createPhaDeploymentResult =
+          powerhaAutomationServiceService.createPhaDeployment(createPhaDeploymentParams);
+
+        // all methods should return a Promise
+        expectToBePromise(createPhaDeploymentResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/pha_deployment/{pha_instance_id}',
+          'POST'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = 'application/json';
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.body.location_id).toEqual(locationId);
+        expect(mockRequestOptions.body.primary_workspace).toEqual(primaryWorkspace);
+        expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.cluster_type).toEqual(clusterType);
+        expect(mockRequestOptions.body.configure_type).toEqual(configureType);
+        expect(mockRequestOptions.body.primary_cluster_nodes).toEqual(primaryClusterNodes);
+        expect(mockRequestOptions.body.standby_cluster_nodes).toEqual(standbyClusterNodes);
+        expect(mockRequestOptions.body.primary_location).toEqual(primaryLocation);
+        expect(mockRequestOptions.body.secondary_location).toEqual(secondaryLocation);
+        expect(mockRequestOptions.body.secondary_workspace).toEqual(secondaryWorkspace);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __createPhaDeploymentTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __createPhaDeploymentTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __createPhaDeploymentTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const locationId = 'loc-us-south-01';
+        const primaryWorkspace = 'workspace-primary';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const createPhaDeploymentParams = {
+          phaInstanceId,
+          locationId,
+          primaryWorkspace,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.createPhaDeployment(createPhaDeploymentParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.createPhaDeployment({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.createPhaDeployment();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('getSupportedLocation', () => {
+    describe('positive tests', () => {
+      function __getSupportedLocationTest() {
+        // Construct the params object for operation getSupportedLocation
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const ifNoneMatch = 'abcdef';
+        const getSupportedLocationParams = {
+          phaInstanceId,
+          ifNoneMatch,
+        };
+
+        const getSupportedLocationResult = powerhaAutomationServiceService.getSupportedLocation(
+          getSupportedLocationParams
+        );
+
+        // all methods should return a Promise
+        expectToBePromise(getSupportedLocationResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/supported_locations/{pha_instance_id}',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __getSupportedLocationTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __getSupportedLocationTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __getSupportedLocationTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const getSupportedLocationParams = {
+          phaInstanceId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.getSupportedLocation(getSupportedLocationParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getSupportedLocation({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getSupportedLocation();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('listServiceInstanceEvents', () => {
+    describe('positive tests', () => {
+      function __listServiceInstanceEventsTest() {
+        // Construct the params object for operation listServiceInstanceEvents
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const time = '2025-06-19T23:59:59Z';
         const fromTime = '2025-06-19T00:00:00Z';
         const toTime = '2025-06-19T23:59:59Z';
-        const acceptLanguage = 'testString';
-        const listEventsParams = {
-          instanceId,
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const listServiceInstanceEventsParams = {
+          phaInstanceId,
+          time,
           fromTime,
           toTime,
           acceptLanguage,
+          ifNoneMatch,
         };
 
-        const listEventsResult = drAutomationServiceService.listEvents(listEventsParams);
+        const listServiceInstanceEventsResult =
+          powerhaAutomationServiceService.listServiceInstanceEvents(
+            listServiceInstanceEventsParams
+          );
 
         // all methods should return a Promise
-        expectToBePromise(listEventsResult);
+        expectToBePromise(listServiceInstanceEventsResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -1081,47 +1143,49 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/service_instances/{instance_id}/events',
+          '/powerha_automation/v1/service_instances/{pha_instance_id}/events',
           'GET'
         );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.qs.time).toEqual(time);
         expect(mockRequestOptions.qs.from_time).toEqual(fromTime);
         expect(mockRequestOptions.qs.to_time).toEqual(toTime);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __listEventsTest();
+        __listServiceInstanceEventsTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __listEventsTest();
+        powerhaAutomationServiceService.enableRetries();
+        __listServiceInstanceEventsTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __listEventsTest();
+        powerhaAutomationServiceService.disableRetries();
+        __listServiceInstanceEventsTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const listEventsParams = {
-          instanceId,
+        const listServiceInstanceEventsParams = {
+          phaInstanceId,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        drAutomationServiceService.listEvents(listEventsParams);
+        powerhaAutomationServiceService.listServiceInstanceEvents(listServiceInstanceEventsParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -1130,7 +1194,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.listEvents({});
+          await powerhaAutomationServiceService.listServiceInstanceEvents({});
         } catch (e) {
           err = e;
         }
@@ -1141,7 +1205,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.listEvents();
+          await powerhaAutomationServiceService.listServiceInstanceEvents();
         } catch (e) {
           err = e;
         }
@@ -1151,23 +1215,26 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getEvent', () => {
+  describe('getServiceInstanceEvent', () => {
     describe('positive tests', () => {
-      function __getEventTest() {
-        // Construct the params object for operation getEvent
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+      function __getServiceInstanceEventTest() {
+        // Construct the params object for operation getServiceInstanceEvent
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
-        const acceptLanguage = 'testString';
-        const getEventParams = {
-          instanceId,
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const getServiceInstanceEventParams = {
+          phaInstanceId,
           eventId,
           acceptLanguage,
+          ifNoneMatch,
         };
 
-        const getEventResult = drAutomationServiceService.getEvent(getEventParams);
+        const getServiceInstanceEventResult =
+          powerhaAutomationServiceService.getServiceInstanceEvent(getServiceInstanceEventParams);
 
         // all methods should return a Promise
-        expectToBePromise(getEventResult);
+        expectToBePromise(getServiceInstanceEventResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
@@ -1176,40 +1243,41 @@ describe('DrAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/drautomation/v1/service_instances/{instance_id}/events/{event_id}',
+          '/powerha_automation/v1/service_instances/{pha_instance_id}/events/{event_id}',
           'GET'
         );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
         expect(mockRequestOptions.path.event_id).toEqual(eventId);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __getEventTest();
+        __getServiceInstanceEventTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getEventTest();
+        powerhaAutomationServiceService.enableRetries();
+        __getServiceInstanceEventTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getEventTest();
+        powerhaAutomationServiceService.disableRetries();
+        __getServiceInstanceEventTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const eventId = '00116b2a-9326-4024-839e-fb5364b76898';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const getEventParams = {
-          instanceId,
+        const getServiceInstanceEventParams = {
+          phaInstanceId,
           eventId,
           headers: {
             Accept: userAccept,
@@ -1217,7 +1285,7 @@ describe('DrAutomationServiceV1', () => {
           },
         };
 
-        drAutomationServiceService.getEvent(getEventParams);
+        powerhaAutomationServiceService.getServiceInstanceEvent(getServiceInstanceEventParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -1226,7 +1294,7 @@ describe('DrAutomationServiceV1', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await drAutomationServiceService.getEvent({});
+          await powerhaAutomationServiceService.getServiceInstanceEvent({});
         } catch (e) {
           err = e;
         }
@@ -1237,7 +1305,7 @@ describe('DrAutomationServiceV1', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await drAutomationServiceService.getEvent();
+          await powerhaAutomationServiceService.getServiceInstanceEvent();
         } catch (e) {
           err = e;
         }

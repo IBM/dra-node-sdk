@@ -90,6 +90,10 @@ describe('DrAutomationServiceV1', () => {
       tier: 'tier1',
       sshKeyName: 'vijaykey',
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // HA standby fields
       standbyOrchestratorName: 'drautomationstandbymh1',
@@ -97,6 +101,11 @@ describe('DrAutomationServiceV1', () => {
       standbyMachineType: 's922',
       standbyTier: 'tier1',
       standByRedeploy: 'false',
+      standbySshKeyName: 'test-string',
+      standbyOrchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
@@ -146,6 +155,10 @@ describe('DrAutomationServiceV1', () => {
       regionId: 'us-south',
 
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // HA standby fields
       standbyOrchestratorName: 'drautomationstandbymh3',
@@ -153,6 +166,11 @@ describe('DrAutomationServiceV1', () => {
       standbyMachineType: 's922',
       standbyTier: 'tier1',
       standByRedeploy: 'false',
+      standbySshKeyName: 'test-string',
+      standbyOrchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
@@ -196,6 +214,10 @@ describe('DrAutomationServiceV1', () => {
       tier: 'tier1',
       sshKeyName: 'vijaykey',
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
@@ -244,6 +266,10 @@ describe('DrAutomationServiceV1', () => {
       regionId: 'us-south',
 
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',

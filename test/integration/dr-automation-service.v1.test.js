@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,6 +106,18 @@ describe('DrAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
+  test('getLastOperation()', async () => {
+    const params = {
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      acceptLanguage: 'testString',
+    };
+
+    const res = await drAutomationServiceService.getLastOperation(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
   test('getMachineType()', async () => {
     const params = {
       instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
@@ -146,15 +158,28 @@ describe('DrAutomationServiceV1_integration', () => {
       clientSecret: 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh',
       guid: '123e4567-e89b-12d3-a456-426614174000',
       orchestratorHa: true,
+      orchestratorNetworkIds: [
+        'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
+        '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
+      ],
+      orchestratorWorkspaceLocation: 'us-south',
       proxyIp: '10.40.30.10:8888',
       regionId: 'us-south',
-      resourceInstance: 'crn:v1:bluemix:public:resource-controller::res123',
+      resourceInstance:
+        'crn:v1:bluemix:public:resource-controller:us-south:a/123456fb04ceebfb4a9fd38c22334455:resource-instance::',
+      secondaryWorkspaceId: 'secondary-workspace789',
       secret: 'testString',
       secretGroup: 'default-secret-group',
-      sshKeyName: 'my-ssh-key',
+      sshKeyName: 'sshkey-name',
       standbyMachineType: 'bx2-8x32',
       standbyOrchestratorName: 'standbyAdmin',
+      standbyOrchestratorNetworkIds: [
+        'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
+        '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
+      ],
+      standbySshKeyName: 'standby-sshkey-name',
       standbyOrchestratorWorkspaceId: 'orch-standby-02',
+      standbyOrchestratorWorkspaceLocation: 'us-east',
       standbyTier: 'Premium',
       tenantName: 'xxx.ibm.com',
       tier: 'Standard',
@@ -169,22 +194,9 @@ describe('DrAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('getLastOperation()', async () => {
-    const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      acceptLanguage: 'testString',
-    };
-
-    const res = await drAutomationServiceService.getLastOperation(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
   test('listEvents()', async () => {
     const params = {
       instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
       acceptLanguage: 'testString',

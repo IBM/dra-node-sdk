@@ -17,7 +17,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   const resourceGroup = '9d445dfd58484a489220751d0077f906';
   const serviceName = 'power-dr-automation';
   const planName = 'power-virtual-server-dr-automation';
-  const resourceInstanceName = 'mympsdktest-temp2';
+  const resourceInstanceName = 'abcnewJuhi1090';
   const targetRegion = 'global';
   const iamAPIKey = 'api-key'; // Replace with valid key
 
@@ -106,14 +106,14 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
 
     console.log('\n--- GetResourceInstance() Details ---');
     console.log(JSON.stringify(instanceDetailsResponse.result, null, 2));
-  });
+  }, 20000);
 
   // ----------------------------------------------
   // DELETE INSTANCE EXAMPLE
   // ----------------------------------------------
   test('DeleteResourceInstance example', async () => {
     const instanceGUID =
-      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:641795bd-80c7-406d-a6d9-04d3fbb5680b::';
+      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:07f78f3c-11dc-49d5-b68e-106f9e7064c1::';
 
     console.log('\n--- Deleting Resource Instance ---');
 
