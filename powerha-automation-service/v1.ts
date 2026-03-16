@@ -98,12 +98,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Retrieves the API key for the specified PowerHA service instance.
+   * Get the apikey for the specified PowerHA service instance.
    *
-   * Retrieves existing API key for the specified PowerHA service instance.
+   * Retrieves existing apikey for the specified PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -158,12 +158,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Creates or updates the API key for the specified PowerHA service instance.
+   * Update the apikey for the specified PowerHA service instance.
    *
-   * Creates a new API key for the specified PowerHA instance.
+   * Updates a new apikey for the specified PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.apiKey] - The API key to be stored or registered.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
@@ -234,10 +234,10 @@ class PowerhaAutomationServiceV1 extends BaseService {
   /**
    * Retrieves the cluster node details for the specified PowerHA instance.
    *
-   * Retrieves the cluster node information for the specified PowerHA instance.
+   * Retrieves details of all cluster nodes configured for the given PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ClusterNodeResponse>>}
@@ -290,12 +290,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Adds a new node to the PowerHA cluster for the specified instance.
+   * Add a new cluster node.
    *
-   * Add new node to the cluster node for the specified PowerHA instance.
+   * Adds a new node to the PowerHA cluster for the specified PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string[]} params.primaryClusterNodes - List of primary cluster node VM IDs.
    * @param {string[]} [params.secondaryClusterNodes] - List of secondary cluster node VM IDs.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
@@ -367,12 +367,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Removes a cluster node from the specified PowerHA instance.
+   * Delete a cluster node.
    *
-   * Deletes the cluster node from the specified PowerHA instance.
+   * Removes the specified cluster node from the PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} params.vmId - vm ID of workspace.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -431,12 +431,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Retrieves Power virtual server workspace details based on location.
+   * List of PowerVS workspaces based on location.
    *
-   * Retrieve workspace region details for the specified PowerHA instance.
+   * Retrieves list of powerVS workspaces related to the PowerHA service instance based on location.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} params.locationId - Location ID value.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
@@ -509,12 +509,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Retrieves the status of the last operation performed on the PowerHA instance.
+   * View details of the last operation performed on the PowerHA instance.
    *
-   * Retrieves the latest operation status for the specified PowerHA instance.
+   * Retrieves the most recent operation performed on the PowerHA service instance.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -571,12 +571,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Retrieves the PowerHA deployment details for the specified service instance.
+   * Retrieves deployment details.
    *
-   * Get PowerHA deployment for the given instance.
+   * Retrieves the PowerHA deployment configuration, status, and associated metadata.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.PhaDeploymentResponse>>}
@@ -631,12 +631,14 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Creates a new PowerHA deployment for the specified service instance.
+   * Create a new deployment.
    *
-   * Create a new PowerHA deployment for the given instance.
+   * Create a new PowerHA deployment for a given location and PowerVS workspace. Refer deploying the PowerHA on Powervs
+   * https://test.cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-getting-started-with-ha-automation-for-power-virtual-server
+   * for more details.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} params.locationId - Identifier for the deployment location.
    * @param {string} params.primaryWorkspace - Primary workspace identifier.
    * @param {string} [params.apiKey] - The API key associated with the request.
@@ -737,12 +739,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Retrieves IBM Cloud supported locations for PowerHA deployment.
+   * Get PowerVS locations.
    *
-   * Retrieves the supported locations for the specified PowerHA instance.
+   * Retrieves the list of PowerVS locations where PowerHA service is supported.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.PhaSupportedLocationsResponse>>}
@@ -800,12 +802,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Retrieves the list of events for the specified PowerHA service instance.
+   * Get PowerHA automation events from this cloud instance since a specific timestamp.
    *
    * Get PowerHA automation events from this cloud instance since a specific timestamp.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.time] - (deprecated - use from_time) A time in either ISO 8601 or unix epoch format.
    * @param {string} [params.fromTime] - A from query time in either ISO 8601 or unix epoch format.
    * @param {string} [params.toTime] - A to query time in either ISO 8601 or unix epoch format.
@@ -879,12 +881,12 @@ class PowerhaAutomationServiceV1 extends BaseService {
   }
 
   /**
-   * Retrieves the details of a specific event for the given PowerHA instance.
+   * Get a single PowerHA automation event.
    *
    * Get a single PowerHA automation event.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - instance id of instance to provision.
+   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} params.eventId - Event ID.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
@@ -983,7 +985,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getApiKey` operation. */
   export interface GetApiKeyParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
@@ -993,7 +995,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `createApiKey` operation. */
   export interface CreateApiKeyParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** The API key to be stored or registered. */
     apiKey?: string;
@@ -1005,7 +1007,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getClusterNode` operation. */
   export interface GetClusterNodeParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** ETag for conditional requests (optional). */
     ifNoneMatch?: string;
@@ -1013,7 +1015,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `createClusterNode` operation. */
   export interface CreateClusterNodeParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** List of primary cluster node VM IDs. */
     primaryClusterNodes: string[];
@@ -1027,7 +1029,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `deleteClusterNode` operation. */
   export interface DeleteClusterNodeParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** vm ID of workspace. */
     vmId: string;
@@ -1037,7 +1039,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getPowervsWorkspace` operation. */
   export interface GetPowervsWorkspaceParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** Location ID value. */
     locationId: string;
@@ -1049,7 +1051,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getPhaLastOperation` operation. */
   export interface GetPhaLastOperationParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
@@ -1059,7 +1061,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getPhaDeployment` operation. */
   export interface GetPhaDeploymentParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** ETag for conditional requests (optional). */
     ifNoneMatch?: string;
@@ -1067,7 +1069,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `createPhaDeployment` operation. */
   export interface CreatePhaDeploymentParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** Identifier for the deployment location. */
     locationId: string;
@@ -1097,7 +1099,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getSupportedLocation` operation. */
   export interface GetSupportedLocationParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** ETag for conditional requests (optional). */
     ifNoneMatch?: string;
@@ -1105,7 +1107,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `listServiceInstanceEvents` operation. */
   export interface ListServiceInstanceEventsParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** (deprecated - use from_time) A time in either ISO 8601 or unix epoch format. */
     time?: string;
@@ -1121,7 +1123,7 @@ namespace PowerhaAutomationServiceV1 {
 
   /** Parameters for the `getServiceInstanceEvent` operation. */
   export interface GetServiceInstanceEventParams extends DefaultParams {
-    /** instance id of instance to provision. */
+    /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
     /** Event ID. */
     eventId: string;
@@ -1346,7 +1348,7 @@ namespace PowerhaAutomationServiceV1 {
   }
 
   /**
-   * Details of a Disaster Recovery (DR) supported location.
+   * Details of a PowerHA supported location.
    */
   export interface PhaLocation {
     /** Unique identifier for the location. */
@@ -1356,11 +1358,11 @@ namespace PowerhaAutomationServiceV1 {
   }
 
   /**
-   * List of supported Disaster Recovery (DR) locations.
+   * List of PowerVS locations where PowerHA service is supported.
    */
   export interface PhaSupportedLocationsResponse {
-    /** Array of supported DR locations. */
-    dr_locations: PhaLocation[];
+    /** Array of PowerVS locations where PowerHA service is supported. */
+    locations: PhaLocation[];
   }
 
   /**

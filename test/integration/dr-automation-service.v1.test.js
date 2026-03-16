@@ -154,6 +154,7 @@ describe('DrAutomationServiceV1_integration', () => {
       orchestratorPassword: 'testString',
       orchestratorWorkspaceId: 'orch-workspace-01',
       apiKey: 'testString',
+      managedApikey: 'testString',
       clientId: 'abcd-97d2-1234-bf62-8eaecc67a1234',
       clientSecret: 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh',
       guid: '123e4567-e89b-12d3-a456-426614174000',

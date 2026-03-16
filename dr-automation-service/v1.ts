@@ -616,6 +616,8 @@ class DrAutomationServiceV1 extends BaseService {
    * @param {string} params.orchestratorPassword - The password that you can use to access your orchestrator.
    * @param {string} params.orchestratorWorkspaceId - The unique identifier orchestrator workspace.
    * @param {string} [params.apiKey] - The api Key of the service instance for deploying the disaster recovery service.
+   * @param {string} [params.managedApikey] - APIKey used to manage the workloads by adding the PowerVS instances to the
+   * orchestrator.
    * @param {string} [params.clientId] - The Client Id created for MFA authentication API.
    * @param {string} [params.clientSecret] - The client secret created for MFA authentication API.
    * @param {string} [params.guid] - The global unique identifier of the service instance.
@@ -673,6 +675,7 @@ class DrAutomationServiceV1 extends BaseService {
       'orchestratorPassword',
       'orchestratorWorkspaceId',
       'apiKey',
+      'managedApikey',
       'clientId',
       'clientSecret',
       'guid',
@@ -714,6 +717,7 @@ class DrAutomationServiceV1 extends BaseService {
       'orchestrator_password': _params.orchestratorPassword,
       'orchestrator_workspace_id': _params.orchestratorWorkspaceId,
       'api_key': _params.apiKey,
+      'managed_apikey': _params.managedApikey,
       'client_id': _params.clientId,
       'client_secret': _params.clientSecret,
       'guid': _params.guid,
@@ -1036,6 +1040,8 @@ namespace DrAutomationServiceV1 {
     orchestratorWorkspaceId: string;
     /** The api Key of the service instance for deploying the disaster recovery service. */
     apiKey?: string;
+    /** APIKey used to manage the workloads by adding the PowerVS instances to the orchestrator. */
+    managedApikey?: string;
     /** The Client Id created for MFA authentication API. */
     clientId?: string;
     /** The client secret created for MFA authentication API. */

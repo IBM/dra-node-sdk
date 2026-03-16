@@ -856,6 +856,7 @@ describe('DrAutomationServiceV1', () => {
         const orchestratorPassword = 'testString';
         const orchestratorWorkspaceId = 'orch-workspace-01';
         const apiKey = 'testString';
+        const managedApikey = 'testString';
         const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
         const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
         const guid = '123e4567-e89b-12d3-a456-426614174000';
@@ -897,6 +898,7 @@ describe('DrAutomationServiceV1', () => {
           orchestratorPassword,
           orchestratorWorkspaceId,
           apiKey,
+          managedApikey,
           clientId,
           clientSecret,
           guid,
@@ -949,6 +951,7 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.body.orchestrator_password).toEqual(orchestratorPassword);
         expect(mockRequestOptions.body.orchestrator_workspace_id).toEqual(orchestratorWorkspaceId);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.managed_apikey).toEqual(managedApikey);
         expect(mockRequestOptions.body.client_id).toEqual(clientId);
         expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
         expect(mockRequestOptions.body.guid).toEqual(guid);
