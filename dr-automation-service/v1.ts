@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
  */
 
 import * as extend from 'extend';
@@ -1423,6 +1423,46 @@ namespace DrAutomationServiceV1 {
     dashboard_url?: string;
     /** The CRN (Cloud Resource Name) of the DR service instance. */
     id?: string;
+    /** The cloud location where your orchestator need to be created. */
+    orchestrator_location_type?: string;
+    /** The location or data center identifier where the service instance is deployed. */
+    location_id?: string;
+    /** The name of the SSH key used for deploying the orchestator. */
+    ssh_key_name?: string;
+    /** The name of the SSH key used for deploying the standby orchestator. */
+    standby_ssh_key_name?: string;
+    /** The username used for the orchestrator. */
+    orchestrator_name?: string;
+    /** The unique identifier orchestrator workspace. */
+    orchestrator_workspace_id?: string;
+    /** The username for the standby orchestrator management interface. */
+    standby_orchestrator_name?: string;
+    /** The unique identifier of the standby orchestrator workspace. */
+    standby_orchestrator_workspace_id?: string;
+    /** Indicates whether the orchestrator High Availability (HA) is enabled for the service instance. */
+    orchestrator_ha?: boolean;
+    /** The uniquie identifier of the associated IBM Cloud resource instance. */
+    resource_instance?: string;
+    /** The secret group name in IBM Cloud Secrets Manager containing sensitive data for the service instance. */
+    secret_group?: string;
+    /** The secret name or identifier used for retrieving credentials from secrets manager. */
+    secret?: string;
+    /** The power virtual server region where the service instance is deployed. */
+    region_id?: string;
+    /** The global unique identifier of the service instance. */
+    guid?: string;
+    /** The machine type used for deploying orchestrator. */
+    machine_type?: string;
+    /** The storage tier used for deploying primary orchestrator. */
+    tier?: string;
+    /** The storage tier used for deploying standby orchestrator. */
+    standby_tier?: string;
+    /** The machine type used for deploying standby virtual machines. */
+    standby_machine_type?: string;
+    /** The tenant name for MFA authentication API. */
+    tenant_name?: string;
+    /** Proxy IP for the Communication between Orchestrator and Service broker. */
+    proxy_ip?: string;
   }
 
   /**

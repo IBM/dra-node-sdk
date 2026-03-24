@@ -1314,4 +1314,210 @@ describe('PowerhaAutomationServiceV1', () => {
       });
     });
   });
+
+  describe('getPhaAgentFileDownloadJobStatus', () => {
+    describe('positive tests', () => {
+      function __getPhaAgentFileDownloadJobStatusTest() {
+        // Construct the params object for operation getPhaAgentFileDownloadJobStatus
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const phaJobId = '4235r23r5vdfdf-2323';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const getPhaAgentFileDownloadJobStatusParams = {
+          phaInstanceId,
+          phaJobId,
+          acceptLanguage,
+          ifNoneMatch,
+        };
+
+        const getPhaAgentFileDownloadJobStatusResult =
+          powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus(
+            getPhaAgentFileDownloadJobStatusParams
+          );
+
+        // all methods should return a Promise
+        expectToBePromise(getPhaAgentFileDownloadJobStatusResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/jobs/{pha_job_id}',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+        expect(mockRequestOptions.path.pha_job_id).toEqual(phaJobId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __getPhaAgentFileDownloadJobStatusTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __getPhaAgentFileDownloadJobStatusTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __getPhaAgentFileDownloadJobStatusTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const phaJobId = '4235r23r5vdfdf-2323';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const getPhaAgentFileDownloadJobStatusParams = {
+          phaInstanceId,
+          phaJobId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus(
+          getPhaAgentFileDownloadJobStatusParams
+        );
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('downloadPhaAgentFile', () => {
+    describe('positive tests', () => {
+      function __downloadPhaAgentFileTest() {
+        // Construct the params object for operation downloadPhaAgentFile
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const phaPvmInstanceName = 'vm-sai-01';
+        const acceptLanguage = 'en-US';
+        const ifNoneMatch = 'abcdef';
+        const downloadPhaAgentFileParams = {
+          phaInstanceId,
+          phaPvmInstanceName,
+          acceptLanguage,
+          ifNoneMatch,
+        };
+
+        const downloadPhaAgentFileResult = powerhaAutomationServiceService.downloadPhaAgentFile(
+          downloadPhaAgentFileParams
+        );
+
+        // all methods should return a Promise
+        expectToBePromise(downloadPhaAgentFileResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/vm_instance/{pha_pvm_instance_name}',
+          'GET'
+        );
+        const expectedAccept = 'application/octet-stream';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
+        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
+        expect(mockRequestOptions.path.pha_pvm_instance_name).toEqual(phaPvmInstanceName);
+        expect(mockRequestOptions.responseType).toBe('stream');
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __downloadPhaAgentFileTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.enableRetries();
+        __downloadPhaAgentFileTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        powerhaAutomationServiceService.disableRetries();
+        __downloadPhaAgentFileTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
+        const phaPvmInstanceName = 'vm-sai-01';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const downloadPhaAgentFileParams = {
+          phaInstanceId,
+          phaPvmInstanceName,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        powerhaAutomationServiceService.downloadPhaAgentFile(downloadPhaAgentFileParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.downloadPhaAgentFile({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await powerhaAutomationServiceService.downloadPhaAgentFile();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
 });

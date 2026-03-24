@@ -41,7 +41,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
  */
 var extend = require("extend");
 var ibm_cloud_sdk_core_1 = require("ibm-cloud-sdk-core");

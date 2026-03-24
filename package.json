@@ -44,7 +44,7 @@
     "@types/node": "^24.9.1",
     "dotenv": "^16.4.5",
     "extend": "3.0.2",
-    "ibm-cloud-sdk-core": "^5.4.1"
+    "ibm-cloud-sdk-core": "^5.4.8"
   },
   "devDependencies": {
     "@ibm-cloud/sdk-test-utilities": "^1.0.0",

@@ -203,6 +203,34 @@ describe('PowerhaAutomationServiceV1_integration', () => {
     expect(res.result).toBeDefined();
   });
 
+  test('getPhaAgentFileDownloadJobStatus()', async () => {
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaJobId: '4235r23r5vdfdf-2323',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+    };
+
+    const res = await powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('downloadPhaAgentFile()', async () => {
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaPvmInstanceName: 'vm-sai-01',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+    };
+
+    const res = await powerhaAutomationServiceService.downloadPhaAgentFile(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
   test('deleteClusterNode()', async () => {
     const params = {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',

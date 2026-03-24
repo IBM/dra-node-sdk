@@ -401,6 +401,69 @@ describe('PowerhaAutomationServiceV1', () => {
     // end-get_service_instance_event
   });
 
+  test('getPhaAgentFileDownloadJobStatus request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('getPhaAgentFileDownloadJobStatus() result:');
+    // begin-get_pha_agent_file_download_job_status
+
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaJobId: '4235r23r5vdfdf-2323',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+    };
+
+    let res;
+    try {
+      res = await powerhaAutomationServiceService.getPhaAgentFileDownloadJobStatus(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-get_pha_agent_file_download_job_status
+  });
+
+  test('downloadPhaAgentFile request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('downloadPhaAgentFile() result:');
+    // begin-download_pha_agent_file
+
+    const params = {
+      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaPvmInstanceName: 'vm-sai-01',
+      acceptLanguage: 'en-US',
+      ifNoneMatch: 'abcdef',
+    };
+
+    let res;
+    try {
+      res = await powerhaAutomationServiceService.downloadPhaAgentFile(params);
+      // response is binary
+      // fs.writeFileSync('result.out', res.result);
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-download_pha_agent_file
+  });
+
   test('deleteClusterNode request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);

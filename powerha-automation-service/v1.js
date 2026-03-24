@@ -41,7 +41,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
  */
 var extend = require("extend");
 var ibm_cloud_sdk_core_1 = require("ibm-cloud-sdk-core");
@@ -727,6 +727,118 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
             defaultOptions: extend(true, {}, this.baseOptions, {
                 headers: extend(true, sdkHeaders, this.baseOptions.headers, {
                     'Accept': 'application/json',
+                    'Accept-Language': _params.acceptLanguage,
+                    'If-None-Match': _params.ifNoneMatch,
+                }, _params.headers),
+                axiosOptions: {
+                    signal: _params.signal,
+                },
+            }),
+        };
+        return this.createRequest(parameters);
+    };
+    /*************************
+     * powerhaAutomationAgent
+     ************************/
+    /**
+     * Get the Job status of the downloaded powerHA agent file.
+     *
+     * Returns the current status of the job associated with a PowerHA agent file download. It indicates whether the
+     * download job is in running, completed, or failed, along with relevant metadata such as job ID, Job creation time
+     * and last updated time.
+     *
+     * @param {Object} params - The parameters to send to the service.
+     * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
+     * @param {string} params.phaJobId - Unique ID to track the pha agent file download.
+     * @param {string} [params.acceptLanguage] - The language requested for the return document.
+     * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
+     * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+     * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.PhaAgentJobStatusResponse>>}
+     */
+    PowerhaAutomationServiceV1.prototype.getPhaAgentFileDownloadJobStatus = function (params) {
+        var _params = __assign({}, params);
+        var _requiredParams = ['phaInstanceId', 'phaJobId'];
+        var _validParams = [
+            'phaInstanceId',
+            'phaJobId',
+            'acceptLanguage',
+            'ifNoneMatch',
+            'signal',
+            'headers',
+        ];
+        var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
+        if (_validationErrors) {
+            return Promise.reject(_validationErrors);
+        }
+        var path = {
+            'pha_instance_id': _params.phaInstanceId,
+            'pha_job_id': _params.phaJobId,
+        };
+        var sdkHeaders = (0, common_1.getSdkHeaders)(PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'getPhaAgentFileDownloadJobStatus');
+        var parameters = {
+            options: {
+                url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/jobs/{pha_job_id}',
+                method: 'GET',
+                path: path,
+            },
+            defaultOptions: extend(true, {}, this.baseOptions, {
+                headers: extend(true, sdkHeaders, this.baseOptions.headers, {
+                    'Accept': 'application/json',
+                    'Accept-Language': _params.acceptLanguage,
+                    'If-None-Match': _params.ifNoneMatch,
+                }, _params.headers),
+                axiosOptions: {
+                    signal: _params.signal,
+                },
+            }),
+        };
+        return this.createRequest(parameters);
+    };
+    /**
+     * Downloads PowerHA Agent file.
+     *
+     * Validates the pvm instance and then creates a job for the download process, downloads the PowerHA agent file from
+     * the Cloud Object Storage (COS) location, and updates the job progress in real time. Users can use the job ID to
+     * query the download status, including whether the job is running, completed, or failed.
+     *
+     * @param {Object} params - The parameters to send to the service.
+     * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
+     * @param {string} params.phaPvmInstanceName - Power Virtual Machine Instance Name.
+     * @param {string} [params.acceptLanguage] - The language requested for the return document.
+     * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
+     * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+     * @returns {Promise<PowerhaAutomationServiceV1.Response<NodeJS.ReadableStream>>}
+     */
+    PowerhaAutomationServiceV1.prototype.downloadPhaAgentFile = function (params) {
+        var _params = __assign({}, params);
+        var _requiredParams = ['phaInstanceId', 'phaPvmInstanceName'];
+        var _validParams = [
+            'phaInstanceId',
+            'phaPvmInstanceName',
+            'acceptLanguage',
+            'ifNoneMatch',
+            'signal',
+            'headers',
+        ];
+        var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
+        if (_validationErrors) {
+            return Promise.reject(_validationErrors);
+        }
+        var path = {
+            'pha_instance_id': _params.phaInstanceId,
+            'pha_pvm_instance_name': _params.phaPvmInstanceName,
+        };
+        var sdkHeaders = (0, common_1.getSdkHeaders)(PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'downloadPhaAgentFile');
+        var parameters = {
+            options: {
+                url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/vm_instance/{pha_pvm_instance_name}',
+                method: 'GET',
+                path: path,
+                responseType: 'stream',
+            },
+            defaultOptions: extend(true, {}, this.baseOptions, {
+                headers: extend(true, sdkHeaders, this.baseOptions.headers, {
+                    'Accept': 'application/octet-stream',
                     'Accept-Language': _params.acceptLanguage,
                     'If-None-Match': _params.ifNoneMatch,
                 }, _params.headers),
