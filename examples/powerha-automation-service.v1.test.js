@@ -351,7 +351,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-list_service_instance_events
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '4c02-0009-0086-8bd4d8cf61b6',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
@@ -432,7 +432,11 @@ describe('PowerhaAutomationServiceV1', () => {
     // end-get_pha_agent_file_download_job_status
   });
 
-  test('downloadPhaAgentFile request example', async () => {
+  const fs = require('fs');
+  const path = require('path');
+
+  test('downloadPhaAgentFile request example', async () => { 
+
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -444,25 +448,23 @@ describe('PowerhaAutomationServiceV1', () => {
 
     originalLog('downloadPhaAgentFile() result:');
     // begin-download_pha_agent_file
-
     const params = {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
-      phaPvmInstanceName: 'vm-sai-01',
+      phaPvmInstanceName: 'Vm-name-5',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
 
-    let res;
     try {
-      res = await powerhaAutomationServiceService.downloadPhaAgentFile(params);
-      // response is binary
-      // fs.writeFileSync('result.out', res.result);
+      const response = await powerhaAutomationServiceService.downloadPhaAgentFile(params);
+      const filePath = path.join(__dirname, 'result.out');
+      const writeStream = fs.createWriteStream(filePath);
+      response.result.pipe(writeStream);
     } catch (err) {
       console.warn(err);
     }
-
     // end-download_pha_agent_file
-  });
+  }, 20000);
 
   test('deleteClusterNode request example', async () => {
     consoleLogMock.mockImplementation((output) => {
