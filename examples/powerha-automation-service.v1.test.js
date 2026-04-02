@@ -454,14 +454,29 @@ describe('PowerhaAutomationServiceV1', () => {
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
-
     try {
       const response = await powerhaAutomationServiceService.downloadPhaAgentFile(params);
       const filePath = path.join(__dirname, 'result.out');
       const writeStream = fs.createWriteStream(filePath);
       response.result.pipe(writeStream);
     } catch (err) {
-      console.warn(err);
+        if (err.result && typeof err.result.pipe === 'function') {
+          let errorData = '';
+          err.result.on('data', chunk => {
+            errorData += chunk;
+          });
+          err.result.on('end', () => {
+            console.warn('Error response body:', errorData);
+            try {
+              const parsedError = JSON.parse(errorData);
+              console.warn('Parsed error:', parsedError);
+            } catch (e) {
+              console.warn('Raw error:', errorData);
+            }
+          });
+        } else {
+          console.warn(err);
+        }
     }
     // end-download_pha_agent_file
   }, 20000);
