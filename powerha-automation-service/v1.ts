@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
+ * IBM OpenAPI SDK Code Generator Version: 3.113.1-d76630af-20260320-135953
  */
 
 import * as extend from 'extend';
@@ -98,66 +98,6 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Get the apikey for the specified PowerHA service instance.
-   *
-   * Retrieves existing apikey for the specified PowerHA service instance.
-   *
-   * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
-   * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>>}
-   */
-  public getApiKey(
-    params: PowerhaAutomationServiceV1.GetApiKeyParams
-  ): Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>> {
-    const _params = { ...params };
-    const _requiredParams = ['phaInstanceId'];
-    const _validParams = ['phaInstanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
-    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
-    if (_validationErrors) {
-      return Promise.reject(_validationErrors);
-    }
-
-    const path = {
-      'pha_instance_id': _params.phaInstanceId,
-    };
-
-    const sdkHeaders = getSdkHeaders(
-      PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME,
-      'v1',
-      'getApiKey'
-    );
-
-    const parameters = {
-      options: {
-        url: '/powerha_automation/v1/api_key/{pha_instance_id}',
-        method: 'GET',
-        path,
-      },
-      defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          this.baseOptions.headers,
-          {
-            'Accept': 'application/json',
-            'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
-          },
-          _params.headers
-        ),
-        axiosOptions: {
-          signal: _params.signal,
-        },
-      }),
-    };
-
-    return this.createRequest(parameters);
-  }
-
-  /**
    * Update the apikey for the specified PowerHA service instance.
    *
    * Updates a new apikey for the specified PowerHA service instance.
@@ -166,7 +106,6 @@ class PowerhaAutomationServiceV1 extends BaseService {
    * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
    * @param {string} [params.apiKey] - The API key to be stored or registered.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
-   * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>>}
    */
@@ -175,14 +114,7 @@ class PowerhaAutomationServiceV1 extends BaseService {
   ): Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>> {
     const _params = { ...params };
     const _requiredParams = ['phaInstanceId'];
-    const _validParams = [
-      'phaInstanceId',
-      'apiKey',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
+    const _validParams = ['phaInstanceId', 'apiKey', 'acceptLanguage', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -218,7 +150,6 @@ class PowerhaAutomationServiceV1 extends BaseService {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Accept-Language': _params.acceptLanguage,
-            'If-None-Match': _params.ifNoneMatch,
           },
           _params.headers
         ),
@@ -802,9 +733,9 @@ class PowerhaAutomationServiceV1 extends BaseService {
    ************************/
 
   /**
-   * Get PowerHA automation events from this cloud instance since a specific timestamp.
+   * Get PowerHA automation events since a specific timestamp.
    *
-   * Get PowerHA automation events from this cloud instance since a specific timestamp.
+   * Get PowerHA automation events since a specific timestamp.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
@@ -1131,16 +1062,6 @@ namespace PowerhaAutomationServiceV1 {
     signal?: AbortSignal;
   }
 
-  /** Parameters for the `getApiKey` operation. */
-  export interface GetApiKeyParams extends DefaultParams {
-    /** Unique identifier of the provisioned instance. */
-    phaInstanceId: string;
-    /** The language requested for the return document. */
-    acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
-  }
-
   /** Parameters for the `createApiKey` operation. */
   export interface CreateApiKeyParams extends DefaultParams {
     /** Unique identifier of the provisioned instance. */
@@ -1149,8 +1070,6 @@ namespace PowerhaAutomationServiceV1 {
     apiKey?: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
-    /** ETag for conditional requests (optional). */
-    ifNoneMatch?: string;
   }
 
   /** Parameters for the `getClusterNode` operation. */
@@ -1313,8 +1232,8 @@ namespace PowerhaAutomationServiceV1 {
    * Response containing details of a stored API key.
    */
   export interface ApiKeyResponse {
-    /** The API key associated with the request. */
-    api_key: string;
+    /** Status of the API key retrieval request. */
+    status: string;
     /** Unique identifier for the API key record. */
     id: string;
   }
@@ -1399,7 +1318,7 @@ namespace PowerhaAutomationServiceV1 {
     last_updated_at?: string;
     /** Identifier of the service instance associated with the deployment. */
     service_instance_id?: string;
-    /** Current status of the deployment (e.g., running, completed, failed). */
+    /** Current status of the deployment. */
     status?: string;
     /** Total size in bytes of the file that has to be downloaded. */
     total_bytes?: number;
@@ -1412,8 +1331,6 @@ namespace PowerhaAutomationServiceV1 {
    * associated resources.
    */
   export interface PhaDeploymentResponse {
-    /** API key used for authentication to the deployment service. */
-    api_key?: string;
     /** Cloud account identifier. */
     cloud_account_id?: string;
     /** Type of network connectivity. */
@@ -1439,7 +1356,7 @@ namespace PowerhaAutomationServiceV1 {
     /** PowerHA version level. */
     powerha_level?: string;
     /** List of primary cluster nodes. */
-    primary_cluster_nodes: ClusterNodeInfo[];
+    primary_cluster_nodes_details: ClusterNodeInfo[];
     /** Primary cluster location. */
     primary_location?: string;
     /** name of the primary workspace region. */

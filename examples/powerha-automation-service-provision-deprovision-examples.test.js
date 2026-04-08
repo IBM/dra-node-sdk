@@ -71,12 +71,11 @@ describe('PowerHa Automation Service Provision & Deprovision Examples', () => {
 
     /* eslint-disable-next-line no-restricted-syntax */
     // Found the plan id from the user given plan name.
-    for (const child of childObjects.result.resources) {
+    childObjects.result.resources.forEach((child) => {
       if (child.name === planName) {
         resourcePlanID = child.id;
-        break;
       }
-    }
+    });
 
     expect(resourcePlanID).not.toBe('');
 
@@ -113,7 +112,7 @@ describe('PowerHa Automation Service Provision & Deprovision Examples', () => {
   // ----------------------------------------------
   // DELETE INSTANCE EXAMPLE
   // Example: Deprovision (delete) a previously provisioned resource instance.
-	// This prints the instance details that will be used in the delete request.
+  // This prints the instance details that will be used in the delete request.
   // ----------------------------------------------
   test('DeleteResourceInstance example', async () => {
     const instanceGUID =

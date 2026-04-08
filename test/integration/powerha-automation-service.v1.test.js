@@ -45,19 +45,6 @@ describe('PowerhaAutomationServiceV1_integration', () => {
     powerhaAutomationServiceService.enableRetries();
   });
 
-  test('getApiKey()', async () => {
-    const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
-      acceptLanguage: 'en-US',
-      ifNoneMatch: 'abcdef',
-    };
-
-    const res = await powerhaAutomationServiceService.getApiKey(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
   test('createApiKey()', async () => {
     const params = {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',

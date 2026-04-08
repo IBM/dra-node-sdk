@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
+ * IBM OpenAPI SDK Code Generator Version: 3.113.1-d76630af-20260320-135953
  */
 
 import * as extend from 'extend';
@@ -1329,8 +1329,6 @@ namespace DrAutomationServiceV1 {
    * Contains details about the orchestrator configuration.
    */
   export interface OrchestratorDetails {
-    /** api key. */
-    api_key: string;
     /** The deployment time of primary orchestrator VM. */
     last_updated_orchestrator_deployment_time: string;
     /** The deployment time of StandBy orchestrator VM. */
@@ -1514,6 +1512,8 @@ namespace DrAutomationServiceV1 {
     standby_status: string;
     /** The current state of the primary orchestrator. */
     status: string;
+    /** Indicates whether the API key used for the deployment is expired. */
+    is_api_key_expired: boolean;
   }
 
   /**

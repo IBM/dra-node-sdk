@@ -117,100 +117,6 @@ describe('PowerhaAutomationServiceV1', () => {
     });
   });
 
-  describe('getApiKey', () => {
-    describe('positive tests', () => {
-      function __getApiKeyTest() {
-        // Construct the params object for operation getApiKey
-        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
-        const acceptLanguage = 'en-US';
-        const ifNoneMatch = 'abcdef';
-        const getApiKeyParams = {
-          phaInstanceId,
-          acceptLanguage,
-          ifNoneMatch,
-        };
-
-        const getApiKeyResult = powerhaAutomationServiceService.getApiKey(getApiKeyParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getApiKeyResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/powerha_automation/v1/api_key/{pha_instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
-        expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getApiKeyTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        powerhaAutomationServiceService.enableRetries();
-        __getApiKeyTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        powerhaAutomationServiceService.disableRetries();
-        __getApiKeyTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getApiKeyParams = {
-          phaInstanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        powerhaAutomationServiceService.getApiKey(getApiKeyParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await powerhaAutomationServiceService.getApiKey({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await powerhaAutomationServiceService.getApiKey();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
   describe('createApiKey', () => {
     describe('positive tests', () => {
       function __createApiKeyTest() {
@@ -218,12 +124,10 @@ describe('PowerhaAutomationServiceV1', () => {
         const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
         const apiKey = 'adfadfdsafsdfdsf';
         const acceptLanguage = 'en-US';
-        const ifNoneMatch = 'abcdef';
         const createApiKeyParams = {
           phaInstanceId,
           apiKey,
           acceptLanguage,
-          ifNoneMatch,
         };
 
         const createApiKeyResult = powerhaAutomationServiceService.createApiKey(createApiKeyParams);
@@ -245,7 +149,6 @@ describe('PowerhaAutomationServiceV1', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
         expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
       }

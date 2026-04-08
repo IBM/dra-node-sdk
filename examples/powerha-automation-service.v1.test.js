@@ -65,36 +65,6 @@ describe('PowerhaAutomationServiceV1', () => {
     // end-common
   });
 
-  test('getApiKey request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getApiKey() result:');
-    // begin-get_api_key
-
-    const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
-      acceptLanguage: 'en-US',
-      ifNoneMatch: 'abcdef',
-    };
-
-    let res;
-    try {
-      res = await powerhaAutomationServiceService.getApiKey(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_api_key
-  });
-
   test('createApiKey request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
@@ -432,11 +402,11 @@ describe('PowerhaAutomationServiceV1', () => {
     // end-get_pha_agent_file_download_job_status
   });
 
+  /* eslint-disable global-require */
   const fs = require('fs');
   const path = require('path');
 
-  test('downloadPhaAgentFile request example', async () => { 
-
+  test('downloadPhaAgentFile request example', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
     });
@@ -460,23 +430,23 @@ describe('PowerhaAutomationServiceV1', () => {
       const writeStream = fs.createWriteStream(filePath);
       response.result.pipe(writeStream);
     } catch (err) {
-        if (err.result && typeof err.result.pipe === 'function') {
-          let errorData = '';
-          err.result.on('data', chunk => {
-            errorData += chunk;
-          });
-          err.result.on('end', () => {
-            console.warn('Error response body:', errorData);
-            try {
-              const parsedError = JSON.parse(errorData);
-              console.warn('Parsed error:', parsedError);
-            } catch (e) {
-              console.warn('Raw error:', errorData);
-            }
-          });
-        } else {
-          console.warn(err);
-        }
+      if (err.result && typeof err.result.pipe === 'function') {
+        let errorData = '';
+        err.result.on('data', (chunk) => {
+          errorData += chunk;
+        });
+        err.result.on('end', () => {
+          console.warn('Error response body:', errorData);
+          try {
+            const parsedError = JSON.parse(errorData);
+            console.warn('Parsed error:', parsedError);
+          } catch (e) {
+            console.warn('Raw error:', errorData);
+          }
+        });
+      } else {
+        console.warn(err);
+      }
     }
     // end-download_pha_agent_file
   }, 20000);
