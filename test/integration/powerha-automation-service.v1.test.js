@@ -50,7 +50,6 @@ describe('PowerhaAutomationServiceV1_integration', () => {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
       apiKey: 'adfadfdsafsdfdsf',
       acceptLanguage: 'en-US',
-      ifNoneMatch: 'abcdef',
     };
 
     const res = await powerhaAutomationServiceService.createApiKey(params);
@@ -207,7 +206,6 @@ describe('PowerhaAutomationServiceV1_integration', () => {
   test('downloadPhaAgentFile()', async () => {
     const params = {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
-      phaPvmInstanceName: 'vm-sai-01',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };

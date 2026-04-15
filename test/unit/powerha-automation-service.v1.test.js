@@ -1327,12 +1327,10 @@ describe('PowerhaAutomationServiceV1', () => {
       function __downloadPhaAgentFileTest() {
         // Construct the params object for operation downloadPhaAgentFile
         const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
-        const phaPvmInstanceName = 'vm-sai-01';
         const acceptLanguage = 'en-US';
         const ifNoneMatch = 'abcdef';
         const downloadPhaAgentFileParams = {
           phaInstanceId,
-          phaPvmInstanceName,
           acceptLanguage,
           ifNoneMatch,
         };
@@ -1351,7 +1349,7 @@ describe('PowerhaAutomationServiceV1', () => {
 
         checkUrlAndMethod(
           mockRequestOptions,
-          '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/vm_instance/{pha_pvm_instance_name}',
+          '/powerha_automation/v1/pha_agent/download/{pha_instance_id}',
           'GET'
         );
         const expectedAccept = 'application/octet-stream';
@@ -1360,7 +1358,6 @@ describe('PowerhaAutomationServiceV1', () => {
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
         checkUserHeader(createRequestMock, 'If-None-Match', ifNoneMatch);
         expect(mockRequestOptions.path.pha_instance_id).toEqual(phaInstanceId);
-        expect(mockRequestOptions.path.pha_pvm_instance_name).toEqual(phaPvmInstanceName);
         expect(mockRequestOptions.responseType).toBe('stream');
       }
 
@@ -1382,12 +1379,10 @@ describe('PowerhaAutomationServiceV1', () => {
       test('should prioritize user-given headers', () => {
         // parameters
         const phaInstanceId = '8eefautr-4c02-0009-0086-8bd4d8cf61b6';
-        const phaPvmInstanceName = 'vm-sai-01';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const downloadPhaAgentFileParams = {
           phaInstanceId,
-          phaPvmInstanceName,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,

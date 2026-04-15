@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.1-d76630af-20260320-135953
+ * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
  */
 
 import * as extend from 'extend';
@@ -965,7 +965,6 @@ class PowerhaAutomationServiceV1 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
-   * @param {string} params.phaPvmInstanceName - Power Virtual Machine Instance Name.
    * @param {string} [params.acceptLanguage] - The language requested for the return document.
    * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -975,15 +974,8 @@ class PowerhaAutomationServiceV1 extends BaseService {
     params: PowerhaAutomationServiceV1.DownloadPhaAgentFileParams
   ): Promise<PowerhaAutomationServiceV1.Response<NodeJS.ReadableStream>> {
     const _params = { ...params };
-    const _requiredParams = ['phaInstanceId', 'phaPvmInstanceName'];
-    const _validParams = [
-      'phaInstanceId',
-      'phaPvmInstanceName',
-      'acceptLanguage',
-      'ifNoneMatch',
-      'signal',
-      'headers',
-    ];
+    const _requiredParams = ['phaInstanceId'];
+    const _validParams = ['phaInstanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -991,7 +983,6 @@ class PowerhaAutomationServiceV1 extends BaseService {
 
     const path = {
       'pha_instance_id': _params.phaInstanceId,
-      'pha_pvm_instance_name': _params.phaPvmInstanceName,
     };
 
     const sdkHeaders = getSdkHeaders(
@@ -1002,7 +993,7 @@ class PowerhaAutomationServiceV1 extends BaseService {
 
     const parameters = {
       options: {
-        url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/vm_instance/{pha_pvm_instance_name}',
+        url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}',
         method: 'GET',
         path,
         responseType: 'stream',
@@ -1216,8 +1207,6 @@ namespace PowerhaAutomationServiceV1 {
   export interface DownloadPhaAgentFileParams extends DefaultParams {
     /** Unique identifier of the provisioned instance. */
     phaInstanceId: string;
-    /** Power Virtual Machine Instance Name. */
-    phaPvmInstanceName: string;
     /** The language requested for the return document. */
     acceptLanguage?: string;
     /** ETag for conditional requests (optional). */

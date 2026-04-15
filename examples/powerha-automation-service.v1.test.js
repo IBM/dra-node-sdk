@@ -420,7 +420,6 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-download_pha_agent_file
     const params = {
       phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
-      phaPvmInstanceName: 'Vm-name-5',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };

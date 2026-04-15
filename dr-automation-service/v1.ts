@@ -15,7 +15,7 @@
  */
 
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.1-d76630af-20260320-135953
+ * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
  */
 
 import * as extend from 'extend';
@@ -537,7 +537,8 @@ class DrAutomationServiceV1 extends BaseService {
   /**
    * List of primary and standby powervs workspaces.
    *
-   * Retrieves the power virtual server workspaces for primary and standby orchestrator based on location id.
+   * Retrieves the Power Virtual Server workspaces associated with the primary and standby orchestrators for the given
+   * instance ID and location ID.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.instanceId - instance id of instance to provision.
@@ -1481,7 +1482,7 @@ namespace DrAutomationServiceV1 {
     /** Status of standby node addition to the orchestrator cluster. */
     orch_ext_connectivity_status?: string;
     /** The status of standby node in the Orchestrator cluster. */
-    orch_standby_node_addtion_status: string;
+    orch_standby_node_addition_status: string;
     /** The current status of the primary orchestrator VM. */
     orchestrator_cluster_message: string;
     /** The configuration status of the orchestrator cluster. */
