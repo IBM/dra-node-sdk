@@ -41,9 +41,10 @@ Changes might occur which impact applications that use this SDK.
 The IBM Cloud DrAutomation services Node.js SDK allows developers to programmatically interact with the following
 IBM Cloud services:
 
-Service Name | Import Path
+Service Name - Plan | Import Path
 --- | ---
-[DrAutomation Service](https://cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
+[DrAutomation Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
+[PowerHA Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/powerha-automation-service/v1
 
 ## Prerequisites
 * You need an [IBM Cloud][ibm-cloud-onboarding] account.
@@ -59,10 +60,16 @@ npm install @ibm-cloud/ibm-dr-automation-service
 
 ## How to Import 
 
+#### Example – DrAutomation Service-Plan
 ```sh
 const DrAutomationServiceV1 = require('@ibm-cloud/ibm-dr-automation-service');
 ```
-
+where `DrAutomationServiceV1` is the service's module name from the table above
+#### Example – PowerHA Service-Plan
+```sh
+const PowerhaAutomationServiceV1 = require('@ibm-cloud/ibm-dr-automation-service/powerha-automation-service/v1');
+```
+where `PowerhaAutomationServiceV1` is the service's module name from the table above
 
 ## Using the SDK
 For general SDK usage information, please see
@@ -72,15 +79,22 @@ For general SDK usage information, please see
 
 The SDK can be configured using environment variables. Here's an example configuration:
 
+#### DrAutomation Service Configuration
 ```bash
-# Service URL (for development/testing)
-export DR_AUTOMATION_SERVICE_URL=https://power-dra.cloud.ibm.com
-
 # Authentication type
 export DR_AUTOMATION_SERVICE_AUTH_TYPE=bearerToken
 
 # Bearer token for authentication
-export DR_AUTOMATION_SERVICE_BEARER_TOKEN=eyJraWQiOiIyMDE5MD......
+export DR_AUTOMATION_SERVICE_BEARER_TOKEN=GenratedToken
+```
+
+#### PowerHA Service Configuration
+```bash
+# Authentication type
+export POWERHA_AUTOMATION_SERVICE_AUTH_TYPE=bearerToken
+
+# Bearer token for authentication
+export POWERHA_AUTOMATION_SERVICE_BEARER_TOKEN=GenratedToken
 ```
 
 **Note:** The bearer token shown above is an example. For production use:

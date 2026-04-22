@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -561,6 +561,98 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
+  describe('getLastOperation', () => {
+    describe('positive tests', () => {
+      function __getLastOperationTest() {
+        // Construct the params object for operation getLastOperation
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const acceptLanguage = 'testString';
+        const getLastOperationParams = {
+          instanceId,
+          acceptLanguage,
+        };
+
+        const getLastOperationResult =
+          drAutomationServiceService.getLastOperation(getLastOperationParams);
+
+        // all methods should return a Promise
+        expectToBePromise(getLastOperationResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/drautomation/v1/last_operation/{instance_id}',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
+        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __getLastOperationTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        drAutomationServiceService.enableRetries();
+        __getLastOperationTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        drAutomationServiceService.disableRetries();
+        __getLastOperationTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const getLastOperationParams = {
+          instanceId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        drAutomationServiceService.getLastOperation(getLastOperationParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await drAutomationServiceService.getLastOperation({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await drAutomationServiceService.getLastOperation();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
   describe('getMachineType', () => {
     describe('positive tests', () => {
       function __getMachineTypeTest() {
@@ -764,19 +856,33 @@ describe('DrAutomationServiceV1', () => {
         const orchestratorPassword = 'testString';
         const orchestratorWorkspaceId = 'orch-workspace-01';
         const apiKey = 'testString';
+        const managedApikey = 'testString';
         const clientId = 'abcd-97d2-1234-bf62-8eaecc67a1234';
         const clientSecret = 'abcd1234xM1y123wK6qR9123456789bE2jG0pabcdefgh';
         const guid = '123e4567-e89b-12d3-a456-426614174000';
         const orchestratorHa = true;
+        const orchestratorNetworkIds = [
+          'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
+          '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
+        ];
+        const orchestratorWorkspaceLocation = 'us-south';
         const proxyIp = '10.40.30.10:8888';
         const regionId = 'us-south';
-        const resourceInstance = 'crn:v1:bluemix:public:resource-controller::res123';
+        const resourceInstance =
+          'crn:v1:bluemix:public:resource-controller:us-south:a/123456fb04ceebfb4a9fd38c22334455:resource-instance::';
+        const secondaryWorkspaceId = 'secondary-workspace789';
         const secret = 'testString';
         const secretGroup = 'default-secret-group';
-        const sshKeyName = 'my-ssh-key';
+        const sshKeyName = 'sshkey-name';
         const standbyMachineType = 'bx2-8x32';
         const standbyOrchestratorName = 'standbyAdmin';
+        const standbyOrchestratorNetworkIds = [
+          'd9c7f1ab-47b2-4e6f-b0a8-9d2e5d7f5678',
+          '8ab29d71-8321-44d4-9cae-119fdc30a8ab',
+        ];
+        const standbySshKeyName = 'standby-sshkey-name';
         const standbyOrchestratorWorkspaceId = 'orch-standby-02';
+        const standbyOrchestratorWorkspaceLocation = 'us-east';
         const standbyTier = 'Premium';
         const tenantName = 'xxx.ibm.com';
         const tier = 'Standard';
@@ -792,19 +898,26 @@ describe('DrAutomationServiceV1', () => {
           orchestratorPassword,
           orchestratorWorkspaceId,
           apiKey,
+          managedApikey,
           clientId,
           clientSecret,
           guid,
           orchestratorHa,
+          orchestratorNetworkIds,
+          orchestratorWorkspaceLocation,
           proxyIp,
           regionId,
           resourceInstance,
+          secondaryWorkspaceId,
           secret,
           secretGroup,
           sshKeyName,
           standbyMachineType,
           standbyOrchestratorName,
+          standbyOrchestratorNetworkIds,
+          standbySshKeyName,
           standbyOrchestratorWorkspaceId,
+          standbyOrchestratorWorkspaceLocation,
           standbyTier,
           tenantName,
           tier,
@@ -838,20 +951,33 @@ describe('DrAutomationServiceV1', () => {
         expect(mockRequestOptions.body.orchestrator_password).toEqual(orchestratorPassword);
         expect(mockRequestOptions.body.orchestrator_workspace_id).toEqual(orchestratorWorkspaceId);
         expect(mockRequestOptions.body.api_key).toEqual(apiKey);
+        expect(mockRequestOptions.body.managed_apikey).toEqual(managedApikey);
         expect(mockRequestOptions.body.client_id).toEqual(clientId);
         expect(mockRequestOptions.body.client_secret).toEqual(clientSecret);
         expect(mockRequestOptions.body.guid).toEqual(guid);
         expect(mockRequestOptions.body.orchestrator_ha).toEqual(orchestratorHa);
+        expect(mockRequestOptions.body.orchestrator_network_ids).toEqual(orchestratorNetworkIds);
+        expect(mockRequestOptions.body.orchestrator_workspace_location).toEqual(
+          orchestratorWorkspaceLocation
+        );
         expect(mockRequestOptions.body.proxy_ip).toEqual(proxyIp);
         expect(mockRequestOptions.body.region_id).toEqual(regionId);
         expect(mockRequestOptions.body.resource_instance).toEqual(resourceInstance);
+        expect(mockRequestOptions.body.secondary_workspace_id).toEqual(secondaryWorkspaceId);
         expect(mockRequestOptions.body.secret).toEqual(secret);
         expect(mockRequestOptions.body.secret_group).toEqual(secretGroup);
         expect(mockRequestOptions.body.ssh_key_name).toEqual(sshKeyName);
         expect(mockRequestOptions.body.standby_machine_type).toEqual(standbyMachineType);
         expect(mockRequestOptions.body.standby_orchestrator_name).toEqual(standbyOrchestratorName);
+        expect(mockRequestOptions.body.standby_orchestrator_network_ids).toEqual(
+          standbyOrchestratorNetworkIds
+        );
+        expect(mockRequestOptions.body.standby_ssh_key_name).toEqual(standbySshKeyName);
         expect(mockRequestOptions.body.standby_orchestrator_workspace_id).toEqual(
           standbyOrchestratorWorkspaceId
+        );
+        expect(mockRequestOptions.body.standby_orchestrator_workspace_location).toEqual(
+          standbyOrchestratorWorkspaceLocation
         );
         expect(mockRequestOptions.body.standby_tier).toEqual(standbyTier);
         expect(mockRequestOptions.body.tenant_name).toEqual(tenantName);
@@ -931,110 +1057,16 @@ describe('DrAutomationServiceV1', () => {
     });
   });
 
-  describe('getLastOperation', () => {
-    describe('positive tests', () => {
-      function __getLastOperationTest() {
-        // Construct the params object for operation getLastOperation
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const acceptLanguage = 'testString';
-        const getLastOperationParams = {
-          instanceId,
-          acceptLanguage,
-        };
-
-        const getLastOperationResult =
-          drAutomationServiceService.getLastOperation(getLastOperationParams);
-
-        // all methods should return a Promise
-        expectToBePromise(getLastOperationResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/drautomation/v1/last_operation/{instance_id}',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.path.instance_id).toEqual(instanceId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __getLastOperationTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.enableRetries();
-        __getLastOperationTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        drAutomationServiceService.disableRetries();
-        __getLastOperationTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const getLastOperationParams = {
-          instanceId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        drAutomationServiceService.getLastOperation(getLastOperationParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getLastOperation({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await drAutomationServiceService.getLastOperation();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
   describe('listEvents', () => {
     describe('positive tests', () => {
       function __listEventsTest() {
         // Construct the params object for operation listEvents
         const instanceId = '123456d3-1122-3344-b67d-4389b44b7bf9';
-        const time = '2025-06-19T23:59:59Z';
         const fromTime = '2025-06-19T00:00:00Z';
         const toTime = '2025-06-19T23:59:59Z';
         const acceptLanguage = 'testString';
         const listEventsParams = {
           instanceId,
-          time,
           fromTime,
           toTime,
           acceptLanguage,
@@ -1059,7 +1091,6 @@ describe('DrAutomationServiceV1', () => {
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Accept-Language', acceptLanguage);
-        expect(mockRequestOptions.qs.time).toEqual(time);
         expect(mockRequestOptions.qs.from_time).toEqual(fromTime);
         expect(mockRequestOptions.qs.to_time).toEqual(toTime);
         expect(mockRequestOptions.path.instance_id).toEqual(instanceId);

@@ -10,16 +10,16 @@ const GlobalCatalogV1 = require('@ibm-cloud/platform-services/global-catalog/v1'
 
 jest.setTimeout(200000); // Allow long IBM Cloud API calls
 
-describe('DR Automation Service Provision & Deprovision Examples', () => {
+describe('PowerHa Automation Service Provision & Deprovision Examples', () => {
   let resourceControllerService;
 
   // Configurable values
   const resourceGroup = '9d445dfd58484a489220751d0077f906';
   const serviceName = 'power-dr-automation';
   // Mention your plan name for your service to create the provision.
-  const planName = 'power-virtual-server-dr-automation';
+  const planName = 'powerha-aix-powervs';
   const resourceInstanceName = 'abcnewJuhi1090';
-  const targetRegion = 'global';
+  const targetRegion = 'us-south';
   const iamAPIKey = 'api-key'; // Replace with valid key
 
   // ----------------------------------------------
@@ -79,7 +79,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
 
     expect(resourcePlanID).not.toBe('');
 
-    console.log('Plan ID found:', resourcePlanID);
+    console.log('Found the plan id from the user given plan name:', resourcePlanID);
 
     // Step 3 — Create the instance
     console.log('\n--- CreateResourceInstance() ---');
@@ -116,7 +116,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   // ----------------------------------------------
   test('DeleteResourceInstance example', async () => {
     const instanceGUID =
-      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:07f78f3c-11dc-49d5-b68e-106f9e7064c1::';
+      'crn:v1:staging:public:power-dr-automation:us-south:a/6b42cb360b434c72b24ae371b906542e:fcf05879-4563-45e5-b361-e547c3a8b7c0::';
 
     console.log('\n--- Deleting Resource Instance ---');
 

@@ -18,8 +18,8 @@
  */
 
 /* eslint-disable no-console */
-
-const DrAutomationServiceV1 = require('../dr-automation-service/v1');
+const { IamAuthenticator } = require('ibm-cloud-sdk-core');
+const DrAutomationServiceV1 = require('../dist/dr-automation-service/v1');
 // eslint-disable-next-line node/no-unpublished-require
 const authHelper = require('../test/resources/auth-helper.js');
 // You can use the readExternalSources method to access additional configuration values
@@ -90,6 +90,10 @@ describe('DrAutomationServiceV1', () => {
       tier: 'tier1',
       sshKeyName: 'vijaykey',
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // HA standby fields
       standbyOrchestratorName: 'drautomationstandbymh1',
@@ -97,7 +101,12 @@ describe('DrAutomationServiceV1', () => {
       standbyMachineType: 's922',
       standbyTier: 'tier1',
       standByRedeploy: 'false',
-
+      standbySshKeyName: 'test-string',
+      standbyOrchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
+      managedApikey: 'testString',
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
       clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
@@ -146,6 +155,10 @@ describe('DrAutomationServiceV1', () => {
       regionId: 'us-south',
 
       apiKey: 'apikey is required',
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
 
       // HA standby fields
       standbyOrchestratorName: 'drautomationstandbymh3',
@@ -153,7 +166,12 @@ describe('DrAutomationServiceV1', () => {
       standbyMachineType: 's922',
       standbyTier: 'tier1',
       standByRedeploy: 'false',
-
+      standbySshKeyName: 'test-string',
+      standbyOrchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
+      managedApikey: 'testString',
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
       clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
@@ -196,7 +214,11 @@ describe('DrAutomationServiceV1', () => {
       tier: 'tier1',
       sshKeyName: 'vijaykey',
       apiKey: 'apikey is required',
-
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
+      managedApikey: 'testString',
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
       clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
@@ -244,7 +266,11 @@ describe('DrAutomationServiceV1', () => {
       regionId: 'us-south',
 
       apiKey: 'apikey is required',
-
+      orchestratorNetworkIds: [
+        '397dc20d-9f66-46dc-a750-d15392872023',
+        '397dc20d-9f66-46dc-a750-d15392872023',
+      ],
+      managedApikey: 'testString',
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
       clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
