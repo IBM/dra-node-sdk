@@ -79,7 +79,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-create_api_key
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
       apiKey: 'test-string',
@@ -110,7 +110,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_cluster_node
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -139,7 +139,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-create_cluster_node
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       primaryClusterNodes: ['ede4c36e-002c-48da-992e-6039d230c478'],
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -170,7 +170,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_powervs_workspace
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       locationId: 'us-south',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -201,7 +201,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_pha_last_operation
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
@@ -231,7 +231,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_pha_deployment
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -260,7 +260,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-create_pha_deployment
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       locationId: 'loc-us-south-01',
       primaryWorkspace: 'workspace-primary',
       acceptLanguage: 'en-US',
@@ -292,7 +292,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_supported_location
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -354,7 +354,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_service_instance_event
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -385,7 +385,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-get_pha_agent_file_download_job_status
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       phaJobId: '4235r23r5vdfdf-2323',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -419,7 +419,7 @@ describe('PowerhaAutomationServiceV1', () => {
     originalLog('downloadPhaAgentFile() result:');
     // begin-download_pha_agent_file
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
@@ -464,7 +464,7 @@ describe('PowerhaAutomationServiceV1', () => {
     // begin-delete_cluster_node
 
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       vmId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
       ifNoneMatch: 'abcdef',
     };

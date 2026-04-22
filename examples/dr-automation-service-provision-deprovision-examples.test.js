@@ -116,7 +116,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   // ----------------------------------------------
   test('DeleteResourceInstance example', async () => {
     const instanceGUID =
-      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:07f78f3c-11dc-49d5-b68e-106f9e7064c1::';
+      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:abcde11-11dc-49d5-b68e-abcsde12c545::';
 
     console.log('\n--- Deleting Resource Instance ---');
 

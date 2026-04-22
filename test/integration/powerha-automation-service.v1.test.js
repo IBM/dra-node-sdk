@@ -47,7 +47,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('createApiKey()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       apiKey: 'adfadfdsafsdfdsf',
       acceptLanguage: 'en-US',
     };
@@ -60,7 +60,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getClusterNode()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -72,7 +72,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('createClusterNode()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       primaryClusterNodes: ['ede4c36e-002c-48da-992e-6039d230c478'],
       secondaryClusterNodes: ['ede4c36e-1234-48da-992e-6039d230c478'],
       acceptLanguage: 'en-US',
@@ -87,7 +87,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getPowervsWorkspace()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       locationId: 'us-south',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -101,7 +101,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getPhaLastOperation()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
@@ -114,7 +114,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getPhaDeployment()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -126,7 +126,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('createPhaDeployment()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       locationId: 'loc-us-south-01',
       primaryWorkspace: 'workspace-primary',
       apiKey: '123635364646fghrtfhbfdhb',
@@ -149,7 +149,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getSupportedLocation()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       ifNoneMatch: 'abcdef',
     };
 
@@ -161,7 +161,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('listServiceInstanceEvents()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
@@ -177,7 +177,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getServiceInstanceEvent()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       eventId: '00116b2a-9326-4024-839e-fb5364b76898',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -191,7 +191,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('getPhaAgentFileDownloadJobStatus()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       phaJobId: '4235r23r5vdfdf-2323',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
@@ -205,7 +205,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('downloadPhaAgentFile()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       acceptLanguage: 'en-US',
       ifNoneMatch: 'abcdef',
     };
@@ -218,7 +218,7 @@ describe('PowerhaAutomationServiceV1_integration', () => {
 
   test('deleteClusterNode()', async () => {
     const params = {
-      phaInstanceId: '8eefautr-4c02-0009-0086-8bd4d8cf61b6',
+      phaInstanceId: '122552533-4c02-0009-0086-8bd4dabc12',
       vmId: 'r006-2f3b3ab9-2149-49cc-83a1-30a5d93d59b2',
       ifNoneMatch: 'abcdef',
     };
