@@ -377,7 +377,7 @@ describe('ServicebrokerV1', () => {
       instanceId:
         'crn:v1:staging:public:power-dr-automation:global:a/a123456fb04ceebfb4a9fd38c22334455:123456d3-1122-3344-b67d-4389b44b7bf9::',
       workspaceId: '75cbf05b-78f6-406e-afe7-a904f646d798',
-      crn: 'crn:v1:bluemix:public:power-iaas:dal10:a/094f4214c75941f991da601b001df1fe:75cbf05b-78f6-406e-afe7-a904f646d798::',
+      crn: 'crn:v1:bluemix:public:power-iaas:dal10:a/a123456fb04ceebfb4a9fd38c22334455:75cbf05b-78f6-406e-afe7-a904f646d798::',
       locationUrl: 'https://us-south.power-iaas.cloud.ibm.com',
     };
 

@@ -14,7 +14,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   let resourceControllerService;
 
   // Configurable values
-  const resourceGroup = '9d445dfd58484a489220751d0077f906';
+  const resourceGroup = 'abcdefgh58484a489220751d00712345';
   const serviceName = 'power-dr-automation';
   // Mention your plan name for your service to create the provision.
   const planName = 'power-virtual-server-dr-automation';
@@ -116,7 +116,7 @@ describe('DR Automation Service Provision & Deprovision Examples', () => {
   // ----------------------------------------------
   test('DeleteResourceInstance example', async () => {
     const instanceGUID =
-      'crn:v1:bluemix:public:power-dr-automation:global:a/094f4214c75941f991da601b001df1fe:abcde11-11dc-49d5-b68e-abcsde12c545::';
+      'crn:v1:bluemix:public:power-dr-automation:global:a/abcde12f991da601b0011223f1fe:abcde11-11dc-49d5-b68e-abcsde12c545::';
 
     console.log('\n--- Deleting Resource Instance ---');
 

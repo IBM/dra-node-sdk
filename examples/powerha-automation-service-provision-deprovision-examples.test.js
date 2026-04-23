@@ -14,7 +14,7 @@ describe('PowerHa Automation Service Provision & Deprovision Examples', () => {
   let resourceControllerService;
 
   // Configurable values
-  const resourceGroup = '9d445dfd58484a489220751d0077f906';
+  const resourceGroup = 'abcdefgh58484a489220751d00712345';
   const serviceName = 'power-dr-automation';
   // Mention your plan name for your service to create the provision.
   const planName = 'powerha-aix-powervs';
