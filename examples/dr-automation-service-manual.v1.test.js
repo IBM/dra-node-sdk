@@ -79,7 +79,7 @@ describe('DrAutomationServiceV1', () => {
     originalLog('\ncreate_manage_dr_ha_with_sshkey() result:');
 
     const params = {
-      instanceId: '050ebe3b-13f4-4db8-8ece-501a3c13be80mh1',
+      instanceId: '050ebe3b-13f4-4db8-8abc-501a3c13be80mh1',
       orchestratorHa: true,
       orchestratorLocationType: 'off-premises',
       locationId: 'dal10',
