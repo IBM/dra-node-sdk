@@ -109,7 +109,7 @@ describe('DrAutomationServiceV1', () => {
       managedApikey: 'testString',
       // MFA
       clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
-      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      clientSecret: 'abcdefgT5rS8wK6qR9dabvF1hU4sA3bE2jG0pL9oX7yC',
       tenantName: 'xxx.ibm.com',
     };
 
