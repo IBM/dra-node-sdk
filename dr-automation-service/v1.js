@@ -41,7 +41,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
+ * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
  */
 var extend = require("extend");
 var ibm_cloud_sdk_core_1 = require("ibm-cloud-sdk-core");
@@ -424,7 +424,8 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
     /**
      * List of primary and standby powervs workspaces.
      *
-     * Retrieves the power virtual server workspaces for primary and standby orchestrator based on location id.
+     * Retrieves the Power Virtual Server workspaces associated with the primary and standby orchestrators for the given
+     * instance ID and location ID.
      *
      * @param {Object} params - The parameters to send to the service.
      * @param {string} params.instanceId - instance id of instance to provision.

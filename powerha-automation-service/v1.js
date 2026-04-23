@@ -41,7 +41,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.113.0-3f9df07a-20260317-160650
+ * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
  */
 var extend = require("extend");
 var ibm_cloud_sdk_core_1 = require("ibm-cloud-sdk-core");
@@ -106,49 +106,6 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      * powerhaAutomationConfig
      ************************/
     /**
-     * Get the apikey for the specified PowerHA service instance.
-     *
-     * Retrieves existing apikey for the specified PowerHA service instance.
-     *
-     * @param {Object} params - The parameters to send to the service.
-     * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
-     * @param {string} [params.acceptLanguage] - The language requested for the return document.
-     * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
-     * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-     * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>>}
-     */
-    PowerhaAutomationServiceV1.prototype.getApiKey = function (params) {
-        var _params = __assign({}, params);
-        var _requiredParams = ['phaInstanceId'];
-        var _validParams = ['phaInstanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
-        var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
-        if (_validationErrors) {
-            return Promise.reject(_validationErrors);
-        }
-        var path = {
-            'pha_instance_id': _params.phaInstanceId,
-        };
-        var sdkHeaders = (0, common_1.getSdkHeaders)(PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'getApiKey');
-        var parameters = {
-            options: {
-                url: '/powerha_automation/v1/api_key/{pha_instance_id}',
-                method: 'GET',
-                path: path,
-            },
-            defaultOptions: extend(true, {}, this.baseOptions, {
-                headers: extend(true, sdkHeaders, this.baseOptions.headers, {
-                    'Accept': 'application/json',
-                    'Accept-Language': _params.acceptLanguage,
-                    'If-None-Match': _params.ifNoneMatch,
-                }, _params.headers),
-                axiosOptions: {
-                    signal: _params.signal,
-                },
-            }),
-        };
-        return this.createRequest(parameters);
-    };
-    /**
      * Update the apikey for the specified PowerHA service instance.
      *
      * Updates a new apikey for the specified PowerHA service instance.
@@ -157,21 +114,13 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
      * @param {string} [params.apiKey] - The API key to be stored or registered.
      * @param {string} [params.acceptLanguage] - The language requested for the return document.
-     * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
      * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
      * @returns {Promise<PowerhaAutomationServiceV1.Response<PowerhaAutomationServiceV1.ApiKeyResponse>>}
      */
     PowerhaAutomationServiceV1.prototype.createApiKey = function (params) {
         var _params = __assign({}, params);
         var _requiredParams = ['phaInstanceId'];
-        var _validParams = [
-            'phaInstanceId',
-            'apiKey',
-            'acceptLanguage',
-            'ifNoneMatch',
-            'signal',
-            'headers',
-        ];
+        var _validParams = ['phaInstanceId', 'apiKey', 'acceptLanguage', 'signal', 'headers'];
         var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
         if (_validationErrors) {
             return Promise.reject(_validationErrors);
@@ -195,7 +144,6 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Accept-Language': _params.acceptLanguage,
-                    'If-None-Match': _params.ifNoneMatch,
                 }, _params.headers),
                 axiosOptions: {
                     signal: _params.signal,
@@ -625,9 +573,9 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      * powerhaAutomationEvents
      ************************/
     /**
-     * Get PowerHA automation events from this cloud instance since a specific timestamp.
+     * Get PowerHA automation events since a specific timestamp.
      *
-     * Get PowerHA automation events from this cloud instance since a specific timestamp.
+     * Get PowerHA automation events since a specific timestamp.
      *
      * @param {Object} params - The parameters to send to the service.
      * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
@@ -803,7 +751,6 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      *
      * @param {Object} params - The parameters to send to the service.
      * @param {string} params.phaInstanceId - Unique identifier of the provisioned instance.
-     * @param {string} params.phaPvmInstanceName - Power Virtual Machine Instance Name.
      * @param {string} [params.acceptLanguage] - The language requested for the return document.
      * @param {string} [params.ifNoneMatch] - ETag for conditional requests (optional).
      * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
@@ -811,27 +758,19 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      */
     PowerhaAutomationServiceV1.prototype.downloadPhaAgentFile = function (params) {
         var _params = __assign({}, params);
-        var _requiredParams = ['phaInstanceId', 'phaPvmInstanceName'];
-        var _validParams = [
-            'phaInstanceId',
-            'phaPvmInstanceName',
-            'acceptLanguage',
-            'ifNoneMatch',
-            'signal',
-            'headers',
-        ];
+        var _requiredParams = ['phaInstanceId'];
+        var _validParams = ['phaInstanceId', 'acceptLanguage', 'ifNoneMatch', 'signal', 'headers'];
         var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
         if (_validationErrors) {
             return Promise.reject(_validationErrors);
         }
         var path = {
             'pha_instance_id': _params.phaInstanceId,
-            'pha_pvm_instance_name': _params.phaPvmInstanceName,
         };
         var sdkHeaders = (0, common_1.getSdkHeaders)(PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'downloadPhaAgentFile');
         var parameters = {
             options: {
-                url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}/vm_instance/{pha_pvm_instance_name}',
+                url: '/powerha_automation/v1/pha_agent/download/{pha_instance_id}',
                 method: 'GET',
                 path: path,
                 responseType: 'stream',
