@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/IBM/dra-node-sdk/compare/v0.0.1...v0.1.0) (2026-04-28)
+
+
+### Features
+
+* sync private repo with main and update PowerHA SDK ([40597cc](https://github.com/IBM/dra-node-sdk/commit/40597ccd0f7947311b9437b64bfb54f8ed261a9f))
+
 ## [0.0.1](https://github.com/IBM/dra-node-sdk/compare/v0.0.0...v0.0.1) (2025-12-15)
 
 
