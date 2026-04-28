@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -148,7 +148,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_dr_locations
-  });
+  }, 20000);
 
   test('getDrManagedVm request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -204,6 +204,34 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_dr_summary
+  }, 20000);
+
+  test('getLastOperation request example', async () => {
+    consoleLogMock.mockImplementation((output) => {
+      originalLog(output);
+    });
+    consoleWarnMock.mockImplementation((output) => {
+      // if an error occurs, display the message and then fail the test
+      originalWarn(output);
+      expect(true).toBeFalsy();
+    });
+
+    originalLog('getLastOperation() result:');
+    // begin-get_last_operation
+
+    const params = {
+      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+    };
+
+    let res;
+    try {
+      res = await drAutomationServiceService.getLastOperation(params);
+      console.log(JSON.stringify(res.result, null, 2));
+    } catch (err) {
+      console.warn(err);
+    }
+
+    // end-get_last_operation
   });
 
   test('getMachineType request example', async () => {
@@ -234,7 +262,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_machine_type
-  });
+  }, 20000);
 
   test('getPowervsWorkspaces request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -263,7 +291,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-get_powervs_workspaces
-  });
+  }, 20000);
 
   test('createManageDr request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -279,13 +307,23 @@ describe('DrAutomationServiceV1', () => {
     // begin-create_manage_dr
 
     const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
+      instanceId: 'd5b8e475-fd94-490d-88d5-50fcc76f5ca0',
       locationId: 'dal10',
-      machineType: 'bx2-4x16',
+      machineType: 's922',
       orchestratorLocationType: 'off-premises',
       orchestratorName: 'adminUser',
-      orchestratorPassword: 'testString',
-      orchestratorWorkspaceId: 'orch-workspace-01',
+      orchestratorPassword: 'Admin@User',
+      orchestratorWorkspaceId: '281b578f-8c8f-452b-9351-d35e32c6c2d7',
+      apiKey: 'testString',
+      orchestratorNetworkIds: ['88336a7b-1890-47e7-8be4-4f6f2efa062a'],
+      orchestratorHa: false,
+      tier: 'tier1',
+      sshKeyName: 'testString',
+      managedApikey: 'testString',
+      // MFA
+      clientId: '123abcd-97d2-4b14-bf62-8eaecc67a122',
+      clientSecret: 'abcdefgT5rS8wK6qR9dD7vF1hU4sA3bE2jG0pL9oX7yC',
+      tenantName: 'xxx.ibm.com',
     };
 
     let res;
@@ -297,35 +335,7 @@ describe('DrAutomationServiceV1', () => {
     }
 
     // end-create_manage_dr
-  });
-
-  test('getLastOperation request example', async () => {
-    consoleLogMock.mockImplementation((output) => {
-      originalLog(output);
-    });
-    consoleWarnMock.mockImplementation((output) => {
-      // if an error occurs, display the message and then fail the test
-      originalWarn(output);
-      expect(true).toBeFalsy();
-    });
-
-    originalLog('getLastOperation() result:');
-    // begin-get_last_operation
-
-    const params = {
-      instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-    };
-
-    let res;
-    try {
-      res = await drAutomationServiceService.getLastOperation(params);
-      console.log(JSON.stringify(res.result, null, 2));
-    } catch (err) {
-      console.warn(err);
-    }
-
-    // end-get_last_operation
-  });
+  }, 60000);
 
   test('listEvents request example', async () => {
     consoleLogMock.mockImplementation((output) => {
@@ -342,7 +352,6 @@ describe('DrAutomationServiceV1', () => {
 
     const params = {
       instanceId: '123456d3-1122-3344-b67d-4389b44b7bf9',
-      time: '2025-06-19T23:59:59Z',
       fromTime: '2025-06-19T00:00:00Z',
       toTime: '2025-06-19T23:59:59Z',
     };

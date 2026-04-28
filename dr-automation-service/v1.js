@@ -1,6 +1,6 @@
 "use strict";
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.105.0-3c13b041-20250605-193116
  */
 var extend = require("extend");
 var ibm_cloud_sdk_core_1 = require("ibm-cloud-sdk-core");
@@ -318,6 +318,51 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
         return this.createRequest(parameters);
     };
     /*************************
+     * drAutomationServiceInstance
+     ************************/
+    /**
+     * View details of Last operation performed on the instance.
+     *
+     * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
+     * updating, or deprovisioning.
+     *
+     * @param {Object} params - The parameters to send to the service.
+     * @param {string} params.instanceId - instance id of instance to provision.
+     * @param {string} [params.acceptLanguage] - The language requested for the return document.
+     * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+     * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>>}
+     */
+    DrAutomationServiceV1.prototype.getLastOperation = function (params) {
+        var _params = __assign({}, params);
+        var _requiredParams = ['instanceId'];
+        var _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
+        var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
+        if (_validationErrors) {
+            return Promise.reject(_validationErrors);
+        }
+        var path = {
+            'instance_id': _params.instanceId,
+        };
+        var sdkHeaders = (0, common_1.getSdkHeaders)(DrAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'getLastOperation');
+        var parameters = {
+            options: {
+                url: '/drautomation/v1/last_operation/{instance_id}',
+                method: 'GET',
+                path: path,
+            },
+            defaultOptions: extend(true, {}, this.baseOptions, {
+                headers: extend(true, sdkHeaders, this.baseOptions.headers, {
+                    'Accept': 'application/json',
+                    'Accept-Language': _params.acceptLanguage,
+                }, _params.headers),
+                axiosOptions: {
+                    signal: _params.signal,
+                },
+            }),
+        };
+        return this.createRequest(parameters);
+    };
+    /*************************
      * drAutomationIbmCloud
      ************************/
     /**
@@ -379,7 +424,8 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
     /**
      * List of primary and standby powervs workspaces.
      *
-     * Retrieves the power virtual server workspaces for primary and standby orchestrator based on location id.
+     * Retrieves the Power Virtual Server workspaces associated with the primary and standby orchestrators for the given
+     * instance ID and location ID.
      *
      * @param {Object} params - The parameters to send to the service.
      * @param {string} params.instanceId - instance id of instance to provision.
@@ -440,14 +486,20 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
      * @param {string} params.orchestratorPassword - The password that you can use to access your orchestrator.
      * @param {string} params.orchestratorWorkspaceId - The unique identifier orchestrator workspace.
      * @param {string} [params.apiKey] - The api Key of the service instance for deploying the disaster recovery service.
+     * @param {string} [params.managedApikey] - APIKey used to manage the workloads by adding the PowerVS instances to the
+     * orchestrator.
      * @param {string} [params.clientId] - The Client Id created for MFA authentication API.
      * @param {string} [params.clientSecret] - The client secret created for MFA authentication API.
      * @param {string} [params.guid] - The global unique identifier of the service instance.
      * @param {boolean} [params.orchestratorHa] - Indicates whether the orchestrator High Availability (HA) is enabled for
      * the service instance.
+     * @param {string[]} [params.orchestratorNetworkIds] - List of network IDs for primary orchestrator VM.
+     * @param {string} [params.orchestratorWorkspaceLocation] - The location of the orchestrator workspace.
      * @param {string} [params.proxyIp] - Proxy IP for the Communication between Orchestrator and Service broker.
      * @param {string} [params.regionId] - The power virtual server region where the service instance is deployed.
      * @param {string} [params.resourceInstance] - The uniquie identifier of the associated IBM Cloud resource instance.
+     * @param {string} [params.secondaryWorkspaceId] - The unique identifier of the secondary workspace used for the
+     * disaster recovery.
      * @param {string} [params.secret] - The secret name or identifier used for retrieving credentials from secrets
      * manager.
      * @param {string} [params.secretGroup] - The secret group name in IBM Cloud Secrets Manager containing sensitive data
@@ -455,8 +507,11 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
      * @param {string} [params.sshKeyName] - The name of the SSH key used for deploying the orchestator.
      * @param {string} [params.standbyMachineType] - The machine type used for deploying standby virtual machines.
      * @param {string} [params.standbyOrchestratorName] - The username for the standby orchestrator management interface.
+     * @param {string[]} [params.standbyOrchestratorNetworkIds] - List of network IDs for standby orchestrator VM.
+     * @param {string} [params.standbySshKeyName] - The name of the SSH key used for deploying the standby orchestator.
      * @param {string} [params.standbyOrchestratorWorkspaceId] - The unique identifier of the standby orchestrator
      * workspace.
+     * @param {string} [params.standbyOrchestratorWorkspaceLocation] - The location of the standby orchestrator workspace.
      * @param {string} [params.standbyTier] - The storage tier used for deploying standby orchestrator.
      * @param {string} [params.tenantName] - The tenant name for MFA authentication API.
      * @param {string} [params.tier] - The storage tier used for deploying primary orchestrator.
@@ -488,19 +543,26 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
             'orchestratorPassword',
             'orchestratorWorkspaceId',
             'apiKey',
+            'managedApikey',
             'clientId',
             'clientSecret',
             'guid',
             'orchestratorHa',
+            'orchestratorNetworkIds',
+            'orchestratorWorkspaceLocation',
             'proxyIp',
             'regionId',
             'resourceInstance',
+            'secondaryWorkspaceId',
             'secret',
             'secretGroup',
             'sshKeyName',
             'standbyMachineType',
             'standbyOrchestratorName',
+            'standbyOrchestratorNetworkIds',
+            'standbySshKeyName',
             'standbyOrchestratorWorkspaceId',
+            'standbyOrchestratorWorkspaceLocation',
             'standbyTier',
             'tenantName',
             'tier',
@@ -522,19 +584,26 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
             'orchestrator_password': _params.orchestratorPassword,
             'orchestrator_workspace_id': _params.orchestratorWorkspaceId,
             'api_key': _params.apiKey,
+            'managed_apikey': _params.managedApikey,
             'client_id': _params.clientId,
             'client_secret': _params.clientSecret,
             'guid': _params.guid,
             'orchestrator_ha': _params.orchestratorHa,
+            'orchestrator_network_ids': _params.orchestratorNetworkIds,
+            'orchestrator_workspace_location': _params.orchestratorWorkspaceLocation,
             'proxy_ip': _params.proxyIp,
             'region_id': _params.regionId,
             'resource_instance': _params.resourceInstance,
+            'secondary_workspace_id': _params.secondaryWorkspaceId,
             'secret': _params.secret,
             'secret_group': _params.secretGroup,
             'ssh_key_name': _params.sshKeyName,
             'standby_machine_type': _params.standbyMachineType,
             'standby_orchestrator_name': _params.standbyOrchestratorName,
+            'standby_orchestrator_network_ids': _params.standbyOrchestratorNetworkIds,
+            'standby_ssh_key_name': _params.standbySshKeyName,
             'standby_orchestrator_workspace_id': _params.standbyOrchestratorWorkspaceId,
+            'standby_orchestrator_workspace_location': _params.standbyOrchestratorWorkspaceLocation,
             'standby_tier': _params.standbyTier,
             'tenant_name': _params.tenantName,
             'tier': _params.tier,
@@ -569,51 +638,6 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
         return this.createRequest(parameters);
     };
     /*************************
-     * drAutomationServiceInstance
-     ************************/
-    /**
-     * View details of Last operation performed on the instance.
-     *
-     * Retrieves the status of the last operation performed on the specified service instance, such as provisioning,
-     * updating, or deprovisioning.
-     *
-     * @param {Object} params - The parameters to send to the service.
-     * @param {string} params.instanceId - instance id of instance to provision.
-     * @param {string} [params.acceptLanguage] - The language requested for the return document.
-     * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-     * @returns {Promise<DrAutomationServiceV1.Response<DrAutomationServiceV1.ServiceInstanceStatus>>}
-     */
-    DrAutomationServiceV1.prototype.getLastOperation = function (params) {
-        var _params = __assign({}, params);
-        var _requiredParams = ['instanceId'];
-        var _validParams = ['instanceId', 'acceptLanguage', 'signal', 'headers'];
-        var _validationErrors = (0, ibm_cloud_sdk_core_1.validateParams)(_params, _requiredParams, _validParams);
-        if (_validationErrors) {
-            return Promise.reject(_validationErrors);
-        }
-        var path = {
-            'instance_id': _params.instanceId,
-        };
-        var sdkHeaders = (0, common_1.getSdkHeaders)(DrAutomationServiceV1.DEFAULT_SERVICE_NAME, 'v1', 'getLastOperation');
-        var parameters = {
-            options: {
-                url: '/drautomation/v1/last_operation/{instance_id}',
-                method: 'GET',
-                path: path,
-            },
-            defaultOptions: extend(true, {}, this.baseOptions, {
-                headers: extend(true, sdkHeaders, this.baseOptions.headers, {
-                    'Accept': 'application/json',
-                    'Accept-Language': _params.acceptLanguage,
-                }, _params.headers),
-                axiosOptions: {
-                    signal: _params.signal,
-                },
-            }),
-        };
-        return this.createRequest(parameters);
-    };
-    /*************************
      * drEvents
      ************************/
     /**
@@ -623,7 +647,6 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
      *
      * @param {Object} params - The parameters to send to the service.
      * @param {string} params.instanceId - instance id of instance to provision.
-     * @param {string} [params.time] - (deprecated - use from_time) A time in either ISO 8601 or unix epoch format.
      * @param {string} [params.fromTime] - A from query time in either ISO 8601 or unix epoch format.
      * @param {string} [params.toTime] - A to query time in either ISO 8601 or unix epoch format.
      * @param {string} [params.acceptLanguage] - The language requested for the return document.
@@ -635,7 +658,6 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
         var _requiredParams = ['instanceId'];
         var _validParams = [
             'instanceId',
-            'time',
             'fromTime',
             'toTime',
             'acceptLanguage',
@@ -647,7 +669,6 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
             return Promise.reject(_validationErrors);
         }
         var query = {
-            'time': _params.time,
             'from_time': _params.fromTime,
             'to_time': _params.toTime,
         };
@@ -717,7 +738,7 @@ var DrAutomationServiceV1 = /** @class */ (function (_super) {
         };
         return this.createRequest(parameters);
     };
-    DrAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.cloud.ibm.com';
+    DrAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.test.cloud.ibm.com';
     DrAutomationServiceV1.DEFAULT_SERVICE_NAME = 'dr_automation_service';
     return DrAutomationServiceV1;
 }(ibm_cloud_sdk_core_1.BaseService));
