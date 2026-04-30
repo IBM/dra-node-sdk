@@ -788,7 +788,7 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
         };
         return this.createRequest(parameters);
     };
-    PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.test.cloud.ibm.com';
+    PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.cloud.ibm.com';
     PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME = 'powerha_automation_service';
     return PowerhaAutomationServiceV1;
 }(ibm_cloud_sdk_core_1.BaseService));

@@ -37,7 +37,7 @@ import { getSdkHeaders } from '../lib/common';
  */
 
 class PowerhaAutomationServiceV1 extends BaseService {
-  static DEFAULT_SERVICE_URL: string = 'https://power-dra.test.cloud.ibm.com';
+  static DEFAULT_SERVICE_URL: string = 'https://power-dra.cloud.ibm.com';
 
   static DEFAULT_SERVICE_NAME: string = 'powerha_automation_service';
 
