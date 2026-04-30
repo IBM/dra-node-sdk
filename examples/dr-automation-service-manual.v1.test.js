@@ -124,7 +124,7 @@ describe('DrAutomationServiceV1', () => {
     }
   }, 20000);
 
-  // 2. ---------- 2. HA with Secrets Keys----------
+  // 2. ---------- 2. HA with Secrets ----------
   test('ServiceInstanceManageDr HA with secrets', async () => {
     consoleLogMock.mockImplementation((output) => {
       originalLog(output);
