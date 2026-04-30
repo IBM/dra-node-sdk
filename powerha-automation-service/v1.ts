@@ -37,7 +37,7 @@ import { getSdkHeaders } from '../lib/common';
  */
 
 class PowerhaAutomationServiceV1 extends BaseService {
-  static DEFAULT_SERVICE_URL: string = 'https://power-dra.test.cloud.ibm.com';
+  static DEFAULT_SERVICE_URL: string = 'https://power-dra.cloud.ibm.com';
 
   static DEFAULT_SERVICE_NAME: string = 'powerha_automation_service';
 
@@ -565,7 +565,7 @@ class PowerhaAutomationServiceV1 extends BaseService {
    * Create a new deployment.
    *
    * Create a new PowerHA deployment for a given location and PowerVS workspace. Refer deploying the PowerHA on Powervs
-   * https://test.cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-getting-started-with-ha-automation-for-power-virtual-server
+   * https://cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-getting-started-with-ha-automation-for-power-virtual-server
    * for more details.
    *
    * @param {Object} params - The parameters to send to the service.

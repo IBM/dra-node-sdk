@@ -29,7 +29,7 @@ const DrAutomationServiceV1 = require('../../dist/dr-automation-service/v1');
 
 const drAutomationServiceServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://power-dra.test.cloud.ibm.com',
+  url: 'https://power-dra.cloud.ibm.com',
 };
 
 const drAutomationServiceService = new DrAutomationServiceV1(drAutomationServiceServiceOptions);

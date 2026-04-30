@@ -43,8 +43,8 @@ IBM Cloud services:
 
 Service Name - Plan | Import Path
 --- | ---
-[DrAutomation Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
-[PowerHA Service](https://test.cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/powerha-automation-service/v1
+[DrAutomation Service](https://cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/dr-automation-service/v1
+[PowerHA Service](https://cloud.ibm.com/apidocs/dr-automation-powervs) | dra-node-sdk/powerha-automation-service/v1
 
 ## Prerequisites
 * You need an [IBM Cloud][ibm-cloud-onboarding] account.

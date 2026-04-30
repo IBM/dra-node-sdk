@@ -29,7 +29,7 @@ const PowerhaAutomationServiceV1 = require('../../dist/powerha-automation-servic
 
 const powerhaAutomationServiceServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://power-dra.test.cloud.ibm.com',
+  url: 'https://power-dra.cloud.ibm.com',
 };
 
 const powerhaAutomationServiceService = new PowerhaAutomationServiceV1(

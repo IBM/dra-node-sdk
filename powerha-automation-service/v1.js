@@ -444,7 +444,7 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
      * Create a new deployment.
      *
      * Create a new PowerHA deployment for a given location and PowerVS workspace. Refer deploying the PowerHA on Powervs
-     * https://test.cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-getting-started-with-ha-automation-for-power-virtual-server
+     * https://cloud.ibm.com/docs/dr-automation-powervs?topic=dr-automation-powervs-getting-started-with-ha-automation-for-power-virtual-server
      * for more details.
      *
      * @param {Object} params - The parameters to send to the service.
@@ -788,7 +788,7 @@ var PowerhaAutomationServiceV1 = /** @class */ (function (_super) {
         };
         return this.createRequest(parameters);
     };
-    PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.test.cloud.ibm.com';
+    PowerhaAutomationServiceV1.DEFAULT_SERVICE_URL = 'https://power-dra.cloud.ibm.com';
     PowerhaAutomationServiceV1.DEFAULT_SERVICE_NAME = 'powerha_automation_service';
     return PowerhaAutomationServiceV1;
 }(ibm_cloud_sdk_core_1.BaseService));
