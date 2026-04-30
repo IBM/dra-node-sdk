@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/IBM/dra-node-sdk/compare/v0.1.0...v0.1.1) (2026-04-30)
+
+
+### Bug Fixes
+
+* Service URL in Node JS is redirecting to power.dra.test.cloud.ibm.com ([668f62a](https://github.com/IBM/dra-node-sdk/commit/668f62a9a622d94f521619020e228e828ec793a4))
+
 # [0.1.0](https://github.com/IBM/dra-node-sdk/compare/v0.0.1...v0.1.0) (2026-04-28)
 
 
