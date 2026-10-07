@@ -1,3 +1,10 @@
+## [0.1.2](https://github.com/IBM/dra-node-sdk/compare/v0.1.1...v0.1.2) (2026-10-07)
+
+
+### Bug Fixes
+
+* addressed vernability ([373b434](https://github.com/IBM/dra-node-sdk/commit/373b434490ffd22826f228dd6937fecec0cd79f7))
+
 ## [0.1.1](https://github.com/IBM/dra-node-sdk/compare/v0.1.0...v0.1.1) (2026-04-30)
 
 
